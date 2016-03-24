@@ -11,7 +11,7 @@ Securely store customer payment information for a quick and simple checkout expe
   * Maintain multiple payment methods for each of your customers.
   * Build customer loyalty, and offer a streamlined and speedy checkout experience.
   
-![](https://github.com/paysafegroup/paysafe_api_cardpayments_v1/raw/master/images/Tokenization_with_Customer_Vault_v2.png)  
+![](https://github.com/paysafegroup/paysafe_api_customervault_v1/raw/master/images/Tokenization_with_Customer_Vault_Paysafe_v2.png)  
 
 
 <a name="apikey" /a>
@@ -1313,9 +1313,18 @@ a name="singleusetokenobject"></a>
 |400                    |5502           |Either the payment token is invalid or the corresponding profile or bank account is not active.|
 
 ## Customer Vault Errors
-|HTTP Status Code       |Error Code    |Description|
-|---                    |---           |---|
-|
+|HTTP Status Code       |Error Code     |Description|
+|---                    |---            |---|
+|409                    |7503           |The card number you are trying to add to this profile is already used by this profile.|
+|409                    |7504           |This card has been used for the maximum number of profiles allowed. Please use a different card.|
+|409                    |7505           |The *merchantCustomerId* provided for this profile has already been used for another profile.|
+|400                    |7508           |You submitted an invalid card number or brand or combination of card number and brand with your request.|
+|409                    |7509           |The bank account has one or more existing mandates so associated banking information cannot be updated.|
+|400                    |7510           |You submitted invalid bank account information for your banking scheme.|
+|404                    |7511           |The address ID provided in your request could not be found.|
+|400                    |7512           |The merchant's Apple Pay configuration could not be found.|
+|400                    |7513           |The Apple Pay token is invalid.|
+
 
 # Profiles [/profiles]
 <a name="profilesrequest"></a>
@@ -1324,12 +1333,219 @@ a name="singleusetokenobject"></a>
 
 This is how you submit a profile creation request.
 
-+ Attributes
-    +merchantCustomerId (string)
+The following lists describe the mandatory and optional parameters for processing a Profile Creation request. For a detailed description of the attributes, please refer to the [profiles object](#profilesobject).
+
+**Required Parameters**
+* merchantCustomerId
+* locale
+
+**Optional Parameters**
+* firstName
+* middleName
+* lastName
+* dateOfBirth
+* ip
+* gender
+* nationality
+* email
+* phone
+* cellPhone
+
+
++ Request Profile Creation (application/json)
+
+    + Attributes
+    
+        + merchantCustomerId (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. It must be unique for each customer belonging to a merchant.
+        + locale (string, required) - This indicates the language of the profile. 
+        + firstName (string, optional) - This is the customer’s first name.
+        + middleName (string, optional) - This is the customer’s middle name.
+        + lastName (string, optional) - This is the customer's last name.
+        + dateOfBirth (object, optional) - This is the customer's date of birth.
+        + ip (string, optional) - This is the customer’s IP address.
+        + gender (string, optional) - This is the customer’s gender. 
+        + nationality - This is the customer’s nationality. 
+        + email - This is the customer’s email address. 
+        + phone - This is the customer’s phone number. 
+        + cellPhone - This is the customer’s cell phone number.
+        
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
+    + Body
+    
+        ```apib
+            {
+              "merchantCustomerId":"mycustomer1",
+              "locale" : "en_US",
+              "firstName" : "John",
+              "lastName" : "Smith",
+              "email" : "john.smith@somedomain.com",
+              "phone" : "713-444-5555"
+             }            
+        ```        
 
 + Response 200 (application/json)
 
-    + Attributes    
+    + Attributes
+    
+        + id (string, required) - This is the ID returned in the response. This ID can be used for future associated requests.
+        + status (string, required) - This is the status of the transaction request.
+        + merchantCustomerId (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. It must be unique for each customer belonging to a merchant.
+        + locale (string, required) - This indicates the language of the profile. 
+        + firstName (string, optional) - This is the customer’s first name.
+        + middleName (string, optional) - This is the customer’s middle name.
+        + lastName (string, optional) - This is the customer's last name.
+        + dateOfBirth (object, optional) - This is the customer's date of birth.
+        + ip (string, optional) - This is the customer’s IP address.
+        + gender (string, optional) - This is the customer’s gender. 
+        + nationality (string, optional) - This is the customer’s nationality. 
+        + email (string, optional) - This is the customer’s email address. 
+        + phone (string, optional) - This is the customer’s phone number. 
+        + cellPhone (string, optional) - This is the customer’s cell phone number.
+        + paymentToken (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
+    
+    
+    + Body
+
+        ```apib
+            {
+              "id" : "a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1",
+              "status" : "ACTIVE",
+              "merchantCustomerId" : "mycustomer1",
+              "locale" : "en_US",
+              "firstName" : "John",
+              "lastName" : "Smith",
+              "email" : "john.smith@somedomain.com",
+              "phone" : "713-444-5555",  
+              "paymentToken" : "P0zPDqggWESaktW"
+            }        
+        ```
+
+
++ Request Profile Creation Using a Card (application/json)
+
+    + Attributes
+    
+        + merchantCustomerId (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. It must be unique for each customer belonging to a merchant.
+        + locale (string, required) - This indicates the language of the profile.
+        + card.cardNum (string, required) - This is the card number.
+        + card.cardExpiry (object, required) - This is the card expiry date.
+        + firstName (string, optional) - This is the customer’s first name.
+        + middleName (string, optional) - This is the customer’s middle name.
+        + lastName (string, optional) - This is the customer's last name.
+        + dateOfBirth (object, optional) - This is the customer's date of birth.
+        + ip (string, optional) - This is the customer’s IP address.
+        + gender (string, optional) - This is the customer’s gender. 
+        + nationality - This is the customer’s nationality. 
+        + email - This is the customer’s email address. 
+        + phone - This is the customer’s phone number. 
+        + cellPhone - This is the customer’s cell phone number
+        + card.nickName (string, optional) - This is an alias defined by the customer for this card.
+        + card.holderName (string, optional) - This is the name of the card holder.
+        + card.billingAddress (object, optional) - This is the billing address of the card holder.
+        
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
+    + Body
+    
+        ```apib
+            {
+                "merchantCustomerId": "mycustomer1",
+                "locale": "en_US",
+                "firstName": "John",
+                "lastName": "Smith",
+                "email": "john.smith@somedomain.com",
+                "phone": "713-444-5555",
+                "card": {
+                    "nickName": "John's corporate Visa",
+                    "holderName": "MR. JOHN SMITH",
+                    "cardNum": "4111111111111111",
+                    "cardExpiry": {
+                        "month": 12,
+                        "year": 2019
+                    },
+                    "billingAddress": {
+                        "street": "66 Main St.",
+                        "city": "Ottawa",
+                        "state": "ON",
+                        "country": "CA",
+                        "zip": "K2K2K2"
+                    }
+                }
+            }
+        ```        
+
++ Response 200 (application/json)
+
+    + Attributes
+    
+        + id (string, required) - This is the ID returned in the response. This ID can be used for future associated requests.
+        + status (string, required) - This is the status of the transaction request.
+        + merchantCustomerId (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. It must be unique for each customer belonging to a merchant.
+        + locale (string, required) - This indicates the language of the profile.
+        + firstName (string, optional) - This is the customer’s first name.
+        + middleName (string, optional) - This is the customer’s middle name.
+        + lastName (string, optional) - This is the customer's last name.
+        + dateOfBirth (object, optional) - This is the customer's date of birth.
+        + ip (string, optional) - This is the customer’s IP address.
+        + gender (string, optional) - This is the customer’s gender. 
+        + nationality (string, optional) - This is the customer’s nationality. 
+        + email (string, optional) - This is the customer’s email address. 
+        + phone (string, optional) - This is the customer’s phone number. 
+        + cellPhone (string, optional) - This is the customer’s cell phone number
+        + cards (array, required) - These are details about the card used to create the profile.
+        + addresses (array, required) - These are details about the address associated with the card.
+        + paymentToken (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
+    
+    
+    + Body
+
+        ```apib
+            {
+                "id": "a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1",
+                "status": "ACTIVE",
+                "merchantCustomerId": "mycustomer1",
+                "locale": "en_US",
+                "firstName": "John",
+                "lastName": "Smith",
+                "email": "john.smith@somedomain.com",
+                "phone": "713-444-5555",
+                "paymentToken": "P0zPDqggWESaktW",
+                "addresses": [
+                    {
+                        "id": "794b2b05-1a3b-4544-a59c-8612d0a4711e",
+                        "status": "ACTIVE",
+                        "street": "66 Main St.",
+                        "city": "Ottawa",
+                        "state": "ON",
+                        "country": "CA",
+                        "zip": "K2K2K2"
+                    }
+                ],
+                "cards": [
+                    {
+                        "id": "0d991673-2874-421f-ba61-019e0f47d41f",
+                        "status": "ACTIVE",
+                        "nickName": "John's corporate Visa",
+                        "holderName": "MR. JOHN SMITH",
+                        "cardBin": "411111",
+                        "lastDigits": "1111",
+                        "cardExpiry": {
+                            "month": 12,
+                            "year": 2019
+                        },
+                        "cardType": "VI",
+                        "paymentToken": "CRsinILfZADEmR4",
+                        "billingAddressId": "794b2b05-1a3b-4544-a59c-8612d0a4711e",
+                        "defaultCardIndicator": true
+                    }
+                ]
+            }        
+        ```
     
 # Addresses [/addresses]
 <a name="addressesrequest"></a>
