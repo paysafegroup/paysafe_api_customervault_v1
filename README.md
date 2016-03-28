@@ -1,2 +1,0 @@
-# paysafe_api_customervault_v1
-paysafe_api_customervault
