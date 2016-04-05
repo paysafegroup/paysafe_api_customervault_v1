@@ -1333,250 +1333,386 @@ a name="singleusetokenobject"></a>
 
 This is how you submit a profile creation request.
 
-The following lists describe the mandatory and optional parameters for processing a Profile Creation request. For a detailed description of the attributes, please refer to the [profiles object](#profilesobject).
-
-**Required Parameters**
-* merchantCustomerId
-* locale
-
-**Optional Parameters**
-* firstName
-* middleName
-* lastName
-* dateOfBirth
-* ip
-* gender
-* nationality
-* email
-* phone
-* cellPhone
-
-
 + Request Profile Creation (application/json)
 
     + Attributes
-    
-        + merchantCustomerId (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. It must be unique for each customer belonging to a merchant.
-        + locale (string, required) - This indicates the language of the profile. 
-        + firstName (string, optional) - This is the customer’s first name.
-        + middleName (string, optional) - This is the customer’s middle name.
-        + lastName (string, optional) - This is the customer's last name.
-        + dateOfBirth (object, optional) - This is the customer's date of birth.
-        + ip (string, optional) - This is the customer’s IP address.
-        + gender (string, optional) - This is the customer’s gender. 
-        + nationality - This is the customer’s nationality. 
-        + email - This is the customer’s email address. 
-        + phone - This is the customer’s phone number. 
-        + cellPhone - This is the customer’s cell phone number.
+        + Include Profile Base
         
     + Headers
     
             Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
-            
-    + Body
-    
-        ```apib
-            {
-              "merchantCustomerId":"mycustomer1",
-              "locale" : "en_US",
-              "firstName" : "John",
-              "lastName" : "Smith",
-              "email" : "john.smith@somedomain.com",
-              "phone" : "713-444-5555"
-             }            
-        ```        
 
 + Response 200 (application/json)
 
     + Attributes
-    
-        + id (string, required) - This is the ID returned in the response. This ID can be used for future associated requests.
-        + status (string, required) - This is the status of the transaction request.
-        + merchantCustomerId (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. It must be unique for each customer belonging to a merchant.
-        + locale (string, required) - This indicates the language of the profile. 
-        + firstName (string, optional) - This is the customer’s first name.
-        + middleName (string, optional) - This is the customer’s middle name.
-        + lastName (string, optional) - This is the customer's last name.
-        + dateOfBirth (object, optional) - This is the customer's date of birth.
-        + ip (string, optional) - This is the customer’s IP address.
-        + gender (string, optional) - This is the customer’s gender. 
-        + nationality (string, optional) - This is the customer’s nationality. 
-        + email (string, optional) - This is the customer’s email address. 
-        + phone (string, optional) - This is the customer’s phone number. 
-        + cellPhone (string, optional) - This is the customer’s cell phone number.
-        + paymentToken (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
-    
-    
-    + Body
+        + Include Response Base
+        + status:ACTIVE (string, required) - This is the status of the profile request.        
+        + Include Profile Base
+        + paymentToken:P0zPDqggWESaktW (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
 
-        ```apib
-            {
-              "id" : "a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1",
-              "status" : "ACTIVE",
-              "merchantCustomerId" : "mycustomer1",
-              "locale" : "en_US",
-              "firstName" : "John",
-              "lastName" : "Smith",
-              "email" : "john.smith@somedomain.com",
-              "phone" : "713-444-5555",  
-              "paymentToken" : "P0zPDqggWESaktW"
-            }        
-        ```
+## Create a Profile Using a Card [POST /profiles] 
 
+This is how you submit a profile creation request using a card.
 
 + Request Profile Creation Using a Card (application/json)
 
     + Attributes
     
-        + merchantCustomerId (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. It must be unique for each customer belonging to a merchant.
-        + locale (string, required) - This indicates the language of the profile.
-        + card.cardNum (string, required) - This is the card number.
-        + card.cardExpiry (object, required) - This is the card expiry date.
-        + firstName (string, optional) - This is the customer’s first name.
-        + middleName (string, optional) - This is the customer’s middle name.
-        + lastName (string, optional) - This is the customer's last name.
-        + dateOfBirth (object, optional) - This is the customer's date of birth.
-        + ip (string, optional) - This is the customer’s IP address.
-        + gender (string, optional) - This is the customer’s gender. 
-        + nationality - This is the customer’s nationality. 
-        + email - This is the customer’s email address. 
-        + phone - This is the customer’s phone number. 
-        + cellPhone - This is the customer’s cell phone number
-        + card.nickName (string, optional) - This is an alias defined by the customer for this card.
-        + card.holderName (string, optional) - This is the name of the card holder.
-        + card.billingAddress (object, optional) - This is the billing address of the card holder.
+        + Include Profile Base
+        + Include Card for Profile
         
     + Headers
     
             Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
-            
-    + Body
-    
-        ```apib
-            {
-                "merchantCustomerId": "mycustomer1",
-                "locale": "en_US",
-                "firstName": "John",
-                "lastName": "Smith",
-                "email": "john.smith@somedomain.com",
-                "phone": "713-444-5555",
-                "card": {
-                    "nickName": "John's corporate Visa",
-                    "holderName": "MR. JOHN SMITH",
-                    "cardNum": "4111111111111111",
-                    "cardExpiry": {
-                        "month": 12,
-                        "year": 2019
-                    },
-                    "billingAddress": {
-                        "street": "66 Main St.",
-                        "city": "Ottawa",
-                        "state": "ON",
-                        "country": "CA",
-                        "zip": "K2K2K2"
-                    }
-                }
-            }
-        ```        
 
 + Response 200 (application/json)
 
     + Attributes
-    
-        + id (string, required) - This is the ID returned in the response. This ID can be used for future associated requests.
-        + status (string, required) - This is the status of the transaction request.
-        + merchantCustomerId (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. It must be unique for each customer belonging to a merchant.
-        + locale (string, required) - This indicates the language of the profile.
-        + firstName (string, optional) - This is the customer’s first name.
-        + middleName (string, optional) - This is the customer’s middle name.
-        + lastName (string, optional) - This is the customer's last name.
-        + dateOfBirth (object, optional) - This is the customer's date of birth.
-        + ip (string, optional) - This is the customer’s IP address.
-        + gender (string, optional) - This is the customer’s gender. 
-        + nationality (string, optional) - This is the customer’s nationality. 
-        + email (string, optional) - This is the customer’s email address. 
-        + phone (string, optional) - This is the customer’s phone number. 
-        + cellPhone (string, optional) - This is the customer’s cell phone number
-        + cards (array, required) - These are details about the card used to create the profile.
-        + addresses (array, required) - These are details about the address associated with the card.
-        + paymentToken (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
-    
-    
-    + Body
+        + Include Response Base
+        + status:ACTIVE (string, required) - This is the status of the profile request.
+        + Include Profile Base
+        + paymentToken:P0zPDqggWESaktW (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
+        + Include Addresses Response
+        + Include Cards Response
 
-        ```apib
-            {
-                "id": "a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1",
-                "status": "ACTIVE",
-                "merchantCustomerId": "mycustomer1",
-                "locale": "en_US",
-                "firstName": "John",
-                "lastName": "Smith",
-                "email": "john.smith@somedomain.com",
-                "phone": "713-444-5555",
-                "paymentToken": "P0zPDqggWESaktW",
-                "addresses": [
-                    {
-                        "id": "794b2b05-1a3b-4544-a59c-8612d0a4711e",
-                        "status": "ACTIVE",
-                        "street": "66 Main St.",
-                        "city": "Ottawa",
-                        "state": "ON",
-                        "country": "CA",
-                        "zip": "K2K2K2"
-                    }
-                ],
-                "cards": [
-                    {
-                        "id": "0d991673-2874-421f-ba61-019e0f47d41f",
-                        "status": "ACTIVE",
-                        "nickName": "John's corporate Visa",
-                        "holderName": "MR. JOHN SMITH",
-                        "cardBin": "411111",
-                        "lastDigits": "1111",
-                        "cardExpiry": {
-                            "month": 12,
-                            "year": 2019
-                        },
-                        "cardType": "VI",
-                        "paymentToken": "CRsinILfZADEmR4",
-                        "billingAddressId": "794b2b05-1a3b-4544-a59c-8612d0a4711e",
-                        "defaultCardIndicator": true
-                    }
-                ]
-            }        
-        ```
+## Create a Profile Using a Single-Use Token [POST /profiles] 
+
+This is how you submit a profile creation request using a single-use token.
+
++ Request Profile Creation Using a Single-Use Token (application/json)
+
+    + Attributes
+    
+        + Include Profile Base
+        + Include Card for Token
+        
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+
++ Response 200 (application/json)
+
+    + Attributes
+        + Include Response Base
+        + status:ACTIVE (string, required) - This is the status of the profile request.
+        + Include Profile Base
+        + paymentToken:P0zPDqggWESaktW (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
+        + Include Addresses Response
+        + Include Cards Response
+    
+## Get Profile [GET /profiles/{PROFILE_ID}]
+
+This is how you look up a profile using the ID returned in the response to the original request.
+    
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+
++ Request Get Profile (application/json)
+    
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + status:ACTIVE (string, required) - This is the status of the profile request.
+        + Include Profile Base
+        + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
+
+## Get Profile Including Subcomponents [GET /profiles/{PROFILE_ID}?fields=cards,addresses]
+
+You can look up a profile along with its associated sub-components using one or more comma-separated values from this list:
+* cards
+* addresses
+* achbankaccounts
+* bacsbankaccounts
+* eftbankaccounts
+* sepabankaccounts
+    
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+
++ Request Get Profile (application/json)
+    
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + status:ACTIVE (string, required) - This is the status of the profile request.
+        + Include Profile Base
+        + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
+        + Include Addresses Response
+        + Include Cards Response
+    
+## Update a Profile [PUT /profiles/{PROFILE_ID}]
+
+This is how you update a profile.
+
+**Note:** You must provide all of the elements of the profile when you are updating it, including the elements that are not changing. Elements that are part of an existing profile but that are not included in the update request will be set to *null* in the resulting profile, with the exception of the *status* element.
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+
++ Request Update a Profile (application/json)
+    
+    + Attributes
+        + Include Profile Base
+        + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer.
+        
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + status:ACTIVE (string, required) - This is the status of the profile request.
+        + Include Profile Base
+        + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer.
+
+## Delete a Profile [DELETE /profiles/{PROFILE_ID}]
+
+This is how you delete a profile.
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+
++ Request Delete a Profile (application/json)
+
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
     
 # Addresses [/addresses]
 <a name="addressesrequest"></a>
 
-## Create an Address [POST /profiles/{PROFILE_ID/addresses]
+## Create an Address [POST /profiles/{PROFILE_ID}/addresses]
 
 This is how you submit an address creation request.
 
 + Parameters
     + PROFILE_ID:a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1 (string,required) - This is the ID of the profile to which you are adding an address.
 
-+ Attributes
-    + nickName (string)
++ Request Address Creation (application/json)
+
+    + Attributes
+        + Include Address
+        
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
 
 + Response 200 (application/json)
 
-    + Attributes        
+    + Attributes
+        + Include Response Base
+        + Include Address Response
+
+## Get Address [GET /profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+
+This is how you look up an address using the ID returned in the response to the original request.
+    
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + ADDRESS_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the Address ID returned in the response.
+
++ Request Get Address (application/json)
+    
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include Address Response
+
+## Update an Address [PUT /profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+
+This is how you update an address.
+
+**Note:** You must provide all of the elements of the address when you are updating it, including the elements that are not changing. Elements that are part of an existing address but that are not included in the update request will be set to *null* in the resulting address.
+
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + ADDRESS_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the Address ID returned in the response.
+
++ Request Update an Address (application/json)
+    
+    + Attributes
+        + Include Address
+        
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include Address Response
+    
+## Delete an Address [DELETE /profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+
+This is how you delete an address. 
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + ADDRESS_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the Address ID returned in the response.
+
++ Request Delete an Address (application/json)
+
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes
+    
     
 # Cards [/cards]
 <a name="cardsrequest"></a>
 
-## Create a Card [POST /profiles/{PROFILE_ID/cards]
+## Create a Card [POST /profiles/{PROFILE_ID}/cards]
 
 This is how you submit a card creation request.
 
 + Parameters
-    + PROFILE_ID:a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1 (string,required) - This is the ID of the profile to which you are adding a card.
+    + PROFILE_ID:a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1 (string,required) - This is the ID of the profile to which you are adding an address.
 
-+ Attributes
-    + nickName (string)
++ Request Card Creation (application/json)
 
+    + Attributes
+        + Include Card
+        
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+
++ Response 200 (application/json)
+
+    + Attributes
+        + Include Response Base
+        + Include Card Response
+        
+## Create a Card Using a Single-Use Token [POST /profiles/{PROFILE_ID}/cards]
+
+This is how you submit a card creation request using a single-use token.
+
++ Request Card Creation Using a Single-Use Token (application/json)
+
+    + Attributes
+        + Include Card for Token
+        
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+
++ Response 200 (application/json)
+
+    + Attributes
+        + Include Response Base
+        + status:ACTIVE (string, required) - This is the status of the profile request.
+        + Include Card Response 
+
+## Get Card [GET /profiles/{PROFILE_ID}/cards/{CARD_ID}]
+
+This is how you look up a card using the ID returned in the response to the original request.
+    
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + CARD_ID:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the Card ID returned in the response.
+
++ Request Get Card (application/json)
+    
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include Card Response
+        
+## Update a Card [PUT /profiles/{PROFILE_ID}/cards/{CARD_ID}]
+
+This is how you update a card.
+
+**Note:** You must provide all of the elements of the card when you are updating it, including the elements that are not changing. Elements that are part of an existing card but that are not included in the update request will be set to null in the resulting card, with the exception of the *cardNum* element.
+
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + CARD_ID:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the Card ID returned in the response.
+
++ Request Update a Card (application/json)
+    
+    + Attributes
+        + Include Card for Update
+        
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include Card Response        
+
+## Update a Card Using a Single-Use Token [PUT /profiles/{PROFILE_ID}/cards/{CARD_ID}]
+
+This is how you update a card using a single-use token.
+
+**Note:** The existing card and corresponding billing details will be updated based on the information stored for the single-use token. For example, if an existing card has billing details information but the single-use token does not, this operation will remove the existing billing details from the card.
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + CARD_ID:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the Card ID returned in the response.
+
++ Request Update a Card (application/json)
+    
+    + Attributes
+        + Include Card for Token
+        
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include Card Response                
+
+## Delete a Card [DELETE /profiles/{PROFILE_ID}/cards/{CARD_ID}]
+
+This is how you delete a card. 
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + CARD_ID:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the Card ID returned in the response.
+
++ Request Delete a Card (application/json)
+
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
 + Response 200 (application/json)
 
     + Attributes
@@ -1584,50 +1720,263 @@ This is how you submit a card creation request.
 # ACH Bank Accounts [/achbankaccounts]
 <a name="achbankaccountsrequest"></a>
 
-## Create an ACH Bank Account [POST /profiles/{PROFILE_ID/achbankaccounts]
+## Create an ACH Bank Account [POST /profiles/{PROFILE_ID}/achbankaccounts]
 
 This is how you submit an ACH bank account creation request.
 
 + Parameters
     + PROFILE_ID:a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1 (string,required) - This is the ID of the profile to which you are adding an ACH bank account. 
 
-+ Attributes
-    + nickName (string)
++ Request ACH Bank Account Creation (application/json)
+
+    + Attributes
+        + Include ACH Bank Account
+        
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
 
 + Response 200 (application/json)
 
-    + Attributes            
+    + Attributes
+        + Include Response Base
+        + Include ACH Bank Account Response
+
+## Get ACH Bank Account [GET /profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you look up an ACH bank account using the ID returned in the response to the original request.
+    
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Get ACH Bank Account (application/json)
+    
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include ACH Bank Account Response
+
+## Update an ACH Bank Account [PUT /profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you update an ACH bank account.
+
+**Note:** You must provide all of the elements of the bank account when you are updating it, including the elements that are not changing. Elements not included will be set to null in the resulting bank account, with the exception of the *accountNumber* element.
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Update an ACH Bank Account (application/json)
+    
+    + Attributes
+        + Include ACH Bank Account for Update
+        
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include ACH Bank Account Response
+
+## Delete an ACH Bank Account [DELETE /profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you delete an ACH bank account. 
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Delete an ACH Bank Account (application/json)
+
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes
     
 # BACS Bank Accounts [/bacsbankaccounts]
 <a name="bacsbankaccountsrequest"></a>
 
-## Create an ACH Bank Account [POST /profiles/{PROFILE_ID/bacsbankaccounts]
+## Create a BACS Bank Account [POST /profiles/{PROFILE_ID}/bacsbankaccounts]
 
 This is how you submit a BACS bank account creation request.
 
 + Parameters
     + PROFILE_ID:a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1 (string,required) - This is the ID of the profile to which you are adding a BACS bank account. 
 
-+ Attributes
-    + nickName (string)
++ Request BACS Bank Account Creation (application/json)
+
+    + Attributes
+        + Include BACS Bank Account
+        
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
 
 + Response 200 (application/json)
 
     + Attributes
+        + Include Response Base
+        + Include BACS Bank Account Response
+
+## Get BACS Bank Account [GET /profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you look up a BACS bank account using the ID returned in the response to the original request.
+    
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Get BACS Bank Account (application/json)
+    
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include BACS Bank Account Response
+
+## Update a BACS Bank Account [PUT /profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you update a BACS bank account.
+
+**Note:** <ol><li>Any attributes that cannot be null that are not included in the request will be unchanged.</li><li>Any attributes that can be null that are not included in the request will be set to null.</li><li> The *sortCode* and *accountNumber* elements can be updated only if the bank account does not have any associated mandates.</li><li>Any mandate associated with this bank account cannot be updated with this request.</li></ol>
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Update a BACS Bank Account (application/json)
+    
+    + Attributes
+        + Include BACS Bank Account for Update 
+        
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include BACS Bank Account Response
+    
+## Delete a BACS Bank Account [DELETE /profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you delete a BACS bank account. 
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Delete a BACS Bank Account (application/json)
+
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
     
 # EFT Bank Accounts [/eftbankaccounts]
 <a name="eftbankaccountsrequest"></a>
 
-## Create an EFT Bank Account [POST /profiles/{PROFILE_ID/eftbankaccounts]
+## Create an EFT Bank Account [POST /profiles/{PROFILE_ID}/eftbankaccounts]
 
 This is how you submit an EFT bank account creation request.
 
 + Parameters
-    + PROFILE_ID:a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1 (string,required) - This is the ID of the profile to which you are adding an EFT bank account. 
+    + PROFILE_ID:a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1 (string,required) - This is the ID of the profile to which you are adding an ACH bank account. 
 
-+ Attributes
-    + nickName (string)
++ Request EFT Bank Account Creation (application/json)
 
+    + Attributes
+        + Include EFT Bank Account
+        
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+
++ Response 200 (application/json)
+
+    + Attributes
+        + Include Response Base
+        + Include EFT Bank Account Response
+    
+## Get EFT Bank Account [GET /profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you look up an EFT bank account using the ID returned in the response to the original request.
+    
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Get EFT Bank Account (application/json)
+    
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include EFT Bank Account Response    
+
+## Update an EFT Bank Account [PUT /profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you update an EFT bank account.
+
+**Note:** You must provide all of the elements of the bank account when you are updating it, including the elements that are not changing. Elements not included will be set to null in the resulting bank account, with the exception of the *accountNumber* element.
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Update an EFT Bank Account (application/json)
+    
+    + Attributes
+        + Include EFT Bank Account for Update
+        
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include EFT Bank Account Response
+
+## Delete an EFT Bank Account [DELETE /profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you delete an EFT bank account. 
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Delete an EFT Bank Account (application/json)
+
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
 + Response 200 (application/json)
 
     + Attributes
@@ -1635,16 +1984,87 @@ This is how you submit an EFT bank account creation request.
 # SEPA Bank Accounts [/sepabankaccounts]
 <a name="sepabankaccountsrequest"></a>
 
-## Create a SEPA Bank Account [POST /profiles/{PROFILE_ID/sepabankaccounts]
+## Create a SEPA Bank Account [POST /profiles/{PROFILE_ID}/sepabankaccounts]
 
 This is how you submit a SEPA bank account creation request.
 
 + Parameters
-    + PROFILE_ID:a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1 (string,required) - This is the ID of the profile to which you are adding a SEPA bank account. 
+    + PROFILE_ID:a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1 (string,required) - This is the ID of the profile to which you are adding a BACS bank account. 
 
-+ Attributes
-    + nickName (string)
++ Request SEPA Bank Account Creation (application/json)
 
+    + Attributes
+        + Include SEPA Bank Account
+        
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+
++ Response 200 (application/json)
+
+    + Attributes
+        + Include Response Base
+        + Include SEPA Bank Account Response
+
+## Get SEPA Bank Account [GET /profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you look up a SEPA bank account using the ID returned in the response to the original request.
+    
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Get SEPA Bank Account (application/json)
+    
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include SEPA Bank Account Response
+
+## Update a SEPA Bank Account [PUT /profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you update a SEPA bank account.
+
+**Note:** <ol><li>Any attributes that cannot be null that are not included in the request will be unchanged.</li><li>Any attributes that can be null that are not included in the request will be set to null.</li><li> The *iban* and *bic* elements can be updated only if the bank account does not have any associated mandates.</li><li>Any mandate associated with this bank account cannot be updated with this request.</li></ol>
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Update a SEPA Bank Account (application/json)
+    
+    + Attributes
+        + Include SEPA Bank Account for Update 
+        
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include SEPA Bank Account Response
+    
+## Delete a SEPA Bank Account [DELETE /profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+
+This is how you delete a SEPA bank account. 
+
++ Parameters
+    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
+    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+
++ Request Delete a SEPA Bank Account (application/json)
+
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
 + Response 200 (application/json)
 
     + Attributes
@@ -1652,50 +2072,477 @@ This is how you submit a SEPA bank account creation request.
 # Mandates [/mandates]
 <a name="mandatesrequest"></a>
 
-## Create a BACS Mandate [POST /profiles/{PROFILE_ID/bacsbankaccounts/{BANK_ACCOUNT_ID}/mandates]
+## Create a BACS Mandate [POST /profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}/mandates]
 
 This is how you submit a BACS mandate creation request.
+
+**Note:** By default, the BACS mandate is created with the status of PENDING.
 
 + Parameters
     + PROFILE_ID:a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1 (string,required) - This is the ID of the profile to which the BACS bank account belongs.
     + BANK_ACCOUNT_ID:6a275b7c-6f11-4ed1-ae77-21071724574a (string, required) - This is the ID of the BACS bank account to which you are adding the mandate.
 
-+ Attributes
-    + reference (string)
++ Request BACS Mandate Creation (application/json)
+
+    + Attributes
+        + Include Mandate Reference
 
 + Response 200 (application/json)
 
     + Attributes
+        + id:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
+        + reference:`ABCDEFGHIJ10987` (string, required) - This is the identifier of the mandate in the banking system.
+        + paymentToken:MUwqiUNjndxxiFs (string, required) - This is a token returned in the response to the mandate creation request.
+        + status:PENDING (string, required) - This is the status of the mandate.
+        + statusChangeDate:`2016-12-14T20:41:32Z` (string, required) - This is the date that the status was last changed.
     
-## Create a SEPA Mandate [POST /profiles/{PROFILE_ID/sepabankaccounts/{BANK_ACCOUNT_ID}/mandates]
+## Create a SEPA Mandate [POST /profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}/mandates]
 
 This is how you submit a SEPA mandate creation request.
+
+**Note:** By default, the SEPA mandate is created with the status of ACTIVE.
 
 + Parameters
     + PROFILE_ID:a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1 (string,required) - This is the ID of the profile to which the SEPA bank account belongs.
     + BANK_ACCOUNT_ID:6a275b7c-6f11-4ed1-ae77-21071724574a (string, required) - This is the ID of the SEPA bank account to which you are adding the mandate.
 
-+ Attributes
-    + reference (string)
++ Request SEPA Mandate Creation (application/json)
+
+    + Attributes
+        + Include Mandate Reference 
 
 + Response 200 (application/json)
 
-+ Attributes
+    + Attributes
+        + id:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
+        + reference:`ABCDEFGHIJ10987` (string, required) - This is the identifier of the mandate in the banking system.
+        + paymentToken:MUwqiUNjndxxiFs (string, required) - This is a token returned in the response to the mandate creation request.
+        + status:ACTIVE (string, required) - This is the status of the mandate.
+        + statusChangeDate:`2016-12-14T20:41:32Z` (string, required) - This is the date that the status was last changed.
 
 # Apple Pay Single-Use Tokens [/applepaysingleusetokens]
 <a name="applepaysingleusetokensrequest"></a>
 
 ## Create an Apple Pay Single-Use Token [POST /applepaysingleusetokens]
 
-+ Attributes
+This is how you submit an Apple Pay single-use token creation request.
+
++ Request Apple Pay Single-Use Token Creation (application/json)
+
+    + Attributes
+        + Include Apple Pay Payment Token
+        
+    + Headers
     
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+
 + Response 200 (application/json)
+
+    + Attributes
+        + Include Response Base
+        + paymentToken:`ABC4AFQQBC5UR5H` (string, required) - This is the single-use payment token returned in the response to the single-use token creation request.
+        + timeToLiveSeconds:899 (number, required) - This is the period of time the single-use token is valid before expiration, in seconds.
+        + Include Apple Pay Payment Token
+        + card - This is the Apple Pay virtual card that will be used for the purchase request.
+            + lastDigits:1234 (string, optional) - This is the last digits of the card number.
+            + holderName:Joe Smith (string, optional) - This is the name of the card holder.
+        + transaction - These are the Apple Pay transaction details.
+            + amount:1000 (string, optional) - This is the amount of the request, in minor units.
+            + currencyCode:USD (string, optional) - This is the currency of the merchant account.
 
 # Mobile Device Single-Use Tokens [/singleusetokens]
 <a name="singleusetokensrequest"></a>
 
 ## Create a Mobile Device Single-Use Token [POST /singleusetokens]
 
-+ Attributes
+This is how you submit a mobile device single-use token creation request.
+
++ Request Mobile Device Single-Use Token Creation (application/json)
+
+    + Attributes
+        + card - These are the credit card details.
+            + holderName:John Smith (string, optional) - This is the name of the card holder.
+            + cardNum:4111111111111111 (string, required) - This is the card number.
+            + cardExpiry (required) - This is the card expiry date.
+                + month:12 (string, required) - This is the expiry month.
+                + year:2020 (string, required) - This is the expiry year.
+            + billingAddress - This the card billing address.
+                + street:100 Queen Street (string, optional) - This is the first line of the customer's street address.
+                + street2:201 (string, optional) - This is the second line of the customer's street address.
+                + city:Toronto (string, optional) - This is the city where the address is located.
+                + country:CA (string, required) - This is the country where the address is located.
+                + state:ON (string, optional) - This is the state/province/region of the customer's address.
+                + zip:M5H 2N2 (string, required) - This is the country of the customer's address.
+                
+            
     
 + Response 200 (application/json)
+
+    + Attributes
+        + Include Response Base
+        + paymentToken:`ABC4AFQQBC5UR5H` (string, required) - This is the single-use payment token returned in the response to the single-use token creation request.
+        + timeToLiveSeconds:899 (number, required) - This is the period of time the single-use token is valid before expiration, in seconds.
+        + card - These are the credit card details.
+            + cardBin:411111 (string, required) - This is the card BIN (typically the first 6 digits).
+            + lastDigits:1111 (string, required) - This is the last digits of the card number.
+            + holderName:John Smith (string, optional) - This is the name of the card holder.
+            + cardType:VI (string, required) - This is the type of card associated with the profile. 
+            + cardExpiry (required) - This is the card expiry date.
+                + month:12 (string, required) - This is the expiry month.
+                + year:2020 (string, required) - This is the expiry year.
+        + billingAddress - This the card billing address.
+            + street:100 Queen Street (string, optional) - This is the first line of the customer's street address.
+            + street2:201 (string, optional) - This is the second line of the customer's street address.
+            + city:Toronto (string, optional) - This is the city where the address is located.
+            + country:CA (string, required) - This is the country where the address is located.
+            + state:ON (string, optional) - This is the state/province/region of the customer's address.
+            + zip:M5H 2N2 (string, required) - This is the country of the customer's address.
+
+
+# Data Structures
+
+## Apple Pay Payment Token
++ applePayPaymentToken (object, required) - This is the paymentData object generated from the iOS device for Apple Pay.
+
+    + Properties
+        + version:EC_v1 (string, required) - This is version information about the payments token.
+        + data:`<passkit_encrypted_payment_data>` (string, required) - This is the encrypted payment data.
+        + signature:`<signature_for_payment_and_header_data>` (string, required) - This is the signature of the payment and header data.
+        + Include Apple Pay Header
+
+## Apple Pay Header
++ header (object, required) - This is additional version-dependent information used to decrypt and verify the payment.
+
+    + Properties
+        + transactionId:`b53e22ef6669ce7f50951cfd6821908f4e679f050f5a551a1b5f6202253136ae` (string, required) - This is the transaction identifier, generated on the device.
+        + ephemeralPublicKey:`MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEB39YqvWZG0NOYjbkL5D61Mxip6uw23Q7m8gWgxL41k4fs0BgJ+MFcIGYOH86kAGL/wjiftDahRkUnzOGls2hzw==` (string, required) - This is the ephemeral public key bytes (X.509 encoded key bytes, Base64 encoded string).
+        + publicKeyHash:`O5gJ/P5sQ7ufMZQXA7ccLoOkJ13VNknbu+4K0TaCQXE=` (string, required) - This is a hash of the x.509 encoded public key bytes of the merchant's certificate as a Base64 encoded string.
+        + applicationData:`<application_data>` (string, optional) - This is a hash of the applicationData property of the original PKPaymentRequest object. If the value of that property is nil, this key is omitted.
+
+## ACH Bank Account
++ nickName:John's Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Argon Corp. (string, required) - This is the name of the customer or company that owns the bank account.
++ accountNumber:511201 (string, required) - This is the bank account number.
++ routingNumber:123456789 (string, required) - For USD accounts, this is the 9-digit routing number of the customer’s bank.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ accountType:CHECKING (enum, required) - This is the bank account type.
++ merchantRefNum:ACH888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. It must be unique for each request.
+
+## ACH Bank Account for Update
++ nickName:John's Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Argon Corp. (string, required) - This is the name of the customer or company that owns the bank account.
++ accountNumber:511201 (string, optional) - This is the bank account number.
++ routingNumber:123456789 (string, required) - For USD accounts, this is the 9-digit routing number of the customer’s bank.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ accountType:CHECKING (enum, required) - This is the bank account type.
++ merchantRefNum:ACH888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. It must be unique for each request.
+
+## ACH Bank Account Response
++ id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
++ status:ACTIVE (string, required) - This is the status of the bank acount request. 
++ nickName:John's Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Argon Corp. (string, required) - This is the name of the customer or company that owns the bank account.
++ routingNumber:123456789 (string, required) - For USD accounts, this is the 9-digit routing number of the customer’s bank.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ accountType:CHECKING (enum, required) - This is the bank account type.
++ lastDigits:01 (string, required) - This is the last two digits of the bank account number.
++ merchantRefNum:ACH888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. It must be unique for each request.
++ paymentToken:CNjEzMTM4NDg1 (string, required) - This is a token that represents the bank account and is returned in the response to the bank account creation request. It can be used in the place of bank account information in Direct Debit transactions.
+
+## Address
++ nickName:home (string, optional) - This is an alias defined by the customer for this address (e.g., "home address").
++ street:100 Queen (string, required) - This is the first line of the customer's street address. **Note:** This is required only when the address is to be used in association with a bank account.
++ street2:Unit 201 (string, optional) - This is the second line of the customer's street address, if required.
++ city:Toronto (string, required) - This is the city where the address is located. **Note:** This is required only when the address is to be used in association with a bank account.
++ zip:M5H 2N2 (string, required) - This is the zip, postal, or post code of the customer's address.
++ country:CA (string, required) - This is the country where the address is located.
++ state:ON (string, optional) - This is the state/province/region in which the customer lives.
++ recipientName:Jane Smith (string, optional) - This is the name of the recipient at this address, if it is different from the name in the profile.
++ phone:`647-788-3901` (string, optional) - This is the recipient's phone number.
+
+## Address Response
++ id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the address ID returned in the response.
++ status:ACTIVE (string, required) - This is the status of the address request. 
++ nickName:home (string, optional) - This is an alias defined by the customer for this address (e.g., "home address").
++ street:100 Queen (string, optional) - This is the first line of the customer's street address.
++ street2:Unit 201 (string, optional) - This is the second line of the customer's street address, if required.
++ city:Toronto (string, optional) - This is the city where the address is located.
++ zip:M5H 2N2 (string, optional) - This is the zip, postal, or post code of the customer's address.
++ country:CA (string, optional) - This is the country where the address is located.
++ state:ON (string, optional) - This is the state/province/region in which the customer lives.
++ recipientName:Jane Smith (string, optional) - This is the name of the recipient at this address, if it is different from the name in the profile.
++ phone:`647-788-3901` (string, optional) - This is the recipient's phone number.
+
+## Addresses
++ addresses (object, optional) - This is the customer's address.
+
+    + Properties
+        + nickName:home (string, optional) - This is an alias defined by the customer for this address (e.g., "home address").
+        + street:100 Queen (string, optional) - This is the first line of the customer's street address.
+        + street2:Unit 201 (string, optional) - This is the second line of the customer's street address, if required.
+        + city:Toronto (string, optional) - This is the city where the address is located.
+        + zip:M5H 2N2 (string, optional) - This is the zip, postal, or post code of the customer's address.
+        + country:CA (string, optional) - This is the country where the address is located.
+        + state:ON (string, optional) - This is the state/province/region in which the customer lives.
+        + recipientName:Jane Smith (string, optional) - This is the name of the recipient at this address, if it is different from the name in the profile.
+        + phone:`647-788-3901` (string, optional) - This is the recipient's phone number.
+
+## Addresses Response
++ addresses (object, optional) - This is the customer's address.
+
+    + Properties
+        + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the address ID returned in the response.
+        + status:ACTIVE (string, required) - This is the status of the address.
+        + nickName:home (string, optional) - This is an alias defined by the customer for this address (e.g., "home address").
+        + street:100 Queen (string, optional) - This is the first line of the customer's street address.
+        + street2:Unit 201 (string, optional) - This is the second line of the customer's street address, if required.
+        + city:Toronto (string, optional) - This is the city where the address is located.
+        + zip:M5H 2N2 (string, optional) - This is the zip, postal, or post code of the customer's address.
+        + country:CA (string, optional) - This is the country where the address is located.
+        + state:ON (string, optional) - This is the state/province/region in which the customer lives.
+        + recipientName:Jane Smith (string, optional) - This is the name of the recipient at this address, if it is different from the name in the profile.
+        + phone:`647-788-3901` (string, optional) - This is the recipient's phone number.
+
+## BACS Bank Account
++ nickName:Sally's Barclays Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the bank account.
++ accountNumber:51120172 (string, required) - This is the bank account number.
++ sortCode:123456 (string, required) - This is the 6-digit sort code that identifies the financial institution and branch of the customer’s bank.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ Include Mandate Reference
++ merchantRefNum:ACH888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. It must be unique for each request.
+
+## BACS Bank Account for Update
++ nickName:Sally's Barclays Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the bank account.
++ accountNumber:51120172 (string, required) - This is the bank account number.
++ sortCode:123456 (string, required) - This is the 6-digit sort code that identifies the financial institution and branch of the customer’s bank.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ merchantRefNum:ACH888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. It must be unique for each request.
+
+## BACS Bank Account Response
++ id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
++ status:ACTIVE (string, required) - This is the status of the bank acount request. 
++ nickName:Sally's Barclays Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the bank account.
++ lastDigits:01 (string, required) - This is the last two digits of the bank account number.
++ sortCode:123456 (string, required) - This is the 6-digit sort code that identifies the financial institution and branch of the customer’s bank.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ paymentToken:CNjEzMTM4NDg1 (string, required) - This is a token that represents the bank account and is returned in the response to the bank account creation request. It can be used in the place of bank account information in Direct Debit transactions.
++ Include Mandates for Bank Response
+
+## Card
++ cardNum:4111111111111111 (string, required) - This is the card number.
++ Include cardExpiry
++ nickname:John Corporate Card (string, optional) - This is an alias defined by the customer for this card.
++ merchantRefNum:MC123 (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
++ holderName:John Smith (string, optional) - This is the name of the card holder.
++ billingAddressId:`794b2b05-1a3b-4544-a59c-8612d0a4711e` (string, required) - This is the ID returned in response to the creation of an address that will be associated with the card.
++ defaultCardIndicator:false (boolean, optional) - This indicates whether this is the default card for the profile.
+
+## Card for Profile
++ card (object, required) - This is the customer's card information.
+
+    + Properties
+        + cardNum:4111111111111111 (string, required) - This is the card number.
+        + Include cardExpiry
+        + nickname:John Corporate Card (string, optional) - This is an alias defined by the customer for this card.
+        + merchantRefNum:MC123 (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
+        + holderName:John Smith (string, optional) - This is the name of the card holder.
+        + Include Addresses
+
+## Card for Update
++ Include cardExpiry
++ nickname:John Corporate Card (string, optional) - This is an alias defined by the customer for this card.
++ merchantRefNum:MC123 (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
++ holderName:John Smith (string, optional) - This is the name of the card holder.
++ billingAddressId:`794b2b05-1a3b-4544-a59c-8612d0a4711e` (string, required) - This is the ID returned in response to the creation of an address that will be associated with the card.
++ defaultCardIndicator:false (boolean, optional) - This indicates whether this is the default card for the profile.
+
+## Card for Token
++ card (object, required) - This is the customer's card information.
+
+    + Properties
+        + singleUseToken:abcdefg23d32d2 (string, required) - This is the single-use token returned in response to a single-use token  creation request.
+
+## Card Response
++ id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the card ID returned in the response.
++ status:ACTIVE (string, required) - This is the status of the card request. 
++ nickname:John Corporate Card (string, optional) - This is an alias defined by the customer for this card.
++ holderName:John Smith (string, optional) - This is the name of the card holder.
++ cardBin:411111 (string, required) - This is the card BIN (typically the first 6 digits).
++ lastDigits:1111 (string, required) - This is the last digits of the card number.
++ Include cardExpiry
++ cardType:VI (string, required) - This is the card brand.
++ paymentToken:CNjEzMTM4NDg1 (string, required) - This is a token that represents the card and is returned in the response to the card creation request.
++ billingAddressId:`794b2b05-1a3b-4544-a59c-8612d0a4711e` (string, required) - This is the ID returned in response to the creation of an address that will be associated with the card.
++ defaultCardIndicator:false (boolean, optional) - This indicates whether this is the default card for the profile.
+
+## Cards
++ card (object, required) - This is the customer's card information.
+
+    + Properties
+        + cardNum:4111111111111111 (string, required) - This is the card number.
+        + Include cardExpiry
+        + nickname:John Corporate Card (string, optional) - This is an alias defined by the customer for this card.
+        + merchantRefNum:MC123 (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
+        + holderName:John Smith (string, optional) - This is the name of the card holder.
+        + Include Addresses
+        + billingAddressId:`794b2b05-1a3b-4544-a59c-8612d0a4711e` (string, required) - This is the ID returned in response to the creation of an address that will be associated with the card.
+        + defaultCardIndicator:false (boolean, optional) - This indicates whether this is the default card for the profile.
+        + singleUseToken:abcdefg23d32d2 (string, optional) - This is the *paymentToken* returned in the response to a single-use token creation request.
+        
+## Cards Response
++ cards (object, required) - This is the customer's card information.
+
+    + Properties
+        + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the card ID returned in the response that can be used later to look up or update a card on the profile.
+        + cardBin:411111 (string, required) - This is the card BIN (typically the first 6 digits).
+        + lastDigits:1111 (string, required) - This is the last digits of the card number.
+        + Include cardExpiry
+        + cardType:VI (string, required) - This is the card brand.
+        + nickname:John Corporate Card (string, optional) - This is an alias defined by the customer for this card.
+        + merchantRefNum:MC123 (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
+        + holderName:John Smith (string, optional) - This is the name of the card holder.
+        + billingAddressId:`794b2b05-1a3b-4544-a59c-8612d0a4711e` (string, required) - This is the ID returned in response to the creation of an address that will be associated with the card.
+        + defaultCardIndicator:false (boolean, optional) - This indicates whether this is the default card for the profile.
+        + paymentToken:CNjEzMTM4NDg1 (string, required) - This is a token that represents the card and is returned in the response to the card creation request.
+        + status:ACTIVE (string, required) - This is the status of the card.        
+
+## Cards for Profile
++ cards (object, required) - This is the customer's card information.
+
+    + Properties
+        + cardNum:4111111111111111 (string, required) - This is the card number.
+        + Include cardExpiry
+        + nickname:John Corporate Card (string, optional) - This is an alias defined by the customer for this card.
+        + merchantRefNum:MC123 (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
+        + holderName:John Smith (string, optional) - This is the name of the card holder.
+        + Include Addresses
+
+## Cards for Token
++ cards (object, required) - This is the customer's card information.
+
+    + Properties
+        + singleUseToken:abcdefg23d32d2 (string, required) - This is the single-use token returned in response to a single-use token  creation request.
+
+## cardExpiry
++ cardExpiry (object, required) - This is the card expiry date.
+
+    + Properties
+        + month:12 (number, required)
+        + year:2020 (number, required)
+
+## dateOfBirth
++ dateOfBirth (object, optional) - This is the customer's date of birth.
+
+    + Properties
+        + year:1981 (number, required) - This is the year of the customer's birth.
+        + month:10 (number, required) - This is the month of the customer's birth.
+        + day:24 (number, required) - This is the day of the customer's birth.
+
+## Delete Response
++ Response 200:200 (number, required)
+
+## EFT Bank Account
++ nickName:John's Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Argon Corp. (string, required) - This is the name of the customer or company that owns the bank account.
++ accountNumber:511201 (string, required) - This is the bank account number.
++ transitNumber:25039 (string, required) - This is the 5-digit transit number of the customer's bank branch.
++ institutionId:001 (string, required) - This is the 3-digit institution ID of the customer’s bank branch.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ merchantRefNum:EFT888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. It must be unique for each request.
+
+## EFT Bank Account for Update
++ nickName:John's Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Argon Corp. (string, required) - This is the name of the customer or company that owns the bank account.
++ accountNumber:511201 (string, optional) - This is the bank account number. 
++ transitNumber:25039 (string, required) - This is the 5-digit transit number of the customer's bank branch.
++ institutionId:001 (string, required) - This is the 3-digit institution ID of the customer’s bank branch.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ merchantRefNum:EFT888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. It must be unique for each request.
+
+## EFT Bank Account Response
++ id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
++ status:ACTIVE (string, required) - This is the status of the bank acount request. 
++ nickName:John's Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Argon Corp. (string, required) - This is the name of the customer or company that owns the bank account.
++ lastDigits:01 (string, required) - This is the last two digits of the bank account number.
++ transitNumber:25039 (string, required) - This is the 5-digit transit number of the customer's bank branch.
++ institutionId:001 (string, required) - This is the 3-digit institution ID of the customer’s bank branch.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ merchantRefNum:EFT888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. It must be unique for each request.
++ paymentToken:CNjEzMTM4NDg1 (string, required) - This is a token that represents the bank account and is returned in the response to the bank account creation request. It can be used in the place of bank account information in Direct Debit transactions.
+
+## Mandates
++ mandates (object, required) - This is one or more mandates associated with the bank account.
+
+    + Properties
+        + id:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
+        + reference:`ABCDEFGHIJ10987` (string, required) - This is the identifier of the mandate in the banking system.
+        + paymentToken:MUwqiUNjndxxiFs (string, required) - This is a token returned in the response to the mandate creation request.
+        + status:ACTIVE (string, required) - This is the status of the mandate.
+        + statusChangeDate:`2016-12-14T20:41:32Z` (string, required) - This is the date that the status was last changed.
+
+## Mandates for Bank Response
++ mandates (array, optional) - This is one or more mandates associated with the bank account.
+    
+    + Properties
+        + id:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
+        + reference:`ABCDEFGHIJ10987` (string, required) - This is the identifier of the mandate in the banking system.
+        + paymentToken:MUwqiUNjndxxiFs (string, required) - This is a token returned in the response to the mandate creation request.
+        + status:ACTIVE (string, required) - This is the status of the mandate.
+        + statusChangeDate:`2016-12-14T20:41:32Z` (string, required) - This is the date that the status was last changed.
+
+## Mandate Reference
++ mandates (array, optional) - This is one or more mandates associated with the bank account.
+    
+    + object
+        + reference:`ABCDEFGHIJ10987` (string, required) - This is the identifier of the mandate in the banking system.
+ 
+
+## Profile Base
++ merchantCustomerId:mycustomer1 (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant.
++ locale:en_US (string, required) - This indicates the language of the profile.
++ firstName:John (string, optional) - This is the customer's first name.
++ middleName:James (string, optional) - This is the customer's middle name.
++ lastName:Smith (string, optional) - This is the customer's last name.
++ Include dateOfBirth
++ email:john.smith@email.com (string, optional) - This is the customer's email address.
++ phone:`777-444-8888` (string, optional) - This is the customer's phone number.
++ ip:192.0.126.111 (string, optional) - This is the customer’s IP address.
++ gender:F (string, optional) - This is the customer’s gender. 
++ nationality:Canadian (string, optional) - This is the customer’s nationality. 
++ cellPhone:`777-555-8888` (string, optional) - This is the customer’s cell phone number.
+
+## Response Base
++ id:`a02e52c7-c991-4418-966a-b62989cb0eae` (string, required) - This is the ID returned in the response.
+
+## SEPA Bank Account
++ nickName:Sally's Barclays Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the bank account.
++ iban:NL77ABNA0492122466 (string, required) - This is the international bank account number.
++ bic:ABNANL2A (string, optional) - This is the bank identification code.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ Include Mandate Reference
++ merchantRefNum:SEPA888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. It must be unique for each request.
+
+## SEPA Bank Account for Update
++ nickName:Sally's Barclays Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the bank account.
++ iban:NL77ABNA0492122466 (string, required) - This is the international bank account number.
++ bic:ABNANL2A (string, optional) - This is the bank identification code.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ merchantRefNum:SEPA888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. It must be unique for each request.
+
+## SEPA Bank Account Response
++ id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
++ status:ACTIVE (string, required) - This is the status of the bank acount request. 
++ nickName:Sally's Barclays Account (string, optional) - This is an alias for this bank account.
++ accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the bank account.
++ bic:ABNANL2A (string, optional) - This is the bank identification code.
++ lastDigits:01 (string, required) - This is the last two digits of the bank account number.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the address ID returned in response to the request to Create an Address, which will be associated with this bank account.
++ merchantRefNum:SEPA888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. It must be unique for each request.
++ paymentToken:D8c4jEzMTM4NDg1 (string, required) - This is a token that represents the bank account and is returned in the response to the bank account creation request. It can be used in the place of bank account information in Direct Debit transactions.
++ Include Mandates for Bank Response
