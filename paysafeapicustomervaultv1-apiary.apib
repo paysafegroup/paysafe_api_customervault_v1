@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://api.netbanx.com/customervault/v1/
+HOST: https://api.paysafe.com/customervault/v1/
 
 # Paysafe Customer Vault API
 
@@ -40,20 +40,20 @@ For additional details, please refer to [http://en.wikipedia.org/wiki/Basic_acce
 ##  Test URL
 In order to test your integration with Paysafe, use the following Test URL:
 
-`https://api.test.netbanx.com`
+`https://api.test.paysafe.com`
 
 For example:
 
-`https://api.test.netbanx.com/customervault/v1/profiles/{PROFILE_ID}`
+`https://api.test.paysafe.com/customervault/v1/profiles/{PROFILE_ID}`
 
 ## Production URL
 In order to process live requests with Paysafe, use the following Production URL:
 
-`https://api.netbanx.com`
+`https://api.paysafe.com`
 
 For example:
 
-`https://api.netbanx.com/customervault/v1/profiles/{PROFILE_ID}`
+`https://api.paysafe.com/customervault/v1/profiles/{PROFILE_ID}`
 
 # Pagination
 
@@ -104,7 +104,7 @@ The following request types are supported:
   
 **API Endpoint** 
 
-`https://api.netbanx.com/customervault/v1`
+`https://api.paysafe.com/customervault/v1`
 
 **Resource Patterns**
 
@@ -158,7 +158,7 @@ The following request verifies that the service is up and accessible from your n
 
 Request:
 
-`cURL -X GET https://api.test.netbanx.com/customervault/monitor`
+`cURL -X GET https://api.test.paysafe.com/customervault/monitor`
 
 Response: 
 
@@ -174,7 +174,7 @@ A Profile contains basic information about your customer, such as name and conta
 
 To create a Profile you must initiate a POST request to the profiles endpoint.
 
-            cURL -X POST https://api.test.netbanx.com/customervault/v1/profiles \
+            cURL -X POST https://api.test.paysafe.com/customervault/v1/profiles \
             -u devcentre322:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
             -H 'Content-Type: application/json' \
             -d ' {
@@ -184,7 +184,7 @@ To create a Profile you must initiate a POST request to the profiles endpoint.
               "lastName" : "Smith",
               "phone" : "713-444-5555",
               "email" : "john.smith@somedomain.com",
-              "phone" : "713-444-5555"
+              "cellPhone" : "713-777-5555"
              }'
              
 Prior to trying the example, you should:
@@ -213,7 +213,7 @@ The Customer Vault API allows you to add multiple Addresses to your customer's P
 
 Prior to trying the example, you should replace the [API key](#apikey) (after the -u) with the API key you have received.
 
-            cURL -X POST https://api.test.netbanx.com/customervault/v1/profiles/716adb4f-6b85-4089-ba9c-d9c0eb649cd7/addresses \
+            cURL -X POST https://api.test.paysafe.com/customervault/v1/profiles/716adb4f-6b85-4089-ba9c-d9c0eb649cd7/addresses \
             -u devcentre322:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
             -H 'Content-Type: application/json' \
             -d ' {
@@ -246,7 +246,7 @@ To add a credit card and associate it to the Address you just created, you must 
 
 Prior to trying the example, you should replace the [API key](#apikey) (after the -u) with the API key you have received.
 
-            cURL -X POST https://api.test.netbanx.com/customervault/v1/profiles/716adb4f-6b85-4089-ba9c-d9c0eb649cd7/cards \
+            cURL -X POST https://api.test.paysafe.com/customervault/v1/profiles/716adb4f-6b85-4089-ba9c-d9c0eb649cd7/cards \
             -u devcentre322:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
             -H 'Content-Type: application/json' \
             -d ' {
@@ -288,7 +288,7 @@ When you use the Customer Vault API to create a Bank Account, the newly created 
 
 Prior to trying the example, you should replace the [API key](#apikey) (after the -u) with the API key you have received.
 
-            cURL -X POST https://api.test.netbanx.com/customervault/v1/profiles/716adb4f-6b85-4089-ba9c-d9c0eb649cd7/achbankaccounts \
+            cURL -X POST https://api.test.paysafe.com/customervault/v1/profiles/716adb4f-6b85-4089-ba9c-d9c0eb649cd7/achbankaccounts \
             -u devcentre322:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
             -H 'Content-Type: application/json' \
             -d ' {
@@ -329,7 +329,7 @@ Prior to trying the example, you should:
   * Replace the value for the *signature* element with valid payment signature and header data.
   * Replace the values for the *header* sub-elements with valid values from the iOS device.
 
-            cURL -X POST https://api.test.netbanx.com/customervault/v1/applepaysingleusetokens \
+            cURL -X POST https://api.test.paysafe.com/customervault/v1/applepaysingleusetokens \
             -u OT1625:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
             -H 'Content-Type: application/json' \
             -d ' {
@@ -386,7 +386,7 @@ Prior to trying the example, you should replace the API key (after the -u) with 
 
 The following example shows you how to process a credit card request using the *paymentToken* that represents that Card.
 
-            cURL -X POST https://api.test.netbanx.com/cardpayments/v1/accounts/89987201/auths \
+            cURL -X POST https://api.test.paysafe.com/cardpayments/v1/accounts/89987201/auths \
               -u devcentre322:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
               -H 'Content-Type: application/json' \
               -d ' {
@@ -404,11 +404,11 @@ The following example shows you how to process a credit card request using the *
               "links":[
                 {
                   "rel":"settlement",
-                  "href":"https://api.test.netbanx.com/cardpayments/v1/accounts/89987201/settlements/81ed5db0-971b-475b-81fd-18023732acd3"
+                  "href":"https://api.test.paysafe.com/cardpayments/v1/accounts/89987201/settlements/81ed5db0-971b-475b-81fd-18023732acd3"
                 },
                 {
                   "rel":"self",
-                  "href":"https://api.test.netbanx.com/cardpayments/v1/accounts/89987201/auths/81ed5db0-971b-475b-81fd-18023732acd3"
+                  "href":"https://api.test.paysafe.com/cardpayments/v1/accounts/89987201/auths/81ed5db0-971b-475b-81fd-18023732acd3"
                 }
               ],
               "id":"81ed5db0-971b-475b-81fd-18023732acd3",
@@ -451,7 +451,7 @@ The following example shows you how to process a credit card request using the *
                   "links":[
                     {
                       "rel":"self",
-                      "href":"https://api.test.netbanx.com/cardpayments/v1/accounts/89987201/settlements/81ed5db0-971b-475b-81fd-18023732acd3"
+                      "href":"https://api.test.paysafe.com/cardpayments/v1/accounts/89987201/settlements/81ed5db0-971b-475b-81fd-18023732acd3"
                     }
                   ],
                   "id":"81ed5db0-971b-475b-81fd-18023732acd3",
@@ -477,7 +477,7 @@ With the Paysafe Customer Vault API you can test the following:
 
 To use the test environment, you must post your requests to the following endpoint:
 
-`https://api.test.netbanx.com/customervault/v1/`
+`https://api.test.paysafe.com/customervault/v1/`
 
 # ISO Standards
 
@@ -921,20 +921,20 @@ To use the test environment, you must post your requests to the following endpoi
 
 <a name="achbankaccountobject"></a>
 ## achBankAccount
-|Element            |Type                       |Description                        |
-|---                |---                        |---       |
-|id                 |string<br/>`length<=36`    |This is the ID for the request, returned by Paysafe. It can be used later, e.g., to look up or update the Bank Account.|
-|nickName           |string<br/>`length<=50`    |This is an alias defined by the customer for the Bank Account (e.g., "First Bank account").|
-|merchantRefNum     |string<br/>`length<=255`   |This is the merchant reference number created by the merchant and submitted as part of the request. This value is only stored by the Paysafe system and has no bearing on the request.|
-|status             |enum                       |This is the status of the  request. Possible values are:<ul><li>ACTIVE &ndash; The bank account has been created.</li><li>INVALID &ndash; The bank account is invalid.</li><li>INACTIVE &ndash; The bank account has been deleted.</li></ul><br/>**Note:** By default, the bank account is created with the status of ACTIVE.|
-|statusReason       |string<br/>`length<=255`   |If the status is INVALID, this is a description of why the account is invalid (e.g., account closed).|
-|accountNumber      |string<br/>`length=4-17`   |This is the Bank Account number.|
-|accountHolderName  |string<br/>`length<=22`    |This is the name of the customer or company that owns the Bank Account.|
-|routingNumber      |string<br/>`length=9`      |For USD accounts, this is the 9-digit routing number of the customer’s bank.|
-|accountType        |enum                       |This is the Bank Account type. Possible values are:<ul><li>CHECKING</li><li>LOAN</li><li>SAVINGS</li></ul>|
-|lastDigits         |string<br/>`length=2`      |This is the last two digits of the Bank Account number.|
-|billingAddressId   |string<br/>`length<=36`    |This is the Address ID returned in response to the request to Create an Address, which will be associated with this Bank Account.|
-|paymentToken       |string<br/>`length<=50`    |This is a token generated by Paysafe that represents the Bank Account and is returned in the response to the Bank Account creation request. It can be used in the place of Bank Account information in Direct Debit transactions.|
+|Element            |Type                       |Required   |Description                        |
+|---                |---                        |---        |---       |
+|id                 |string<br/>`length<=36`    |           |This is the ID for the request, returned by Paysafe. It can be used later, e.g., to look up or update the Bank Account.|
+|nickName           |string<br/>`length<=50`    |           |This is an alias defined by the customer for the Bank Account (e.g., "First Bank account").|
+|merchantRefNum     |string<br/>`length<=255`   |           |This is the merchant reference number created by the merchant and submitted as part of the request. This value is only stored by the Paysafe system and has no bearing on the request.|
+|status             |enum                       |           |This is the status of the  request. Possible values are:<ul><li>ACTIVE &ndash; The bank account has been created.</li><li>INVALID &ndash; The bank account is invalid.</li><li>INACTIVE &ndash; The bank account has been deleted.</li></ul><br/>**Note:** By default, the bank account is created with the status of ACTIVE.|
+|statusReason       |string<br/>`length<=255`   |           |If the status is INVALID, this is a description of why the account is invalid (e.g., account closed).|
+|accountNumber      |string<br/>`length=4-17`   |Yes        |This is the Bank Account number.|
+|accountHolderName  |string<br/>`length<=22`    |Yes        |This is the name of the customer or company that owns the Bank Account.|
+|routingNumber      |string<br/>`length=9`      |Yes        |For USD accounts, this is the 9-digit routing number of the customer’s bank.|
+|accountType        |enum                       |Yes        |This is the Bank Account type. Possible values are:<ul><li>CHECKING</li><li>LOAN</li><li>SAVINGS</li></ul>|
+|lastDigits         |string<br/>`length=2`      |           |This is the last two digits of the Bank Account number.|
+|billingAddressId   |string<br/>`length<=36`    |           |This is the Address ID returned in response to the request to Create an Address, which will be associated with this Bank Account.|
+|paymentToken       |string<br/>`length<=50`    |           |This is a token generated by Paysafe that represents the Bank Account and is returned in the response to the Bank Account creation request. It can be used in the place of Bank Account information in Direct Debit transactions.|
 
 ```apib
             {
@@ -1043,7 +1043,7 @@ To use the test environment, you must post your requests to the following endpoi
 |accountHolderName  |string<br/>`length<=18`    |Yes        |This is the name of the customer or company that owns the Bank Account.|
 |sortCode           |string<br/>`length=6`      |Yes        |This is the 6-digit sort code that identifies the financial institution and branch of the customer’s bank.|
 |lastDigits         |string<br/>`length=2`      |           |This is the last two digits of the Bank Account number.|
-|billingAddressId   |string<br/>`length<=36`    |Yes        |This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.|
+|billingAddressId   |string<br/>`length<=36`    |           |This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.|
 |paymentToken       |string<br/>`length<=50`    |           |This is a token generated by Paysafe that represents the Bank Account and is returned in the response to the Bank Account creation request. It can be used in the place of Bank Account information in Direct Debit transactions.|
 |mandates           |list                       |           |This is one or more Mandates associated with the Bank Account.
 
@@ -1165,7 +1165,7 @@ To use the test environment, you must post your requests to the following endpoi
 |transitNumber      |string<br/>`length=5`      |Yes        |This is the 5-digit transit number of the customer's bank branch.|
 |institutionId      |string<br/>`length=3`      |Yes        |This is the 3-digit institution ID of the customer’s bank branch.
 |lastDigits         |string<br/>`length=2`      |           |This is the last two digits of the Bank Account number.|
-|billingAddressId   |string<br/>`length<=36`    |Yes        |This is the Address ID returned in response to the request to Create an Address, which will be associated with this Bank Account.|
+|billingAddressId   |string<br/>`length<=36`    |           |This is the Address ID returned in response to the request to Create an Address, which will be associated with this Bank Account.|
 |paymentToken       |string<br/>`length<=50`    |           |This is a token generated by Paysafe that represents the Bank Account and is returned in the response to the Bank Account creation request. It can be used in the place of Bank Account information in Direct Debit transactions.|
 
 ```apib
@@ -1267,7 +1267,7 @@ Element            |Type                        |Required   |Description        
 |bic                |string<br/>`length=8-11`   |           |This is the bank identification code.|
 |accountHolderName  |string<br/>`length<=32`    |Yes        |This is the name of the customer or company that owns the Bank Account.|
 |lastDigits         |string<br/>`length=2`      |           |This is the last two digits of the Bank Account number.|
-|billingAddressId   |string<br/>`length<=36`    |Yes        |This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.|
+|billingAddressId   |string<br/>`length<=36`    |           |This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.|
 |paymentToken       |string<br/>`length<=50`    |           |This is a token generated by Paysafe that represents the Bank Account and is returned in the response to the Bank Account creation request. It can be used in the place of Bank Account information in Direct Debit transactions.|
 |mandates           |list                       |           |This is one or more Mandates associated with the Bank Account.|
 
@@ -2302,7 +2302,7 @@ This is how you submit a mobile device Single-Use Token creation request.
             + cardExpiry (required) - This is the Card expiry date.
                 + month:12 (string, required) - This is the expiry month.
                 + year:2020 (string, required) - This is the expiry year.
-            + billingAddress (object, required) - This the Card billing address.
+            + billingAddress (object, optional) - This the Card billing address.
                 + street:100 Queen Street (string, optional) - This is the first line of the customer's street address.
                 + street2:201 (string, optional) - This is the second line of the customer's street address.
                 + city:Toronto (string, optional) - This is the city where the Address is located.
@@ -2360,7 +2360,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + accountHolderName:Argon Corp. (string, required) - This is the name of the customer or company that owns the Bank Account.
 + accountNumber:511201 (string, required) - This is the Bank Account number.
 + routingNumber:123456789 (string, required) - For USD accounts, this is the 9-digit routing number of the customer’s bank.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + accountType:CHECKING (enum, required) - This is the Bank Account type.
     - CHECKING
     - LOAN
@@ -2372,7 +2372,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + accountHolderName:Argon Corp. (string, required) - This is the name of the customer or company that owns the Bank Account.
 + accountNumber:511201 (string, optional) - This is the Bank Account number.
 + routingNumber:123456789 (string, required) - For USD accounts, this is the 9-digit routing number of the customer’s bank.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + accountType:CHECKING (enum, required) - This is the Bank Account type.
     - CHECKING
     - LOAN
@@ -2388,7 +2388,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + nickName:John's Account (string, optional) - This is an alias for this Bank Account.
 + accountHolderName:Argon Corp. (string, required) - This is the name of the customer or company that owns the Bank Account.
 + routingNumber:123456789 (string, required) - For USD accounts, this is the 9-digit routing number of the customer’s bank.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + accountType:CHECKING (enum, required) - This is the Bank Account type.
     - CHECKING
     - LOAN
@@ -2457,7 +2457,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the Bank Account.
 + accountNumber:51120172 (string, required) - This is the Bank Account number.
 + sortCode:123456 (string, required) - This is the 6-digit sort code that identifies the financial institution and branch of the customer’s bank.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + Include Mandate Reference
 + merchantRefNum:BACS888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. This value is only stored by the Paysafe system and has no bearing on the request.
 
@@ -2466,7 +2466,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the Bank Account.
 + accountNumber:51120172 (string, required) - This is the Bank Account number.
 + sortCode:123456 (string, required) - This is the 6-digit sort code that identifies the financial institution and branch of the customer’s bank.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + merchantRefNum:BACS888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. This value is only stored by the Paysafe system and has no bearing on the request.
 
 ## BACS Bank Account Response
@@ -2479,7 +2479,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the Bank Account.
 + lastDigits:01 (string, required) - This is the last two digits of the Bank Account number.
 + sortCode:123456 (string, required) - This is the 6-digit sort code that identifies the financial institution and branch of the customer’s bank.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + paymentToken:CNjEzMTM4NDg1 (string, required) - This is a token that represents the Bank Account and is returned in the response to the Bank Account creation request. It can be used in the place of Bank Account information in Direct Debit transactions.
 + Include Mandates for Bank Response
 
@@ -2623,7 +2623,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + accountNumber:511201 (string, required) - This is the Bank Account number.
 + transitNumber:25039 (string, required) - This is the 5-digit transit number of the customer's bank branch.
 + institutionId:001 (string, required) - This is the 3-digit institution ID of the customer’s bank branch.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + merchantRefNum:EFT888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. This value is only stored by the Paysafe system and has no bearing on the request.
 
 ## EFT Bank Account for Update
@@ -2632,7 +2632,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + accountNumber:511201 (string, optional) - This is the Bank Account number. 
 + transitNumber:25039 (string, required) - This is the 5-digit transit number of the customer's bank branch.
 + institutionId:001 (string, required) - This is the 3-digit institution ID of the customer’s bank branch.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + merchantRefNum:EFT888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. This value is only stored by the Paysafe system and has no bearing on the request.
 
 ## EFT Bank Account Response
@@ -2646,7 +2646,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + lastDigits:01 (string, required) - This is the last two digits of the Bank Account number.
 + transitNumber:25039 (string, required) - This is the 5-digit transit number of the customer's bank branch.
 + institutionId:001 (string, required) - This is the 3-digit institution ID of the customer’s bank branch.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + merchantRefNum:EFT888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request.
 + paymentToken:CNjEzMTM4NDg1 (string, required) - This is a token that represents the Bank Account and is returned in the response to the Bank Account creation request. It can be used in the place of Bank Account information in Direct Debit transactions.
 
@@ -2741,7 +2741,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the Bank Account.
 + iban:NL77ABNA0492122466 (string, required) - This is the international bank account number.
 + bic:ABNANL2A (string, optional) - This is the bank identification code.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + Include Mandate Reference
 + merchantRefNum:SEPA888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. This value is only stored by the Paysafe system and has no bearing on the request.
 
@@ -2750,7 +2750,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the Bank Account.
 + iban:NL77ABNA0492122466 (string, required) - This is the international bank account number.
 + bic:ABNANL2A (string, optional) - This is the bank identification code.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + merchantRefNum:SEPA888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request. This value is only stored by the Paysafe system and has no bearing on the request.
 
 ## SEPA Bank Account Response
@@ -2763,7 +2763,7 @@ This is how you submit a mobile device Single-Use Token creation request.
 + accountHolderName:Sally Barnes (string, required) - This is the name of the customer or company that owns the Bank Account.
 + bic:ABNANL2A (string, optional) - This is the bank identification code.
 + lastDigits:01 (string, required) - This is the last two digits of the Bank Account number.
-+ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, required) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
++ billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string, optional) - This is the Address ID returned in response to the request to create an Address, which will be associated with this Bank Account.
 + merchantRefNum:SEPA888 (string, optional) - This is the merchant reference number created by the merchant and submitted as part of the request.
 + paymentToken:D8c4jEzMTM4NDg1 (string, required) - This is a token that represents the Bank Account and is returned in the response to the Bank Account creation request. It can be used in the place of Bank Account information in Direct Debit transactions.
 + Include Mandates for Bank Response
