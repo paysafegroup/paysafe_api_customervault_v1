@@ -32,7 +32,7 @@ TWVyY2hhbnRYWVo6Qi10c3QxLTAtNTFlZDM5ZTQtMzEyZDAyMzQ1ZDNmMTIzMTIwODgxZGZmOWJiNDAy
 
 For additional details, please refer to [http://en.wikipedia.org/wiki/Basic_access_authentication](http://en.wikipedia.org/wiki/Basic_access_authentication).
 
-**Note:** Your Production API key will be different from your Test API key. Contact your account manager for details. You must keep your API keys safe and ensure that it is used appropriately for your needs.
+  **Note:** Your Production API key will be different from your Test API key. Contact your account manager for details. You must keep your API keys safe and ensure that it is used appropriately for your needs.
 
 # URLs 
 
@@ -372,12 +372,12 @@ Prior to trying the example, you should:
 
 You can process payments using credit cards (Card Payments API) or bank accounts (Direct Debit API) that you have stored in the Customer Vault by referring to the *paymentToken* associated with the Card or Bank Account. In these cases, the payment token replaces all the Card or Bank Account information that otherwise might be included in the request (e.g., card number and expiry date).
 
- * When you added a Card to the Profile in the example above, you got back a *paymentToken* with the value of *CaBP0abDKgROjYU*. 
+  * When you added a Card to the Profile in the example above, you got back a *paymentToken* with the value of *CaBP0abDKgROjYU*. 
 
- * When you added a Bank Account to the Profile in the example above, you got back a *paymentToken* with the value of *CNjEzMTM4NDg1*.
+  * When you added a Bank Account to the Profile in the example above, you got back a *paymentToken* with the value of *CNjEzMTM4NDg1*.
  
 You can process payments using a mobile device, e.g., with Apple Pay, by including the single-use *paymentToken* that is required for each mobile payment request.
- * When you created an Apple Pay Single-Use Token in the example above, you got back a *paymentToken* with the value of *ABC4AFQQBC5UR5H*.
+  * When you created an Apple Pay Single-Use Token in the example above, you got back a *paymentToken* with the value of *ABC4AFQQBC5UR5H*.
 
 To process a Card transaction using a payment token, you must use it to initiate a POST request to the auths endpoint in the Card Payments API. 
 
@@ -470,9 +470,9 @@ The Paysafe Test environment can be used to test websites or applications. It is
 
 With the Paysafe Customer Vault API you can test the following:
 
-* Verify support for all the operation types that you require.
-* Review all common errors as well as errors that may occur for each operation, and ensure your application can handle them.
-* Verify the lengths and format for all attributes you send.
+  * Verify support for all the operation types that you require.
+  * Review all common errors as well as errors that may occur for each operation, and ensure your application can handle them.
+  * Verify the lengths and format for all attributes you send.
 
 To use the test environment, you must post your requests to the following endpoint:
 
@@ -484,8 +484,8 @@ To use the test environment, you must post your requests to the following endpoi
 ## Currency Codes
 
 **Note:**
- * The table below lists the currencies in which transaction requests are processed, but note that they may be settled in a different currency. 
- * Not all currencies are supported by all banks. Contact your account manager for more information about which currencies are supported for your merchant account.
+  * The table below lists the currencies in which transaction requests are processed, but note that they may be settled in a different currency. 
+  * Not all currencies are supported by all banks. Contact your account manager for more information about which currencies are supported for your merchant account.
 
 |Currency |Code |
 |--- |--- |
@@ -1487,12 +1487,12 @@ This is how you look up a Profile using the ID returned in the response to the o
 ## Get Profile Including Subcomponents [GET /profiles/{PROFILE_ID}?fields=cards,addresses]
 
 You can look up a Profile along with its associated sub-components using one or more comma-separated values from this list:
-* cards
-* addresses
-* achbankaccounts
-* bacsbankaccounts
-* eftbankaccounts
-* sepabankaccounts
+  * cards
+   * addresses
+  * achbankaccounts
+  * bacsbankaccounts
+  * eftbankaccounts
+  * sepabankaccounts
     
 + Parameters
     + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the Profile ID returned in the response.
