@@ -6,16 +6,15 @@ HOST: https://api.test.paysafe.com/customervault/v1/
 # Overview
 
 Securely store customer payment information for a quick and simple checkout experience &ndash; PCI compliance is a breeze.
-
   * Allow us to securely store your customers’ sensitive payment information like card and bank account numbers in our Customer Vault &ndash; you never have to see or handle it.
   * Apply our REST-based API to create and modify Customer Profiles, and use tokens to process transactions.
   * Maintain multiple payment methods for each of your customers.
   * Build customer loyalty, and offer a streamlined and speedy checkout experience.
   
-![](https://github.com/paysafegroup/paysafe_api_customervault_v1/raw/master/images/Tokenization_with_Customer_Vault_Paysafe_v2.png)  
+![](http://admin:1234neu!@p368327.webspaceconfig.de/fileadmin/flarecontent/devcentre/Content/Resources/Images/CustomerVaultOverview.png)
 
-<a name="apikey"></a>
 # Authentication
+<a name="apikey"></a>
 
 In order for you to use the Paysafe REST API, Paysafe must first set you up on their system and provide you with an API key. Your API key looks something like this:
 
@@ -193,7 +192,7 @@ Prior to trying the example, you should:
   * Provide a unique merchant customer ID for each transaction.
   * Replace the [API key](#apikey) (after the -u) with the API key you have received.
   
-  **Response**
+**Response**
   
               {
               "id" : "716adb4f-6b85-4089-ba9c-d9c0eb649cd7",
@@ -227,7 +226,7 @@ Prior to trying the example, you should replace the [API key](#apikey) (after th
               "zip" : "M5H 2N2"
              }'
              
-  **Response**
+**Response**
 
             {
               "id" : "81ffcddf-ad82-40d2-aaa0-c4f9c376ad65",
@@ -262,7 +261,7 @@ Prior to trying the example, you should replace the [API key](#apikey) (after th
               "billingAddressId" : "81ffcddf-ad82-40d2-aaa0-c4f9c376ad65"
              }'
              
-  **Response**
+**Response**
 
             {
               "id" : "178ae2b8-85a5-4761-b1dd-4f14ac73571b",
@@ -302,7 +301,7 @@ Prior to trying the example, you should replace the [API key](#apikey) (after th
                  "accountType": "CHECKING"
              }'
              
-  **Response**
+**Response**
 
             {
               "id": "6a275b7c-6f11-4ed1-ae77-21071724574a",
@@ -347,7 +346,7 @@ Prior to trying the example, you should:
                 }
             }'
             
-  **Response**
+**Response**
 
             {
                 "id": "a02e52c7-c991-4418-966a-b62989cb0eae",
@@ -370,7 +369,7 @@ Prior to trying the example, you should:
                     "currencyCode": "USD"
                 }
              }
-             
+
 ## Process a Transaction Using a Payment Token
 
 You can process payments using credit cards (Card Payments API) or bank accounts (Direct Debit API) that you have stored in the Customer Vault by referring to the *paymentToken* associated with the Card or Bank Account. In these cases, the payment token replaces all the Card or Bank Account information that otherwise might be included in the request (e.g., card number and expiry date).
@@ -400,7 +399,7 @@ The following example shows you how to process a credit card request using the *
                 }
                } '
                
-  **Response**
+**Response**
 
             {
               "links":[
@@ -923,7 +922,7 @@ To use the test environment, you must post your requests to the following endpoi
 
 <a name="achbankaccountobject"></a>
 ## achBankAccount
-|Element            |Type                       |Required   |Description                        |
+|Element            |Type                       |Required   |Description    |
 |---                |---                        |---        |---       |
 |id                 |string<br/>`length<=36`    |           |This is the ID for the request, returned by Paysafe. It can be used later, e.g., to look up or update the Bank Account.|
 |nickName           |string<br/>`length<=50`    |           |This is an alias defined by the customer for the Bank Account (e.g., "First Bank account").|
@@ -952,7 +951,7 @@ To use the test environment, you must post your requests to the following endpoi
 
 <a name="addressesobject"></a>
 ## addresses
-|Element            |Type                       |Description                        |
+|Element            |Type                       |Description    |
 |---                |---                        |---       |
 |id                 |string<br/>`length<=36`    |This is the ID for the request.|
 |nickName           |string<br/>`length<=50`    |This is an alias defined by the customer for this Address (e.g., "home address").|
@@ -982,7 +981,7 @@ To use the test environment, you must post your requests to the following endpoi
 
 <a name="applepaypaymenttokenobject"></a>
 ## applePayPaymentToken
-|Element            |Type                       |Required       |Description                        |
+|Element            |Type                       |Required       |Description    |
 |---                |---                        |---            |---       |
 |data               |string<br/>`length<=4000`  |Yes            |This is the encrypted payment data.|
 |header             |[header](#headerobject)    |Yes            |This is additional version-dependent information used to decrypt and verify the payment.|
@@ -1006,7 +1005,7 @@ To use the test environment, you must post your requests to the following endpoi
 
 <a name="applepaysingleusetokenobject"></a>
 ## applepaysingleusetoken
-|Element                |Type                       |Required   |Description                        |
+|Element                |Type                       |Required   |Description    |
 |---                    |---                        |---        |---       |
 |applePayPaymentToken   |[applePayPaymentToken](#applepaypaymenttokenobject)    |Yes | This is the paymentData object generated from the iOS device for Apple Pay.|
 |card                   |[card](#cardsobject)       | | This is the Apple Pay virtual card that Paysafe will use for the purchase request.|
@@ -1034,7 +1033,7 @@ To use the test environment, you must post your requests to the following endpoi
 
 <a name="bacsbankaccountobject"></a>
 ## bacsBankAccount
-|Element            |Type                       | Required  |Description                        |
+|Element            |Type                       | Required  |Description    |
 |---                |---                        |---        |---       |
 |id                 |string<br/>`length<=36`    |           |This is the ID for the request, returned by Paysafe. It can be used later, e.g., to look up or update the Bank Account.|
 |nickName           |string<br/>`length<=50`    |           |This is an alias defined by the customer for the Bank Account (e.g., "Sally's Barclays Account").|
@@ -1491,7 +1490,7 @@ This is how you look up a Profile using the ID returned in the response to the o
 
 You can look up a Profile along with its associated sub-components using one or more comma-separated values from this list:
   * cards
-   * addresses
+  * addresses
   * achbankaccounts
   * bacsbankaccounts
   * eftbankaccounts
