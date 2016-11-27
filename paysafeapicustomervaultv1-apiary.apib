@@ -17,7 +17,7 @@ Securely store customer payment information for a quick and simple checkout expe
   * Maintain multiple payment methods for each of your customers.
   * Build customer loyalty, and offer a streamlined and speedy checkout experience.
   
-![](http://admin:1234neu!@p368327.webspaceconfig.de/fileadmin/flarecontent/devcentre/Content/Resources/Images/CustomerVaultOverview.png)
+![](https:developer.paysafe.com/fileadmin/flarecontent/devcentre/Content/Resources/Images/CustomerVaultOverview.png)
 
 # Authentication
 <a name="apikey"></a>
@@ -28,7 +28,7 @@ In order for you to use the Paysafe REST API, Paysafe must first set you up on t
   * Key Password – B-tst1-0-51ed39e4-312d02345d3f123120881dff9bb4020a89e8ac44cdfdcecd702151182fdc952272661d290ab2e5849e31bb03deede7e
 
 inor Note this is not the same as your Merchant Back Office username and password.ed
-The case-sensitive API key is sent using HTTP Basic Authentication. To use HTTP Basic Authentication, you must send the API key credentials using the Authorization header with every request. The Authorization header is constructed as follows:
+The case-sensitive API key is sent using HTTP Basic AReuthentication. To use HTTP Basic Authentication, you must send the API key credentials using the Authorization header with every request. The Authorization header is constructed as follows:
 
   1. The Key Username and Key Password are combined into a string separated by a colon, e.g.,“Key Username:Key Password”.
   2. The resulting string literal is then encoded using Base64.
@@ -1470,6 +1470,7 @@ This is how you submit a profile creation request using a single-use token.
 This is how you look up a profile using the ID returned in the response to the original request.
     
 + Parameters
+
     + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
 
 + Request Get Profile (application/json)
@@ -1486,7 +1487,7 @@ This is how you look up a profile using the ID returned in the response to the o
         + Include Profile Base
         + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
 
-## Get Profile Including Subcomponents [GET /profiles/{PROFILE_ID}?fields=cards,addresses]
+## Get Profile Including Subcomponents [GET /profiles/{PROFILE_ID}?fields={fields}]
 
 You can look up a profile along with its associated sub-components using one or more comma-separated values from this list:
   * cards
@@ -1497,7 +1498,9 @@ You can look up a profile along with its associated sub-components using one or 
   * sepabankaccounts
     
 + Parameters
+
     + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + fields:`addresses,cards` (string, optional) - This is a comma-separated list of sub-components.
 
 + Request Get Profile (application/json)
     
