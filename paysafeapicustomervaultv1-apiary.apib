@@ -851,10 +851,10 @@ The Paysafe Test environment can be used to test websites or applications. It is
 
 <a name="errorobject"></a>
 ## error
-|Element            |Type       |Description                        |
-|---                |---        |---                                |
-|code               |string     |The error code. Also shown in the X-Application-Status-Code response header.            |
-|message            |string     |A description of the error.                 |
+|Element            |Type       |Description       |
+|---                |---        |---               |
+|code               |string     |The error code.   |
+|message            |string     |A description of the error. Also shown in the X-Application-Status-Code response header.  |
 |fieldErrors        |string array     |Details of any parameter value errors (optional). One or more field:error pairs, where field is the field name and error is the error in the field.      |
 |links              |string array     |One or more rel/href pairs, where rel is "errorinfo", and href is the Developer Center URL containing a description of the error.|
 
@@ -876,6 +876,13 @@ The Paysafe Test environment can be used to test websites or applications. It is
    ]
 }
 ```
+
+If you specify an attribute unique to an existing profile, there is also a separate links object - an array of rel:href pairs - with the following elements:
+
+|Element        |Type       |Description       |
+|---            |---        |---               |
+|rel            |string     |The text "existing_entity"  |
+|href           |string     |The URL to use to look up the existing profile.  |
 
 <a name="headerobject"></a>
 ## header
