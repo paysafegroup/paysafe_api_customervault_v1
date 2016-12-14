@@ -27,8 +27,8 @@ In order for you to use the Paysafe REST API, Paysafe must first set you up on t
   * Key Username – MerchantXYZ
   * Key Password – B-tst1-0-51ed39e4-312d02345d3f123120881dff9bb4020a89e8ac44cdfdcecd702151182fdc952272661d290ab2e5849e31bb03deede7e
 
-inor Note this is not the same as your Merchant Back Office username and password.ed
-The case-sensitive API key is sent using HTTP Basic AReuthentication. To use HTTP Basic Authentication, you must send the API key credentials using the Authorization header with every request. The Authorization header is constructed as follows:
+Note this is not the same as your Merchant Back Office username and password.
+The case-sensitive API key is sent using HTTP Basic Authentication. To use HTTP Basic Authentication, you must send the API key credentials using the Authorization header with every request. The Authorization header is constructed as follows:
 
   1. The Key Username and Key Password are combined into a string separated by a colon, e.g.,“Key Username:Key Password”.
   2. The resulting string literal is then encoded using Base64.
@@ -142,336 +142,12 @@ The following request types are supported:
 
 # Getting Started
 
-You can use the Customer Vault REST API to create profiles, addresses, cards, bank accounts, single-use tokens, and mandates.This section outlines some common scenarios for using the Customer Vault. To get started you must first sign up for a test account and get an API key.
+You can use the Customer Vault REST API to create profiles, addresses, cards, bank accounts, single-use tokens, and mandates. Click [here](https://developer.paysafe.com/en/rest-api/vault/using-the-api/scenarios/) for some common scenarios for using the Customer Vault.
 
-All examples in this section use cURL, which is a command line tool for transferring data using protocols such as HTTPS.
 
-## Verify That the Service Is Accessible
-
-The following request verifies that the service is up and accessible from your network.
-
-Request:
-
-`cURL -X GET https://api.test.paysafe.com/customervault/monitor`
-
-Response: 
-
-`{
-"status" : "READY"
-}`
-
-**Note:** The system should respond with a status of READY if it is available.
-
-## Create a Profile for a Customer
-
-A profile contains basic information about your customer, such as name and contact information.
-
-To create a profile you must initiate a POST request to the profiles endpoint.
-
-            cURL -X POST https://api.test.paysafe.com/customervault/v1/profiles \
-            -u devcentre322:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
-            -H 'Content-Type: application/json' \
-            -d ' {
-              "merchantCustomerId":"mycustomer1",
-              "locale" : "en_US",
-              "firstName" : "John",
-              "lastName" : "Smith",
-              "phone" : "713-444-5555",
-              "email" : "john.smith@somedomain.com",
-              "cellPhone" : "713-777-5555"
-             }'
-             
-Prior to trying the example, you should:
-  * Provide a unique merchant customer ID for each transaction.
-  * Replace the [API key](#apikey) (after the -u) with the API key you have received.
-  
-**Response**
-  
-              {
-              "id" : "716adb4f-6b85-4089-ba9c-d9c0eb649cd7",
-              "status" : "ACTIVE",
-              "merchantCustomerId" : "mycustomer1",
-              "locale" : "en_US",
-              "firstName" : "John",
-              "lastName" : "Smith",
-              "phone" : "713-444-5555",
-              "email" : "john.smith@somedomain.com",
-              "paymentToken" : "PyhYo1nGKUfWOPj"
-            }
-            
-## Add an Address to the Profile
-
-In the previous example you created a profile for a customer. As a result, the API returned a profile ID representing that profile.
-
-The Customer Vault API allows you to add multiple addresses to your customer's profile. To add an address to the profile, you must use that profile ID and initiate a POST request to the addresses endpoint.
-
-Prior to trying the example, you should replace the [API key](#apikey) (after the -u) with the API key you have received.
-
-            cURL -X POST https://api.test.paysafe.com/customervault/v1/profiles/716adb4f-6b85-4089-ba9c-d9c0eb649cd7/addresses \
-            -u devcentre322:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
-            -H 'Content-Type: application/json' \
-            -d ' {
-              "nickName":"home",
-              "street" : "100 Queen Street West",
-              "city" : "Toronto",
-              "state" : "ON",
-              "country" : "CA",
-              "zip" : "M5H 2N2"
-             }'
-             
-**Response**
-
-            {
-              "id" : "81ffcddf-ad82-40d2-aaa0-c4f9c376ad65",
-              "status" : "ACTIVE",
-              "street" : "100 Queen Street West",
-              "city" : "Toronto",
-              "state" : "ON",
-              "country" : "CA",
-              "zip" : "M5H 2N2",
-              "defaultShippingAddressIndicator" : false
-            }
-            
-## Add a Card to the Profile
-
-The Customer Vault API allows you to store multiple credit cards against your customer's profile. For billing purposes, each credit card can be associated to a different address, or all credit cards can be associated to the same billing address, depending on your business needs.
-
-To add a credit card and associate it to the address you just created, you must use the profile ID (716adb4f-6b85-4089-ba9c-d9c0eb649cd7) and the address ID (81ffcddf-ad82-40d2-aaa0-c4f9c376ad65) and initiate a POST request to the cards endpoint.
-
-Prior to trying the example, you should replace the [API key](#apikey) (after the -u) with the API key you have received.
-
-            cURL -X POST https://api.test.paysafe.com/customervault/v1/profiles/716adb4f-6b85-4089-ba9c-d9c0eb649cd7/cards \
-            -u devcentre322:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
-            -H 'Content-Type: application/json' \
-            -d ' {
-              "nickName":"Personal Visa",
-              "holderName" : "John Smith",
-              "cardNum" : "4530910000012345",
-              "cardExpiry" : {
-                "month" : 12,
-                "year" : 2019
-              },
-              "billingAddressId" : "81ffcddf-ad82-40d2-aaa0-c4f9c376ad65"
-             }'
-             
-**Response**
-
-            {
-              "id" : "178ae2b8-85a5-4761-b1dd-4f14ac73571b",
-              "status" : "ACTIVE",
-              "holderName" : "John Smith",
-              "cardBin" : "453091",
-              "lastDigits" : "2345",
-              "cardExpiry" : {
-                "month" : 12,
-                "year" : 2019
-              },
-              "cardType" : "VI",
-              "paymentToken" : "CaBP0abDKgROjYU",
-              "billingAddressId" : "81ffcddf-ad82-40d2-aaa0-c4f9c376ad65",
-              "defaultCardIndicator" : false
-            }
-            
-## Add a Bank Account to the Profile
-
-The Customer Vault API allows you to store multiple bank accounts against your customer's profile. For billing purposes, each bank account can be associated to a different address, or all bank accounts can be associated to the same billing address, depending on your business needs.
-
-To add a bank account and associate it to the address you created above, you must use the profile ID (716adb4f-6b85-4089-ba9c-d9c0eb649cd7) and the address ID (81ffcddf-ad82-40d2-aaa0-c4f9c376ad65) and initiate a POST request to one of the bank account endpoints.
-
-When you use the Customer Vault API to create a bank account, the newly created bank account becomes part of the profile that owns the profile ID and address ID (billingAddressId) you have used. The example below shows how to create an ACH bank account to add to a customer profile.
-
-Prior to trying the example, you should replace the [API key](#apikey) (after the -u) with the API key you have received.
-
-            cURL -X POST https://api.test.paysafe.com/customervault/v1/profiles/716adb4f-6b85-4089-ba9c-d9c0eb649cd7/achbankaccounts \
-            -u devcentre322:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
-            -H 'Content-Type: application/json' \
-            -d ' {
-                 "nickName": "John's RBC Business Bank Account",
-                 "accountNumber": "511201",
-                 "routingNumber": "123456789",
-                 "accountHolderName": "XYZ Business",
-                 "billingAddressId": "60022f38-fd17-4731-909c-923930d0d5d4",
-                 "accountType": "CHECKING"
-             }'
-             
-**Response**
-
-            {
-              "id": "6a275b7c-6f11-4ed1-ae77-21071724574a",
-                "status": "ACTIVE",
-                "nickName": "John's RBC Business Bank Account",
-                "routingNumber": "123456789",
-                "accountHolderName": "XYZ Business",
-                "billingAddressId": "60022f38-fd17-4731-909c-923930d0d5d4",
-                "accountType": "CHECKING",
-                "lastDigits": "01",
-                "paymentToken": "CNjEzMTM4NDg1"
-            }
-            
-## Create a Single-Use Token
-
-The Customer Vault API allows you to create single-use tokens, which are then used with a mobile device to process a purchase through the Card Payments API.
-
-**Note:** You have to generate a new single-use token for each Card Payments transaction you wish to process.
-
-The example below shows you how to create an Apple Pay single-use token. In the response, you will find a *paymentToken* value that you would include with your Authorization or Purchase requests.
-
-Prior to trying the example, you should:
-
-  * Replace the [API key](#apikey) (after the -u) with the API key you have received.
-  * Replace the value for the *data* element with valid passkit encrypted payment data.
-  * Replace the value for the *signature* element with valid payment signature and header data.
-  * Replace the values for the *header* sub-elements with valid values from the iOS device.
-
-            cURL -X POST https://api.test.paysafe.com/customervault/v1/applepaysingleusetokens \
-            -u OT1625:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
-            -H 'Content-Type: application/json' \
-            -d ' {
-                "applePayPaymentToken": {
-                    "version": "EC_v1",
-                    "data": "<passkit_encrypted_payment_data>",
-                    "signature": "<signature_for_payment_and_header_data>",
-                    "header": {
-                        "transactionId": "b53e22ef6669ce7f50951cfd6821908f4e679f050f5a551a1b5f6202253136ae",
-                        "ephemeralPublicKey": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEB39YqvWZG0NOYjbkL5D61Mxip6uw23Q7m8gWgxL41k4fs0BgJ+MFcIGYOH86kAGL/wjiftDahRkUnzOGls2hzw==",
-                        "publicKeyHash": "O5gJ/P5sQ7ufMZQXA7ccLoOkJ13VNknbu+4K0TaCQXE="
-                    }
-                }
-            }'
-            
-**Response**
-
-            {
-                "id": "a02e52c7-c991-4418-966a-b62989cb0eae",
-                "paymentToken" : "ABC4AFQQBC5UR5H",
-                "timeToLiveSeconds" : "899",
-                "applePayPaymentToken": {
-                    "version": "EC_v1",
-                    "signature": "<signature_for_payment_and_header_data>",
-                    "header": {
-                        "transactionId": "b53e22ef6669ce7f50951cfd6821908f4e679f050f5a551a1b5f6202253136ae",
-                        "publicKeyHash": "O5gJ/P5sQ7ufMZQXA7ccLoOkJ13VNknbu+4K0TaCQXE="
-                    }
-                },
-                "card": {
-                    "lastDigits": "1111",
-                    "holderName": "Joe Smith"
-                },
-                "transaction": {
-                    "amount": 1000,
-                    "currencyCode": "USD"
-                }
-             }
-
-## Process a Transaction Using a Payment Token
-
-You can process payments using credit cards (Card Payments API) or bank accounts (Direct Debit API) that you have stored in the Customer Vault by referring to the *paymentToken* associated with the card or bank account. In these cases, the payment token replaces all the card or bank account information that otherwise might be included in the request (e.g., card number and expiry date).
-
-  * When you added a card to the profile in the example above, you got back a *paymentToken* with the value of *CaBP0abDKgROjYU*. 
-
-  * When you added a bank account to the profile in the example above, you got back a *paymentToken* with the value of *CNjEzMTM4NDg1*.
- 
-You can process payments using a mobile device, e.g., with Apple Pay, by including the single-use *paymentToken* that is required for each mobile payment request.
-  * When you created an Apple Pay single-use token in the example above, you got back a *paymentToken* with the value of *ABC4AFQQBC5UR5H*.
-
-To process a card transaction using a payment token, you must use it to initiate a POST request to the auths endpoint in the Card Payments API. 
-
-Prior to trying the example, you should replace the API key (after the -u) with the API key you have received.
-
-The following example shows you how to process a credit card request using the *paymentToken* that represents that card.
-
-            cURL -X POST https://api.test.paysafe.com/cardpayments/v1/accounts/89987201/auths \
-              -u devcentre322:B-qa2-0-53625f86-302c021476f52bdc9deab7aea876bb28762e62f92fc6712d0214736abf501e9675e55940e83ef77f5c304edc7968 \
-              -H 'Content-Type: application/json' \
-              -d ' {
-                "merchantRefNum" : "payment-token-demo-1",
-                "amount" : 500,
-                "settleWithAuth":true,
-                "card" : {
-                  "paymentToken" : "CaBP0abDKgROjYU"
-                }
-               } '
-               
-**Response**
-
-            {
-              "links":[
-                {
-                  "rel":"settlement",
-                  "href":"https://api.test.paysafe.com/cardpayments/v1/accounts/89987201/settlements/81ed5db0-971b-475b-81fd-18023732acd3"
-                },
-                {
-                  "rel":"self",
-                  "href":"https://api.test.paysafe.com/cardpayments/v1/accounts/89987201/auths/81ed5db0-971b-475b-81fd-18023732acd3"
-                }
-              ],
-              "id":"81ed5db0-971b-475b-81fd-18023732acd3",
-              "merchantRefNum":"payment-token-demo-1",
-              "txnTime":"2014-06-09T15:57:49Z",
-              "status":"COMPLETED",
-              "amount":500,
-              "settleWithAuth":true,
-              "availableToSettle":0,
-              "card":{
-                "type":"VI",
-                "lastDigits":"2345",
-                "cardExpiry":{
-                  "month":12,
-                  "year":2019
-                }
-              },
-              "authCode":"100001",
-              "profile":{
-                "firstName":"John",
-                "lastName":"Smith",
-                "email":"john.smith@somedomain.com"
-              },
-              "billingDetails":{
-                "street":"100 Queen Street West",
-                "city":"Toronto",
-                "state":"ON",
-                "country":"CA",
-                "zip":"M5H2N2",
-                "phone":"713-444-5555"
-              },
-              "merchantDescriptor":{
-                "dynamicDescriptor":"test",
-                "phone":"test"
-              },
-              "currencyCode":"USD",
-              "avsResponse":"MATCH",
-              "settlements":[
-                {
-                  "links":[
-                    {
-                      "rel":"self",
-                      "href":"https://api.test.paysafe.com/cardpayments/v1/accounts/89987201/settlements/81ed5db0-971b-475b-81fd-18023732acd3"
-                    }
-                  ],
-                  "id":"81ed5db0-971b-475b-81fd-18023732acd3",
-                  "merchantRefNum":"payment-token-demo-1",
-                  "txnTime":"2014-06-09T15:57:49Z",
-                  "status":"PENDING",
-                  "amount":500,
-                  "availableToRefund":500
-                }
-              ]
-            }
-            
 # Testing Instructions
 
-The Paysafe Test environment can be used to test websites or applications. It is important to make sure that your systems are working correctly before going into a live environment.
-
-
-With the Paysafe Customer Vault API you can test the following:
-
-  * Verify support for all the operation types that you require.
-  * Review all common errors as well as errors that may occur for each operation, and ensure your application can handle them.
-  * Verify the lengths and format for all attributes you send.
-
-To use the test environment, you must post your requests to the following endpoint:
-
-`https://api.test.paysafe.com/customervault/v1/`
+The Paysafe Test environment can be used to test websites or applications. It is important to make sure that your systems are working correctly before going into a live environment. Click [here](https://developer.paysafe.com/en/rest-api/vault/test-and-go-live/testing-instructions/) for details of using the test environment.
 
 # ISO Standards
 
@@ -1171,6 +847,34 @@ To use the test environment, you must post your requests to the following endpoi
                 "institutionId" : "001",
                 "billingAddressId": "60022f38-fd17-4731-909c-923930d0d5d4",
             }
+```
+
+<a name="errorobject"></a>
+## error
+|Element            |Type       |Description                        |
+|---                |---        |---                                |
+|code               |string     |The error code. Also shown in the X-Application-Status-Code response header.            |
+|message            |string     |A description of the error.                 |
+|fieldErrors        |string array     |Details of any parameter value errors (optional). One or more field:error pairs, where field is the field name and error is the error in the field.      |
+|links              |string array     |One or more rel/href pairs, where rel is "errorinfo", and href is the Developer Center URL containing a description of the error.|
+
+```apib
+"error":{  
+   "code":"5068",
+   "message":"Either you submitted a request that is missing a mandatory field or the value of a field does not match the format expected.",
+   "fieldErrors":[  
+      {  
+         "field":"locale",
+         "error":"Invalid Locale"
+      }
+   ],
+   "links":[  
+      {  
+         "rel":"errorinfo",
+         "href":"https://developer.optimalpayments.com/en/documentation/customer-vault-api/error-5068"
+      }
+   ]
+}
 ```
 
 <a name="headerobject"></a>
@@ -2280,6 +1984,12 @@ This is how you delete a mandate.
 
 This is how you submit an Apple Pay single-use token creation request.
 
+**Note:** For payment requests coming from mobile devices you need a specific API key to retrieve single-use tokens from the Customer Vault. This API key is different from the server-to-server API key that you use to process all other Paysafe API requests. See [Create a Single-Use Token](#createsingleusetoken) for more information.
+
+This example shows you how to create an Apple Pay single-use token. In the response, you will find a *paymentToken* value that you would include with your Authorization or Purchase requests.
+
+**Note:** You have to generate a new single-use token for each mobile-device transaction you wish to process.
+
 + Request Apple Pay Single-Use Token Creation (application/json)
 
     + Attributes
@@ -2309,6 +2019,12 @@ This is how you submit an Apple Pay single-use token creation request.
 ## Create a Mobile Device Single-Use Token [POST /singleusetokens]
 
 This is how you submit a mobile device single-use token creation request.
+
+**Note:** For payment requests coming from mobile devices you need a specific API key to retrieve single-use tokens from the Customer Vault. This API key is different from the server-to-server API key that you use to process all other Paysafe API requests. See [Create a Single-Use Token](#createsingleusetoken) for more information.
+
+This example shows you how to create a mobile device single-use token. In the response, you will find a *paymentToken* value that you would include with your Authorization or Purchase requests.
+
+**Note:** You have to generate a new single-use token for each mobile-device transaction you wish to process.
 
 + Request Mobile Device Single-Use Token Creation (application/json)
 
