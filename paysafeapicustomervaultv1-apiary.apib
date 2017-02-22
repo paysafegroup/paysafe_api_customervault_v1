@@ -633,7 +633,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
 |recipientName      |string<br/>`length<=255`   |This is the name of the recipient at this address, if it is different from the name in the profile.|
 |phone              |string<br/>`length<=40`    |This is the phone number to contact the recipient at this address, if it is different from the phone number in the profile.|
 |status             |enum                       |This is the status of the address. Possible values are:<ul><li>ACTIVE</li></ul>|
-
+|defaultShippingAddressIndicator|boolean        |Flag to mark this address as the default shipping address.|
 ```apib
             {
               "nickName":"home",
@@ -644,7 +644,8 @@ The Paysafe Test environment can be used to test websites or applications. It is
               "state":"ON",
               "zip":"M5H 2N2",
               "recipientName":"Jane Doe",
-              "phone":"647-788-3901"
+              "phone":"647-788-3901",
+              "defaultShippingAddressIndicator": true
             }
 ```
 
@@ -1245,8 +1246,8 @@ This is how you update a profile.
 + Request Update a Profile (application/json)
     
     + Attributes
+        + Include Status Profile Update
         + Include Profile Base
-        + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer.
         
     + Headers        
 
@@ -1406,7 +1407,7 @@ This is how you submit a card creation request using a single-use token.
 
     + Attributes
         
-        + Include Card for Token
+        + Include Single Use Token
         
     + Headers
     
@@ -1478,7 +1479,7 @@ This is how you update a card using a single-use token.
     
     + Attributes
     
-        + Include Card for Token
+        + Include Single Use Token
         
     + Headers        
 
@@ -1507,7 +1508,7 @@ This is how you delete a card.
 + Response 200 (application/json)
 
     + Attributes
-    
+
 # ACH Bank Accounts [/achbankaccounts]
 <a name="achbankaccountsrequest"></a>
 
@@ -2150,6 +2151,7 @@ This example shows you how to create a mobile device single-use token. In the re
 + state:ON (string, optional) - This is the state/province/region in which the customer lives.
 + recipientName:Jane Smith (string, optional) - This is the name of the recipient at this address, if it is different from the name in the profile.
 + phone:`647-788-3901` (string, optional) - This is the recipient's phone number.
++ defaultShippingAddressIndicator:true (boolean, optional) - Flag to mark this address as the default shipping address.
 
 ## Address Response
 + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the address ID returned in the response.
@@ -2163,6 +2165,7 @@ This example shows you how to create a mobile device single-use token. In the re
 + state:ON (string, optional) - This is the state/province/region in which the customer lives.
 + recipientName:Jane Smith (string, optional) - This is the name of the recipient at this address, if it is different from the name in the profile.
 + phone:`647-788-3901` (string, optional) - This is the recipient's phone number.
++ defaultShippingAddressIndicator:true (boolean, optional) - Flag to mark this address as the default shipping address.
 
 ## Addresses
 + addresses (object, optional) - This is the customer's [address](#billingaddressobject).
@@ -2324,7 +2327,7 @@ This example shows you how to create a mobile device single-use token. In the re
         + merchantRefNum:MC123 (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
         + holderName:John Smith (string, optional) - This is the name of the card holder.
         + billingAddressId:`794b2b05-1a3b-4544-a59c-8612d0a4711e` (string, required) - This is the ID returned in response to the creation of an address that will be associated with the card.
-        + defaultCardIndicator:false (boolean, optional) - This indicates whether this is the default card for the profile.
+        + defaultCardIndicator:true (boolean, optional) - This indicates whether this is the default card for the profile.
         + paymentToken:CNjEzMTM4NDg1 (string, required) - This is a token that represents the card and is returned in the response to the card creation request.
         + status:ACTIVE (enum, required) - This is the status of the card.        
 
@@ -2470,7 +2473,7 @@ This example shows you how to create a mobile device single-use token. In the re
 + email:john.smith@email.com (string, optional) - This is the customer's email address.
 + phone:`777-444-8888` (string, optional) - This is the customer's phone number.
 + ip:192.0.126.111 (string, optional) - This is the customer’s IP address.
-+ gender:F (enum, optional) - This is the customer’s gender.
++ gender:M (enum, optional) - This is the customer’s gender.
     - F
     - M
 + nationality:Canadian (string, optional) - This is the customer’s nationality. 
@@ -2511,7 +2514,15 @@ This example shows you how to create a mobile device single-use token. In the re
 + paymentToken:D8c4jEzMTM4NDg1 (string, required) - This is a token that represents the bank account and is returned in the response to the bank account creation request. It can be used in the place of bank account information in Direct Debit transactions.
 + Include Mandates for Bank Response
 
+## Single Use Token
++ singleUseToken:abcdefg23d32d2 (string, required) - This is the single-use token returned in response to a single-use token creation request.
+
 ## Status Profile
-+ status:ACTIVE (enum, required) - This is the status of the transaction request.        
++ status:ACTIVE (enum, required) - This is the status of the profile request.        
+    - ACTIVE
+    - INITIAL
+
+## Status Profile Update
++ status:ACTIVE (enum, optional) - This is the status of the profile request.        
     - ACTIVE
     - INITIAL
