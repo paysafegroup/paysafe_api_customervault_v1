@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://api.test.paysafe.com/customervault/v1/
+HOST: https://api.test.paysafe.com/customervault/
 
 # Paysafe Customer Vault API
 
@@ -1108,10 +1108,22 @@ When you are ready to test your example, you can choose between the Production a
 
 To call the API resource, click **Call Resource**. The response is displayed in the Console window.
 
+## Verify the Service is Accessible [GET /monitor]
+
+This call returns a status of READY if the API is available.
+
++ Response 200 (application/json)
+
+  + Body
+    
+            {
+                "status" : "READY"
+            }
+
 # Profiles [/profiles]
 <a name="profilesrequest"></a>
 
-## Create a Profile [POST /profiles]
+## Create a Profile [POST /v1/profiles]
 
 This is how you submit a profile creation request.
 
@@ -1132,7 +1144,7 @@ This is how you submit a profile creation request.
         + Include Profile Base
         + paymentToken:P0zPDqggWESaktW (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
 
-## Create a Profile Using a Card [POST /profiles] 
+## Create a Profile Using a Card [POST /v1/profiles] 
 
 This is how you submit a profile creation request using a card.
 
@@ -1157,7 +1169,7 @@ This is how you submit a profile creation request using a card.
         + Include Addresses Response
         + Include Cards Response
 
-## Create a Profile Using a Single-Use Token [POST /profiles] 
+## Create a Profile Using a Single-Use Token [POST /v1/profiles] 
 
 This is how you submit a profile creation request using a single-use token.
 
@@ -1182,7 +1194,7 @@ This is how you submit a profile creation request using a single-use token.
         + Include Addresses Response
         + Include Cards Response
     
-## Get Profile [GET /profiles/{PROFILE_ID}]
+## Get Profile [GET /v1/profiles/{PROFILE_ID}]
 
 This is how you look up a profile using the ID returned in the response to the original request.
     
@@ -1204,7 +1216,7 @@ This is how you look up a profile using the ID returned in the response to the o
         + Include Profile Base
         + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
 
-## Get Profile Including Subcomponents [GET /profiles/{PROFILE_ID}?fields={fields}]
+## Get Profile Including Subcomponents [GET /v1/profiles/{PROFILE_ID}?fields={fields}]
 
 You can look up a profile along with its associated sub-components using one or more comma-separated values from this list:
   * cards
@@ -1235,7 +1247,7 @@ You can look up a profile along with its associated sub-components using one or 
         + Include Addresses Response
         + Include Cards Response
     
-## Update a Profile [PUT /profiles/{PROFILE_ID}]
+## Update a Profile [PUT /v1/profiles/{PROFILE_ID}]
 
 This is how you update a profile.
 
@@ -1262,7 +1274,7 @@ This is how you update a profile.
         + Include Profile Base
         + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer.
 
-## Delete a Profile [DELETE /profiles/{PROFILE_ID}]
+## Delete a Profile [DELETE /v1/profiles/{PROFILE_ID}]
 
 This is how you delete a profile.
 
@@ -1281,7 +1293,7 @@ This is how you delete a profile.
 # Addresses [/addresses]
 <a name="addressesrequest"></a>
 
-## Create an Address [POST /profiles/{PROFILE_ID}/addresses]
+## Create an Address [POST /v1/profiles/{PROFILE_ID}/addresses]
 
 This is how you submit an address creation request.
 
@@ -1306,7 +1318,7 @@ This is how you submit an address creation request.
         + Include Response Base
         + Include Address Response
 
-## Get Address [GET /profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+## Get Address [GET /v1/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
 
 This is how you look up an address using the ID returned in the response to the original request.
     
@@ -1326,7 +1338,7 @@ This is how you look up an address using the ID returned in the response to the 
         + Include Response Base
         + Include Address Response
 
-## Update an Address [PUT /profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+## Update an Address [PUT /v1/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
 
 This is how you update an address.
 
@@ -1352,7 +1364,7 @@ This is how you update an address.
         + Include Response Base
         + Include Address Response
     
-## Delete an Address [DELETE /profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+## Delete an Address [DELETE /v1/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
 
 This is how you delete an address. 
 
@@ -1374,7 +1386,7 @@ This is how you delete an address.
 # Cards [/cards]
 <a name="cardsrequest"></a>
 
-## Create a Card [POST /profiles/{PROFILE_ID}/cards]
+## Create a Card [POST /v1/profiles/{PROFILE_ID}/cards]
 
 This is how you submit a card creation request.
 
@@ -1400,7 +1412,7 @@ This is how you submit a card creation request.
         + Include Response Base
         + Include Card Response
         
-## Create a Card Using a Single-Use Token [POST /profiles/{PROFILE_ID}/cards]
+## Create a Card Using a Single-Use Token [POST /v1/profiles/{PROFILE_ID}/cards]
 
 This is how you submit a card creation request using a single-use token.
 
@@ -1420,7 +1432,7 @@ This is how you submit a card creation request using a single-use token.
         + Include Response Base
         + Include Card Response 
 
-## Get Card [GET /profiles/{PROFILE_ID}/cards/{CARD_ID}]
+## Get Card [GET /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
 
 This is how you look up a card using the ID returned in the response to the original request.
     
@@ -1440,7 +1452,7 @@ This is how you look up a card using the ID returned in the response to the orig
         + Include Response Base
         + Include Card Response
         
-## Update a Card [PUT /profiles/{PROFILE_ID}/cards/{CARD_ID}]
+## Update a Card [PUT /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
 
 This is how you update a card.
 
@@ -1466,7 +1478,7 @@ This is how you update a card.
         + Include Response Base
         + Include Card Response        
 
-## Update a Card Using a Single-Use Token [PUT /profiles/{PROFILE_ID}/cards/{CARD_ID}]
+## Update a Card Using a Single-Use Token [PUT /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
 
 This is how you update a card using a single-use token.
 
@@ -1492,7 +1504,7 @@ This is how you update a card using a single-use token.
         + Include Response Base
         + Include Card Response                
 
-## Delete a Card [DELETE /profiles/{PROFILE_ID}/cards/{CARD_ID}]
+## Delete a Card [DELETE /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
 
 This is how you delete a card. 
 
@@ -1513,7 +1525,7 @@ This is how you delete a card.
 # ACH Bank Accounts [/achbankaccounts]
 <a name="achbankaccountsrequest"></a>
 
-## Create an ACH Bank Account [POST /profiles/{PROFILE_ID}/achbankaccounts]
+## Create an ACH Bank Account [POST /v1/profiles/{PROFILE_ID}/achbankaccounts]
 
 This is how you submit an ACH bank account creation request.
 
@@ -1536,7 +1548,7 @@ This is how you submit an ACH bank account creation request.
         + Include Response Base
         + Include ACH Bank Account Response
 
-## Get ACH Bank Account [GET /profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+## Get ACH Bank Account [GET /v1/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you look up an ACH bank account using the ID returned in the response to the original request.
     
@@ -1556,7 +1568,7 @@ This is how you look up an ACH bank account using the ID returned in the respons
         + Include Response Base
         + Include ACH Bank Account Response
 
-## Update an ACH Bank Account [PUT /profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+## Update an ACH Bank Account [PUT /v1/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you update an ACH bank account.
 
@@ -1581,7 +1593,7 @@ This is how you update an ACH bank account.
         + Include Response Base
         + Include ACH Bank Account Response
 
-## Delete an ACH Bank Account [DELETE /profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+## Delete an ACH Bank Account [DELETE /v1/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you delete an ACH bank account. 
 
@@ -1602,7 +1614,7 @@ This is how you delete an ACH bank account.
 # BACS Bank Accounts [/bacsbankaccounts]
 <a name="bacsbankaccountsrequest"></a>
 
-## Create a BACS Bank Account [POST /profiles/{PROFILE_ID}/bacsbankaccounts]
+## Create a BACS Bank Account [POST /v1/profiles/{PROFILE_ID}/bacsbankaccounts]
 
 This is how you submit a BACS bank account creation request.
 
@@ -1624,7 +1636,7 @@ This is how you submit a BACS bank account creation request.
         + Include Response Base
         + Include BACS Bank Account Response
 
-## Get BACS Bank Account [GET /profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+## Get BACS Bank Account [GET /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you look up a BACS bank account using the ID returned in the response to the original request.
     
@@ -1644,7 +1656,7 @@ This is how you look up a BACS bank account using the ID returned in the respons
         + Include Response Base
         + Include BACS Bank Account Response
 
-## Update a BACS Bank Account [PUT /profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+## Update a BACS Bank Account [PUT /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you update a BACS bank account.
 
@@ -1669,7 +1681,7 @@ This is how you update a BACS bank account.
         + Include Response Base
         + Include BACS Bank Account Response
     
-## Delete a BACS Bank Account [DELETE /profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+## Delete a BACS Bank Account [DELETE /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you delete a BACS bank account. 
 
@@ -1690,7 +1702,7 @@ This is how you delete a BACS bank account.
 # EFT Bank Accounts [/eftbankaccounts]
 <a name="eftbankaccountsrequest"></a>
 
-## Create an EFT Bank Account [POST /profiles/{PROFILE_ID}/eftbankaccounts]
+## Create an EFT Bank Account [POST /v1/profiles/{PROFILE_ID}/eftbankaccounts]
 
 This is how you submit an EFT bank account creation request.
 
@@ -1713,7 +1725,7 @@ This is how you submit an EFT bank account creation request.
         + Include Response Base
         + Include EFT Bank Account Response
     
-## Get EFT Bank Account [GET /profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+## Get EFT Bank Account [GET /v1/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you look up an EFT bank account using the ID returned in the response to the original request.
     
@@ -1733,7 +1745,7 @@ This is how you look up an EFT bank account using the ID returned in the respons
         + Include Response Base
         + Include EFT Bank Account Response    
 
-## Update an EFT Bank Account [PUT /profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+## Update an EFT Bank Account [PUT /v1/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you update an EFT bank account.
 
@@ -1758,7 +1770,7 @@ This is how you update an EFT bank account.
         + Include Response Base
         + Include EFT Bank Account Response
 
-## Delete an EFT Bank Account [DELETE /profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+## Delete an EFT Bank Account [DELETE /v1/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you delete an EFT bank account. 
 
@@ -1779,7 +1791,7 @@ This is how you delete an EFT bank account.
 # SEPA Bank Accounts [/sepabankaccounts]
 <a name="sepabankaccountsrequest"></a>
 
-## Create a SEPA Bank Account [POST /profiles/{PROFILE_ID}/sepabankaccounts]
+## Create a SEPA Bank Account [POST /v1/profiles/{PROFILE_ID}/sepabankaccounts]
 
 This is how you submit a SEPA bank account creation request.
 
@@ -1801,7 +1813,7 @@ This is how you submit a SEPA bank account creation request.
         + Include Response Base
         + Include SEPA Bank Account Response
 
-## Get SEPA Bank Account [GET /profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+## Get SEPA Bank Account [GET /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you look up a SEPA bank account using the ID returned in the response to the original request.
     
@@ -1821,7 +1833,7 @@ This is how you look up a SEPA bank account using the ID returned in the respons
         + Include Response Base
         + Include SEPA Bank Account Response
 
-## Update a SEPA Bank Account [PUT /profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+## Update a SEPA Bank Account [PUT /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you update a SEPA bank account.
 
@@ -1846,7 +1858,7 @@ This is how you update a SEPA bank account.
         + Include Response Base
         + Include SEPA Bank Account Response
     
-## Delete a SEPA Bank Account [DELETE /profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+## Delete a SEPA Bank Account [DELETE /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
 
 This is how you delete a SEPA bank account. 
 
@@ -1867,7 +1879,7 @@ This is how you delete a SEPA bank account.
 # Mandates [/mandates]
 <a name="mandatesrequest"></a>
 
-## Create a BACS Mandate [POST /profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}/mandates]
+## Create a BACS Mandate [POST /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}/mandates]
 
 This is how you submit a BACS mandate creation request.
 
@@ -1895,7 +1907,7 @@ This is how you submit a BACS mandate creation request.
         + status:PENDING (enum, required) - This is the status of the mandate.
         + statusChangeDate:`2016-12-14T20:41:32Z` (string, required) - This is the date that the status was last changed.
     
-## Create a SEPA Mandate [POST /profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}/mandates]
+## Create a SEPA Mandate [POST /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}/mandates]
 
 This is how you submit a SEPA mandate creation request.
 
@@ -1923,7 +1935,7 @@ This is how you submit a SEPA mandate creation request.
         + status:ACTIVE (enum, required) - This is the status of the mandate.
         + statusChangeDate:`2016-12-14T20:41:32Z` (string, required) - This is the date that the status was last changed.
 
-## Get Mandate [GET /profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
+## Get Mandate [GET /v1/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
 
 This is how you look up a mandate using the ID returned in the response to the original request.
     
@@ -1942,7 +1954,7 @@ This is how you look up a mandate using the ID returned in the response to the o
     + Attributes
         + Include Mandates Response
         
-## Update a Mandate [PUT /profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
+## Update a Mandate [PUT /v1/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
 
 This is how you update a mandate.
 
@@ -1966,7 +1978,7 @@ This is how you update a mandate.
     + Attributes    
         + Include Mandates Response
 
-## Delete a Mandate [DELETE /profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
+## Delete a Mandate [DELETE /v1/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
 
 This is how you delete a mandate. 
 
@@ -1988,7 +2000,7 @@ This is how you delete a mandate.
 # Apple Pay Single-Use Tokens [/applepaysingleusetokens]
 <a name="applepaysingleusetokensrequest"></a>
 
-## Create an Apple Pay Single-Use Token [POST /applepaysingleusetokens]
+## Create an Apple Pay Single-Use Token [POST /v1/applepaysingleusetokens]
 
 This is how you submit an Apple Pay single-use token creation request.
 
@@ -2024,7 +2036,7 @@ This example shows you how to create an Apple Pay single-use token. In the respo
 # Mobile Device Single-Use Tokens [/singleusetokens]
 <a name="singleusetokensrequest"></a>
 
-## Create a Mobile Device Single-Use Token [POST /singleusetokens]
+## Create a Mobile Device Single-Use Token [POST /v1/singleusetokens]
 
 This is how you submit a mobile device single-use token creation request.
 
