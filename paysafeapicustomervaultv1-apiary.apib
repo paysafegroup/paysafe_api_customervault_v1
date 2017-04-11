@@ -970,7 +970,7 @@ Element            |Type                        |Required   |Description        
 |merchantRefNum     |string<br/>`length<=255`   |           |This is the merchant reference number created by the merchant and submitted as part of the request. This value is only stored by the Paysafe system and has no bearing on the request.|
 |status             |enum                       |           |This is the status of the  request. Possible values are:<ul><li>ACTIVE &ndash; The bank account has been created.</li><li>INVALID &ndash; The bank account is invalid.</li><li>INACTIVE &ndash; The bank account has been deleted.</li></ul><br/>**Note:** By default, the bank account is created with the status of ACTIVE.|
 |statusReason       |string<br/>`length<=255`   |           |If the status is INVALID, this is a description of why the account is invalid (e.g., account closed).|
-|iban               |string<br/>`length<=255`   |Yes        |This is the international bank account number.|
+|iban               |string<br/>`length<=34`    |Yes        |This is the international bank account number.|
 |bic                |string<br/>`length=8-11`   |           |This is the bank identification code.|
 |accountHolderName  |string<br/>`length<=32`    |Yes        |This is the name of the customer or company that owns the bank account.|
 |lastDigits         |string<br/>`length=2`      |           |This is the last two digits of the bank account number.|
