@@ -1180,7 +1180,9 @@ This call returns a status of READY if the API is available.
 
 ## Create a Profile [POST /v1/profiles]
 
-This is how you submit a profile creation request.
+This is how you submit a profile creation request. 
+
+**Note:** The top-level *paymentToken* in the response is not valid.
 
 + Request Profile Creation (application/json)
 
@@ -1201,7 +1203,9 @@ This is how you submit a profile creation request.
 
 ## Create a Profile Using a Card [POST /v1/profiles] 
 
-This is how you submit a profile creation request using a card.
+This is how you submit a profile creation request using a card. 
+
+**Note:** The top-level *paymentToken* in the response is not valid, but the *cards* parameter contains a valid permanent *paymentToken*.
 
 + Request Profile Creation Using a Card (application/json)
 
@@ -1228,6 +1232,8 @@ This is how you submit a profile creation request using a card.
 
 This is how you submit a profile creation request using a single-use token.
 
+**Note:** The top-level *paymentToken* in the response is not valid, but the *cards* parameter contains a valid permanent *paymentToken*.
+
 + Request Profile Creation Using a Single-Use Token (application/json)
 
     + Attributes
@@ -1247,7 +1253,7 @@ This is how you submit a profile creation request using a single-use token.
         + Include Profile Base
         + paymentToken:P0zPDqggWESaktW (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
         + Include Addresses Response
-        + Include Cards Response
+        + Include Cards for Token Response
     
 ## Get Profile [GET /v1/profiles/{PROFILE_ID}]
 
@@ -2146,7 +2152,7 @@ You have to generate a new single-use token for each mobile device transaction y
 <h1>Legal and Community</h1>
 <ul class="footer-menu">
 <li><a href="https://www.paysafe.com/privacy-policy/" target="_blank">Privacy Policy</a></li>
-<li><a href="en/resources-and-support/terms-of-use/" target="_blank">Terms of Use</a></li>
+<li><a href="https://developer.paysafe.com/en/resources-and-support/terms-of-use/" target="_blank">Terms of Use</a></li>
 <li><a href="http://www.paysafe.com/regulatory-disclosure/" target="_blank">Regulatory Disclosures</a></li>
 <li><a href="http://community.paysafe.com/spaces/11/index.html" target="_blank">FAQs</a></li>
 <li><a href="http://community.paysafe.com/index.html" target="_blank">Community</a></li>
@@ -2418,6 +2424,12 @@ You have to generate a new single-use token for each mobile device transaction y
 
     + Properties
         + singleUseToken:abcdefg23d32d2 (string, required) - This is the single-use token returned in response to a single-use token creation request.
+
+## Cards for Token Response
++ cards (object, required) - This is the customer's [card](#cardsobject) information.
+
+    + Properties
+        + paymentToken:CNjEzMTM4NDg1 (string, required) - This is a permanent payment token that represents the card and is returned in the response to the profile creation request.
 
 ## Card Response
 + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the card ID returned in the response.
