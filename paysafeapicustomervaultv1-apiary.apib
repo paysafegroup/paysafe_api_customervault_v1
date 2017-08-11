@@ -19,8 +19,8 @@ Securely store customer payment information for a quick and simple checkout expe
   
 ![](https://developer.paysafe.com/fileadmin/flarecontent/devcentre/Content/Resources/Images/CustomerVaultOverview.png)
 
+<a name="apikey" title="Authentication"></a>
 # Authentication
-<a name="apikey"></a>
 
 In order for you to use the Paysafe REST API, Paysafe must first set you up on their system and provide you with an API key. Your API key looks something like this:
 
@@ -63,6 +63,7 @@ For example:
 
 `https://api.paysafe.com/customervault/v1/profiles/{PROFILE_ID}`
 
+<a name="globalinvalidcharacters" title="Global Invalid Characters"></a>
 # Global Invalid Characters
 
 You must not include any of the characters in the following table as values in any of your request parameters. If you do, your request will result in an error.
@@ -149,9 +150,10 @@ You can use the Customer Vault REST API to create profiles, addresses, cards, ba
 
 The Paysafe Test environment can be used to test websites or applications. It is important to make sure that your systems are working correctly before going into a live environment. Click [here](https://developer.paysafe.com/en/rest-api/vault/test-and-go-live/testing-instructions/) for details of using the test environment.
 
+<a name="isostandards" title="ISO Standards"></a>
 # ISO Standards
 
-<a name="currencycodes"></a>
+<a name="currencycodes" title="Currency Codes"></a>
 ## Currency Codes
 
 **Note:**
@@ -245,7 +247,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
 |Venezuelan Bolivar |VEF  |
 |Viet Nam Dong  |VND  |
 
-<a name="provincecodes"></a>
+<a name="provincecodes" title="Province Codes"></a>
 ## Province Codes
 
 |Province               |Code   |
@@ -264,7 +266,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
 |Saskatchewan           |SK     |
 |Yukon                  |YT     |
 
-<a name="statecodes"></a>
+<a name="statecodes" title="State Codes"></a>
 ## State Codes
 
 |State                  |Code   |
@@ -333,7 +335,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
 |Wyoming                |WY     |
 
 
-<a name="countrycodes"></a>
+<a name="countrycodes" title="Country Codes"></a>
 ## Country Codes
 | Country                       | Code |
 |---                                |---       |
@@ -589,7 +591,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
 
 # Complex JSON Objects
 
-<a name="achbankaccountobject"></a>
+<a name="achbankaccountobject" title="ACH Bank Account Object"></a>
 ## achBankAccount
 |Element            |Type                       |Required   |Description    |
 |---                |---                        |---        |---       |
@@ -618,7 +620,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
 ```
 
 
-<a name="addressesobject"></a>
+<a name="addressesobject" title="Addresses Object"></a>
 ## addresses
 |Element            |Type                       |Description    |
 |---                |---                        |---       |
@@ -650,7 +652,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
             }
 ```
 
-<a name="androidpaypaymenttokenobject"></a>
+<a name="androidpaypaymenttokenobject" title="Android Pay Payment Token Object"></a>
 ## androidPayPaymentToken
 |Element            |Type                       |Required       |Description    |
 |---                |---                        |---            |---       |
@@ -668,7 +670,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
             }
 ```
 
-<a name="androidpaysingleusetokenobject"></a>
+<a name="androidpaysingleusetokenobject" title="Android Pay Single-Use Token Object"></a>
 ## androidpaysingleusetoken
 |Element                |Type                       |Required   |Description    |
 |---                    |---                        |---        |---       |
@@ -698,7 +700,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
             }
 ```
 
-<a name="applepaypaymenttokenobject"></a>
+<a name="applepaypaymenttokenobject" title="Apple Pay Payment Token Object"></a>
 ## applePayPaymentToken
 |Element            |Type                       |Required       |Description    |
 |---                |---                        |---            |---       |
@@ -722,7 +724,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
             }
 ```
 
-<a name="applepaysingleusetokenobject"></a>
+<a name="applepaysingleusetokenobject" title="Apple Pay Single-Use Token Object"></a>
 ## applepaysingleusetoken
 |Element                |Type                       |Required   |Description    |
 |---                    |---                        |---        |---       |
@@ -757,7 +759,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
             }
 ```
 
-<a name="bacsbankaccountobject"></a>
+<a name="bacsbankaccountobject" title="BACS Bank Account Object"></a>
 ## bacsBankAccount
 |Element            |Type                       | Required  |Description    |
 |---                |---                        |---        |---       |
@@ -787,7 +789,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
             }
 ```
 
-<a name="billingaddressobject"></a>
+<a name="billingaddressobject" title="Billing Address Object"></a>
 ## billingAddress
 |Element            |Type                       |Description                        |
 |---                |---                        |---       |
@@ -811,7 +813,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
             }
 ```
 
-<a name="cardexpiryobject"></a>
+<a name="cardexpiryobject" title="Card Expiry Object"></a>
 ## cardExpiry
 |Element            |Type                       |Required       |Description    |
 |---                |---                        |---            |---            |
@@ -827,7 +829,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
             }
 ```
 
-<a name="cardsobject"></a>
+<a name="cardsobject" title="Cards Object"></a>
 ## cards
 |Element            |Type                           |Required   |Description    |
 |---                |---                            |---        |---            |
@@ -860,7 +862,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
 ```
 
 
-<a name="dateofbirthobject"></a>
+<a name="dateofbirthobject" title="Date of Birth Object"></a>
 ## dateOfBirth
 |Element            |Type                           |Required       |Description    |
 |---                |---                            |---            |---            |
@@ -878,7 +880,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
             }
 ```
 
-<a name="eftbankaccountobject"></a>
+<a name="eftbankaccountobject" title="EFT Bank Account Object"></a>
 ## eftBankAccount
 |Element            |Type                       |Required   |Description                        |
 |---                |---                        |---        |---       |
@@ -906,7 +908,7 @@ The Paysafe Test environment can be used to test websites or applications. It is
             }
 ```
 
-<a name="errorobject"></a>
+<a name="errorobject" title="Error Object"></a>
 ## error
 |Element            |Type       |Description       |
 |---                |---        |---               |
@@ -941,7 +943,7 @@ If you specify an attribute unique to an existing profile, there is also a separ
 |rel            |string     |The text "existing_entity"  |
 |href           |string     |The URL to use to look up the existing profile.  |
 
-<a name="headerobject"></a>
+<a name="headerobject" title="Header Object"></a>
 ## header
 |Element            |Type                       |Required       |Description    |
 |---                |---                        |---            |---            |
@@ -960,7 +962,7 @@ If you specify an attribute unique to an existing profile, there is also a separ
             }
 ```
 
-<a name="mandatesobject"></a>
+<a name="mandatesobject" title="Mandates Object"></a>
 ## mandates
 |Element            |Type                               |Required   |Description    |
 |---                |---                                |---        |---            |
@@ -980,7 +982,7 @@ If you specify an attribute unique to an existing profile, there is also a separ
 ```
 
 
-<a name="profilesobject"></a>
+<a name="profilesobject" title="Profiles Object"></a>
 ## profiles
 |Element            |Type                               |Required   |Description    |
 |---                |---                                |---        |---            |
@@ -1016,7 +1018,7 @@ If you specify an attribute unique to an existing profile, there is also a separ
               "phone" : "713-444-5555"
              }
 ```
-<a name="sepabankaccountobject"></a>
+<a name="sepabankaccountobject" title="SEPA Bank Account Object"></a>
 ## sepaBankAccount
 Element            |Type                        |Required   |Description                        |
 |---                |---                        |---        |---       |
@@ -1048,7 +1050,7 @@ Element            |Type                        |Required   |Description        
             }
 ```
 
-<a name="singleusetokenobject"></a>
+<a name="singleusetokenobject" title="Single-Use Token Object"></a>
 ## singleusetoken
 |Element                |Type                       |Required   |Description    |
 |---                    |---                        |---        |---       |
@@ -1080,7 +1082,7 @@ Element            |Type                        |Required   |Description        
 ```
 
 
-<a name="transactionobject"></a>
+<a name="transactionobject" title="Transaction Object"></a>
 ## transaction
 |Element            |Type                           |Description    |
 |---                |---                            |---            |
@@ -1096,6 +1098,7 @@ Element            |Type                        |Required   |Description        
 
 # Error Summary
 
+<a name="commonerrors" title="Common Errors"></a>
 ## Common Errors
 |HTTP Status Code       |Error Code    |Description|
 |---                    |---           |---|
@@ -1134,6 +1137,7 @@ Element            |Type                        |Required   |Description        
 |405                    |5281           |The request uses an action (e.g., GET, POST, or PUT) that is not supported by the resource.|
 |400                    |5502           |Either the payment token is invalid or the corresponding profile or bank account is not active.|
 
+<a name="customervaulterrors" title="Customer Vault Errors"></a>
 ## Customer Vault Errors
 |HTTP Status Code       |Error Code |Description|
 |---                    |---        |---|
@@ -1164,6 +1168,7 @@ When you are ready to test your example, you can choose between the Production a
 To call the API resource, click **Call Resource**. The response is displayed in the Console window.
 
 ## Verify That the Service Is Accessible [GET /monitor]
+<a name="verifyservice" title="Verify Service"></a>
 
 This call returns a status of READY if the API is available.
 
@@ -1176,9 +1181,10 @@ This call returns a status of READY if the API is available.
             }
 
 # Profiles [/profiles]
-<a name="profilesrequest"></a>
+<a name="profilesrequest" title="Profiles Request"></a>
 
 ## Create a Profile [POST /v1/profiles]
+<a name="createprofilerequest" title="Create a Profile"></a>
 
 This is how you submit a profile creation request. 
 
@@ -1201,7 +1207,8 @@ This is how you submit a profile creation request.
         + Include Profile Base
         + paymentToken:P0zPDqggWESaktW (string, required) - This is a token that represents the customer and is returned in the response to the profile request. This token cannot be used to make a payment.
 
-## Create a Profile Using a Card [POST /v1/profiles] 
+## Create a Profile Using a Card [POST /v1/profiles]
+<a name="createprofilerequestcard" title="Create a Profile Using a Card"></a>
 
 This is how you submit a profile creation request using a card. 
 
@@ -1228,7 +1235,8 @@ This is how you submit a profile creation request using a card.
         + Include Addresses Response
         + Include Cards Response
 
-## Create a Profile Using a Single-Use Token [POST /v1/profiles] 
+## Create a Profile Using a Single-Use Token [POST /v1/profiles]
+<a name="createprofilerequesttoken" title="Create a Profile Using a Single-Use Token"></a>
 
 This is how you submit a profile creation request using a single-use token.
 
@@ -1256,6 +1264,7 @@ You can use this request to convert a single-use payment token to a permanent to
         + Include Cards for Token Response
     
 ## Get Profile [GET /v1/profiles/{PROFILE_ID}]
+<a name="getprofilerequest" title="Look Up a Profile"></a>
 
 This is how you look up a profile using the ID returned in the response to the original request.
     
@@ -1278,6 +1287,7 @@ This is how you look up a profile using the ID returned in the response to the o
         + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
 
 ## Get Profile Including Subcomponents [GET /v1/profiles/{PROFILE_ID}?fields={fields}]
+<a name="getprofilerequestsubcomponents" title="Look Up a Profile Including Subcomponents"></a>
 
 You can look up a profile along with its associated sub-components using one or more comma-separated values from this list:
   * cards
@@ -1309,6 +1319,7 @@ You can look up a profile along with its associated sub-components using one or 
         + Include Cards Response
     
 ## Update a Profile [PUT /v1/profiles/{PROFILE_ID}]
+<a name="updateprofilerequest" title="Update a Profile"></a>
 
 This is how you update a profile.
 
@@ -1336,6 +1347,7 @@ This is how you update a profile.
         + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer.
 
 ## Delete a Profile [DELETE /v1/profiles/{PROFILE_ID}]
+<a name="deleteprofilerequest" title="Delete a Profile"></a>
 
 This is how you delete a profile.
 
@@ -1352,9 +1364,10 @@ This is how you delete a profile.
 
     
 # Addresses [/addresses]
-<a name="addressesrequest"></a>
+<a name="addressesrequest" title="Addresses Request"></a>
 
 ## Create an Address [POST /v1/profiles/{PROFILE_ID}/addresses]
+<a name="createaddressrequest" title="Create an Address"></a>
 
 This is how you submit an address creation request.
 
@@ -1380,6 +1393,7 @@ This is how you submit an address creation request.
         + Include Address Response
 
 ## Get Address [GET /v1/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+<a name="getaddressrequest" title="Look Up an Address"></a>
 
 This is how you look up an address using the ID returned in the response to the original request.
     
@@ -1400,6 +1414,7 @@ This is how you look up an address using the ID returned in the response to the 
         + Include Address Response
 
 ## Update an Address [PUT /v1/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+<a name="updateaddressrequest" title="Update an Address"></a>
 
 This is how you update an address.
 
@@ -1426,6 +1441,7 @@ This is how you update an address.
         + Include Address Response
     
 ## Delete an Address [DELETE /v1/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+<a name="deleteaddressrequest" title="Delete an Address"></a>
 
 This is how you delete an address. 
 
@@ -1445,9 +1461,10 @@ This is how you delete an address.
     
     
 # Cards [/cards]
-<a name="cardsrequest"></a>
+<a name="cardsrequest" title="Cards Request"></a>
 
 ## Create a Card [POST /v1/profiles/{PROFILE_ID}/cards]
+<a name="createcardrequest" title="Create a Card"></a>
 
 This is how you submit a card creation request.
 
@@ -1474,6 +1491,7 @@ This is how you submit a card creation request.
         + Include Card Response
         
 ## Create a Card Using a Single-Use Token [POST /v1/profiles/{PROFILE_ID}/cards]
+<a name="createcardrequesttoken" title="Create a Card Using a Single-Use Token"></a>
 
 This is how you submit a card creation request using a single-use token.
 
@@ -1494,6 +1512,7 @@ This is how you submit a card creation request using a single-use token.
         + Include Card Response 
 
 ## Get Card [GET /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
+<a name="getcardrequest" title="Look Up a Card"></a>
 
 This is how you look up a card using the ID returned in the response to the original request.
     
@@ -1514,6 +1533,7 @@ This is how you look up a card using the ID returned in the response to the orig
         + Include Card Response
         
 ## Update a Card [PUT /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
+<a name="updatecardrequest" title="Update a Card"></a>
 
 This is how you update a card.
 
@@ -1540,6 +1560,7 @@ This is how you update a card.
         + Include Card Response        
 
 ## Update a Card Using a Single-Use Token [PUT /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
+<a name="updatecardrequesttoken" title="Update a Card Using a Single-Use Token"></a>
 
 This is how you update a card using a single-use token.
 
@@ -1566,6 +1587,7 @@ This is how you update a card using a single-use token.
         + Include Card Response                
 
 ## Delete a Card [DELETE /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
+<a name="deletecardrequest" title="Delete a Card"></a>
 
 This is how you delete a card. 
 
@@ -1584,9 +1606,10 @@ This is how you delete a card.
     + Attributes
 
 # ACH Bank Accounts [/achbankaccounts]
-<a name="achbankaccountsrequest"></a>
+<a name="achbankaccountsrequest" title="ACH Bank Accounts Request"></a>
 
 ## Create an ACH Bank Account [POST /v1/profiles/{PROFILE_ID}/achbankaccounts]
+<a name="createachbankaccountrequest" title="Create an ACH Bank Account"></a>
 
 This is how you submit an ACH bank account creation request.
 
@@ -1610,6 +1633,7 @@ This is how you submit an ACH bank account creation request.
         + Include ACH Bank Account Response
 
 ## Get ACH Bank Account [GET /v1/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+<a name="getachbankaccountrequest" title="Look Up an ACH Bank Account"></a>
 
 This is how you look up an ACH bank account using the ID returned in the response to the original request.
     
@@ -1630,6 +1654,7 @@ This is how you look up an ACH bank account using the ID returned in the respons
         + Include ACH Bank Account Response
 
 ## Update an ACH Bank Account [PUT /v1/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+<a name="updateachbankaccountrequest" title="Update an ACH Bank Account"></a>
 
 This is how you update an ACH bank account.
 
@@ -1655,6 +1680,7 @@ This is how you update an ACH bank account.
         + Include ACH Bank Account Response
 
 ## Delete an ACH Bank Account [DELETE /v1/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+<a name="deleteachbankaccountrequest" title="Delete an ACH Bank Account"></a>
 
 This is how you delete an ACH bank account. 
 
@@ -1673,9 +1699,10 @@ This is how you delete an ACH bank account.
     + Attributes
     
 # BACS Bank Accounts [/bacsbankaccounts]
-<a name="bacsbankaccountsrequest"></a>
+<a name="bacsbankaccountsrequest" title="BACS Bank Accounts Request"></a>
 
 ## Create a BACS Bank Account [POST /v1/profiles/{PROFILE_ID}/bacsbankaccounts]
+<a name="createbacsbankaccountrequest" title="Create a BACS Bank Account"></a>
 
 This is how you submit a BACS bank account creation request.
 
@@ -1698,6 +1725,7 @@ This is how you submit a BACS bank account creation request.
         + Include BACS Bank Account Response
 
 ## Get BACS Bank Account [GET /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+<a name="getbacsbankaccountrequest" title="Look Up a BACS Bank Account"></a>
 
 This is how you look up a BACS bank account using the ID returned in the response to the original request.
     
@@ -1718,6 +1746,7 @@ This is how you look up a BACS bank account using the ID returned in the respons
         + Include BACS Bank Account Response
 
 ## Update a BACS Bank Account [PUT /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+<a name="updatebacsbankaccountrequest" title="Update a BACS Bank Account"></a>
 
 This is how you update a BACS bank account.
 
@@ -1743,6 +1772,7 @@ This is how you update a BACS bank account.
         + Include BACS Bank Account Response
     
 ## Delete a BACS Bank Account [DELETE /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+<a name="deletebacsbankaccountrequest" title="Delete a BACS Bank Account"></a>
 
 This is how you delete a BACS bank account. 
 
@@ -1761,9 +1791,10 @@ This is how you delete a BACS bank account.
     + Attributes    
     
 # EFT Bank Accounts [/eftbankaccounts]
-<a name="eftbankaccountsrequest"></a>
+<a name="eftbankaccountsrequest" title="EFT Bank Accounts Request"></a>
 
 ## Create an EFT Bank Account [POST /v1/profiles/{PROFILE_ID}/eftbankaccounts]
+<a name="createeftbankaccountrequest" title="Create an EFT Bank Account"></a>
 
 This is how you submit an EFT bank account creation request.
 
@@ -1787,6 +1818,7 @@ This is how you submit an EFT bank account creation request.
         + Include EFT Bank Account Response
     
 ## Get EFT Bank Account [GET /v1/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+<a name="geteftbankaccountrequest" title="Look Up an EFT Bank Account"></a>
 
 This is how you look up an EFT bank account using the ID returned in the response to the original request.
     
@@ -1807,6 +1839,7 @@ This is how you look up an EFT bank account using the ID returned in the respons
         + Include EFT Bank Account Response    
 
 ## Update an EFT Bank Account [PUT /v1/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+<a name="updateeftbankaccountrequest" title="Update an EFT Bank Account"></a>
 
 This is how you update an EFT bank account.
 
@@ -1832,6 +1865,7 @@ This is how you update an EFT bank account.
         + Include EFT Bank Account Response
 
 ## Delete an EFT Bank Account [DELETE /v1/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+<a name="deleteeftbankaccountrequest" title="Delete an EFT Bank Account"></a>
 
 This is how you delete an EFT bank account. 
 
@@ -1850,9 +1884,10 @@ This is how you delete an EFT bank account.
     + Attributes
     
 # SEPA Bank Accounts [/sepabankaccounts]
-<a name="sepabankaccountsrequest"></a>
+<a name="sepabankaccountsrequest" title="SEPA Bank Accounts Request"></a>
 
 ## Create a SEPA Bank Account [POST /v1/profiles/{PROFILE_ID}/sepabankaccounts]
+<a name="createsepabankaccountrequest" title="Create a SEPA Bank Account"></a>
 
 This is how you submit a SEPA bank account creation request.
 
@@ -1875,6 +1910,7 @@ This is how you submit a SEPA bank account creation request.
         + Include SEPA Bank Account Response
 
 ## Get SEPA Bank Account [GET /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+<a name="getsepabankaccountrequest" title="Look Up a SEPA Bank Account"></a>
 
 This is how you look up a SEPA bank account using the ID returned in the response to the original request.
     
@@ -1895,6 +1931,7 @@ This is how you look up a SEPA bank account using the ID returned in the respons
         + Include SEPA Bank Account Response
 
 ## Update a SEPA Bank Account [PUT /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+<a name="updatesepabankaccountrequest" title="Update a SEPA Bank Account"></a>
 
 This is how you update a SEPA bank account.
 
@@ -1920,6 +1957,7 @@ This is how you update a SEPA bank account.
         + Include SEPA Bank Account Response
     
 ## Delete a SEPA Bank Account [DELETE /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+<a name="deletesepabankaccountrequest" title="Delete a SEPA Bank Account"></a>
 
 This is how you delete a SEPA bank account. 
 
@@ -1938,9 +1976,10 @@ This is how you delete a SEPA bank account.
     + Attributes
     
 # Mandates [/mandates]
-<a name="mandatesrequest"></a>
+<a name="mandatesrequest" title="Mandates Request"></a>
 
 ## Create a BACS Mandate [POST /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}/mandates]
+<a name="createbacsmandaterequest" title="Create a BACS Mandate"></a>
 
 This is how you submit a BACS mandate creation request.
 
@@ -1972,6 +2011,7 @@ This is how you submit a BACS mandate creation request.
         + bankAccountId:`51120172` (string) - The bank account that this mandate belongs to.
     
 ## Create a SEPA Mandate [POST /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}/mandates]
+<a name="createsepamandaterequest" title="Create a SEPA Mandate"></a>
 
 This is how you submit a SEPA mandate creation request.
 
@@ -2000,6 +2040,7 @@ This is how you submit a SEPA mandate creation request.
         + statusChangeDate:`2016-12-14T20:41:32Z` (string, required) - This is the date that the status was last changed.
 
 ## Get Mandate [GET /v1/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
+<a name="getmandaterequest" title="Look Up a Mandate"></a>
 
 This is how you look up a mandate using the ID returned in the response to the original request.
     
@@ -2019,6 +2060,7 @@ This is how you look up a mandate using the ID returned in the response to the o
         + Include Mandates Response
         
 ## Update a Mandate [PUT /v1/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
+<a name="updatemandaterequest" title="Update a Mandate"></a>
 
 This is how you update a mandate.
 
@@ -2043,6 +2085,7 @@ This is how you update a mandate.
         + Include Mandates Response
 
 ## Delete a Mandate [DELETE /v1/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
+<a name="deletemandaterequest" title="Delete a Mandate"></a>
 
 This is how you delete a mandate. 
 
