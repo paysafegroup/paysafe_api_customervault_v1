@@ -94,8 +94,9 @@ The following request types are supported:
   * [EFT Bank Accounts](#eftbankaccountsrequest)
   * [SEPA Bank Accounts](#sepabankaccountsrequest)
   * [Mandates](#mandatesrequest)
-  * [Apple Pay Single-Use Tokens](#applepaysingleusetokensrequest)
-  * [Mobile Device Single-Use Tokens](#singleusetokensrequest)
+  * [Apple Pay Single-Use Tokens](#applepaysingleusetokens)
+  * [Android Pay Single-Use Tokens](#androidpaysingleusetokens)
+  * [Mobile Device Single-Use Tokens](#singleusetokens)
   
 **API Endpoint** 
 
@@ -131,10 +132,11 @@ The following request types are supported:
 |/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}   |Delete an EFT Bank Account     |DELETE |
 |/profiles/{PROFILE_ID}/sepabankaccounts            |Create a SEPA Bank Account             |POST   |
 |/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}  |Look Up a SEPA Bank Account    |GET    |
-|/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}  |Update a SEPA Bank Account      |PUT   |
+|/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}  |Update a SEPA Bank Account     |PUT   |
 |/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}  |Delete a SEPA Bank Account     |DELETE |
 |/applepaysingleusetokens                           |Create an Apple Pay Single-Use Token   |POST   |
-|singleusetokens                                    |Create a Mobile Device Single-Use Token    |POST   |
+|/androidpaysingleusetokens                         |Create an Android Pay Single-Use Token |POST   |
+|/singleusetokens                                   |Create a Mobile Device Single-Use Token|POST   |
 |/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}/mandates |Create a BACS Mandate  |POST   |
 |/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}/mandates |Create a SEPA Mandate  |POST   |
 |/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}       |Look Up a Mandate                      |GET    |
@@ -2107,10 +2109,10 @@ This is how you delete a mandate.
 # Group Single-Use Tokens
 
 ## Apple Pay Single-Use Tokens [/applepaysingleusetokens]
-<a name="applepaysingleusetokensrequest"></a>
+<a name="applepaysingleusetokens" title="Apple Pay Single-Use Tokens"></a>
 
 ### Create an Apple Pay Single-Use Token [POST /v1/applepaysingleusetokens]
-<a name="applepaysingleusetokensrequest"></a>
+<a name="applepaysingleusetokenrequest" title="Apple Pay Single-Use Token Request"></a>
 
 This is how you submit an Apple Pay single-use token creation request. In the response, you will find a *paymentToken* value to include with your Authorization or Purchase request in the [Card Payments](https://developer.paysafe.com/en/payments/cards/api/) API.
 
@@ -2142,10 +2144,10 @@ You have to generate a new single-use token for each Apple Pay transaction you w
             + currencyCode:USD (string, optional) - This is the currency of the merchant account.
 
 ## Android Pay Single-Use Tokens [/androidpaysingleusetokens]
-<a name="androidpaysingleusetokensrequest"></a>
+<a name="androidpaysingleusetokens" title="Android Pay Single-Use Tokens">></a>
 
 ### Create an Android Pay Single-Use Token [POST /v1/androidpaysingleusetokens]
-<a name="androidpaysingleusetokensrequest"></a>
+<a name="androidpaysingleusetokenrequest" title="Android Pay Single-Use Token Request"></a>
 
 This is how you submit an Android Pay single-use token creation request. In the response, you will find a *paymentToken* value to include with your Authorization or Purchase request in the [Card Payments](https://developer.paysafe.com/en/payments/cards/api/) API.
 
@@ -2177,9 +2179,10 @@ You have to generate a new single-use token for each Android Pay transaction you
 
 
 ## Mobile Device Single-Use Tokens [/singleusetokens]
-<a name="singleusetokensrequest"></a>
+<a name="singleusetokens" title="Single-Use Tokens"></a>
 
 ### Create a Mobile Device Single-Use Token [POST /v1/singleusetokens]
+<a name="singleusetokenrequest" title="Single-Use Token Request"></a>
 
 This is how you submit a mobile device single-use token creation request. In the response, you will find a *paymentToken* value to include with your Authorization or Purchase request in the [Card Payments](https://developer.paysafe.com/en/payments/cards/api/) API.
 
