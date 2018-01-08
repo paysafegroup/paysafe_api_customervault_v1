@@ -7,8 +7,9 @@ HOST: https://api.test.paysafe.com/customervault/
 
 | Version   | Date          | Details |
 |---        |---            |---      |
-| 1.0       | December 2017 | <ul><li>Added Direct Debit single-use tokens</li></ul>|
-| 1.0       | November 2016 | <ul><li>Document release</li></ul>|
+| 1.0       | January 2018 | Changed "Google Payment API" to "Google Pay"|
+| 1.0       | December 2017 | Added Direct Debit single-use tokens|
+| 1.0       | November 2016 | Document release|
 
 # Overview
 
@@ -96,7 +97,7 @@ The following request types are supported:
   * [SEPA Bank Accounts](#sepabankaccountsrequest)
   * [Mandates](#mandatesrequest)
   * [Apple Pay Single-Use Tokens](#applepaysingleusetokens)
-  * [Google Payment API Single-Use Tokens](#paywithgooglesingleusetokens)
+  * [Google Pay Single-Use Tokens](#paywithgooglesingleusetokens)
   * [Mobile Device Single-Use Tokens](#singleusetokens)
   * [ACH Single-Use Tokens](#achsingleusetokens)  
   * [EFT Single-Use Tokens](#eftsingleusetokens)
@@ -138,7 +139,7 @@ The following request types are supported:
 |/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}  |Update a SEPA Bank Account     |PUT   |
 |/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}  |Delete a SEPA Bank Account     |DELETE |
 |/applepaysingleusetokens                           |Create an Apple Pay Single-Use Token   |POST   |
-|/paywithgooglesingleusetokens                      |Create a Google Payment API Single-Use Token |POST   |
+|/paywithgooglesingleusetokens                      |Create a Google Pay Single-Use Token |POST   |
 |/singleusetokens                                   |Create a Mobile Device Single-Use Token|POST   |
 |/singleusetokens                                   |Create an ACH/EFT Single-Use Token     |POST   |
 |/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}/mandates |Create a BACS Mandate  |POST   |
@@ -940,10 +941,10 @@ If you specify an attribute unique to an existing profile, there is also a separ
             }
 ```
 
-<a name="paywithgooglepaymenttokenobject" title="Google Payment API Payment Token Object"></a>
+<a name="paywithgooglepaymenttokenobject" title="Google Pay Payment Token Object"></a>
 ## payWithGooglePaymentToken
 
-This is the payment data object generated from the Android device for the Google Payment API and used in the request to [create a Google Payment API single-use token](#googlepaymentapisingleusetokenrequest).
+This is the payment data object generated from the Android device for Google Pay and used in the request to [create a Google Pay single-use token](#googlepaymentapisingleusetokenrequest).
 
 |Element            |Type                       |Description    |
 |---                |---                        |---       |
@@ -969,7 +970,7 @@ This is the payment data object generated from the Android device for the Google
             }
 ```
 
-<a name="paywithgooglesingleusetokenobject" title="Google Payment API Single-Use Token Object"></a>
+<a name="paywithgooglesingleusetokenobject" title="Google Pay Single-Use Token Object"></a>
 ## paywithgooglesingleusetoken
 |Element                |Type                       |Description    |
 |---                    |---                        |---       |
@@ -2345,24 +2346,24 @@ You have to generate a new single-use token for each Apple Pay transaction you w
             + amount:1000 (string, optional) - This is the amount of the request, in minor units.
             + currencyCode:USD (string, optional) - This is the currency of the merchant account.
 
-## Google Payment API Single-Use Tokens [/paywithgooglesingleusetokens]
-<a name="paywithgooglesingleusetokens" title="Google Payment API Single-Use Tokens"></a>
+## Google Pay Single-Use Tokens [/paywithgooglesingleusetokens]
+<a name="paywithgooglesingleusetokens" title="Google Pay Single-Use Tokens"></a>
 
-### Create a Google Payment API Single-Use Token [POST /v1/paywithgooglesingleusetokens]
-<a name="googlepaymentapisingleusetokenrequest" title="Google Payment API Single-Use Token Request"></a>
+### Create a Google Pay Single-Use Token [POST /v1/paywithgooglesingleusetokens]
+<a name="googlepaymentapisingleusetokenrequest" title="Google Pay Single-Use Token Request"></a>
 
-This is how you submit a Google Payment API single-use token creation request. In the response, you will find a *paymentToken* value to include with your Authorization or Purchase request in the [Card Payments](https://developer.paysafe.com/en/payments/cards/api/) API.
+This is how you submit a Google Pay single-use token creation request. In the response, you will find a *paymentToken* value to include with your Authorization or Purchase request in the [Card Payments](https://developer.paysafe.com/en/payments/cards/api/) API.
 
 Note the following in the response:
 * If *paymentMethod* = *TOKENIZED_CARD*, this indicates that the card is an Android Pay card.
 * If *paymentMethod* = *CARD_ON_FILE*, this indicates that the card is on file with Google after having been used at Google for some other purpose (e.g., Google Play).
 
-You have to generate a new single-use token for each Google Payment API transaction you wish to process.
+You have to generate a new single-use token for each Google Pay transaction you wish to process.
 
-+ Request Google Payment API Single-Use Token Creation for Card on File (application/json)
++ Request Google Pay Single-Use Token Creation for Card on File (application/json)
 
     + Attributes
-        + Include Google Payment API Payment Token
+        + Include Google Pay Payment Token
         
     + Headers
     
@@ -2374,22 +2375,22 @@ You have to generate a new single-use token for each Google Payment API transact
         + Include Response Base
         + paymentToken:`GTCJskXfjWqo34U` (string, required) - This is the single-use payment token returned in the response to the single-use token creation request.
         + timeToLiveSeconds:899 (number, required) - This is the period of time the single-use token is valid before expiration, in seconds.
-        + payWithGooglePaymentToken - This is the [payment data object](#paywithgooglepaymenttokenobject) generated from the Android device for Google Payment API.
+        + payWithGooglePaymentToken - This is the [payment data object](#paywithgooglepaymenttokenobject) generated from the Android device for Google Pay.
             + ephemeralPublicKey:`BDR57RpnLXtBEuKZfuVKNTym9u2q93bXxAds+Gpe0VwBw8nL6dyMaEENB4hnXRglx0QQYRHoxc1qKwNBqBnx4qY=` (string, required)
             + tag:`8EKZt7vGFjtvuukkWlc5U93h+PBxjB7YKJF/w32Wfk8=` (string, required)
             + paymentMethod:`CARD_ON_FILE`
             + messageId:`AH2EjtdtxE5P5FVoHjoVhVJiaslejbWZePOtu2G2nyZYJpZVIWeNV_tJYodBbX9iuZWMCUe_aBOVim6sKd1u2-KUSia5C9WNqGw7tTVy1epkqjxDhMBCnxQ6C8WJcMJ9luBWWjOnrHzb`
             + messageExpiration:`1506708174199`
-        + card - This is the Google Payment API virtual card that will be used for the purchase request. 
+        + card - This is the Google Pay virtual card that will be used for the purchase request. 
             + status:`ACTIVE`
             + cardBin:`411111`
             + lastDigits:`8298`
             + cardType:`VI`
 
-+ Request Google Payment API Single-Use Token Creation for Tokenized Card - Android Pay (application/json)
++ Request Google Pay Single-Use Token Creation for Tokenized Card - Android Pay (application/json)
 
     + Attributes
-        + Include Google Payment API Payment Token
+        + Include Google Pay Payment Token
         
     + Headers
     
@@ -2401,7 +2402,7 @@ You have to generate a new single-use token for each Google Payment API transact
         + Include Response Base
         + paymentToken:`GTCJskXfGXTYbsejEDnGQt3jWqo34U` (string, required) - This is the single-use payment token returned in the response to the single-use token creation request.
         + timeToLiveSeconds:899 (number, required) - This is the period of time the single-use token is valid before expiration, in seconds.
-        + payWithGooglePaymentToken - This is the Pay with Google virtual card that will be used for the purchase request.
+        + payWithGooglePaymentToken - This is the Google Pay virtual card that will be used for the purchase request.
             + ephemeralPublicKey:`BCTSvnX1fF6b64NPlKwJl1r1dAfF0vAWHoktOS4CwH1BocAjnBHfHvKyX2CSM7jf7Cv1b6YfrQMkY9+hgE0dzgY=` (string, required)
             + tag:`8EKZt7vGFjtvuukkWlc5U93h+PBxjB7YKJF/w32Wfk8=` (string, required)
             + authMethod:`3DS`
@@ -2410,7 +2411,7 @@ You have to generate a new single-use token for each Google Payment API transact
             + paymentMethod:`TOKENIZED_CARD`
             + messageId:`AH2EjtfdYZ6GzEduMx5KnnTyAwfuB7fzoIQD483zShYR7Az29Hwx7_6kS5PlD_1A_zHght_YSl2-FxEsKXWW3fF2ZTJMgbrxBUYvYLOzDnLT3X0dYppVbFpVT0_WyCOmKC9UdrTYWDdl`
             + messageExpiration:`1506708174199`
-        + card - This is the Google Payment API virtual card that will be used for the purchase request. 
+        + card - This is the Google Pay virtual card that will be used for the purchase request. 
             + status:`ACTIVE`
             + cardBin:`489537`
             + lastDigits:`3478`
@@ -3058,8 +3059,8 @@ You have to generate a new single-use token for each EFT transaction you wish to
 + transitNumber:`25039` (string) - This is the 5-digit transit number of the customer's bank branch.
 + institutionId:`001` (string) - This is the 3-digit institution ID of the customer’s bank branch.
 
-## Google Payment API Payment Token
-+ payWithGooglePaymentToken (object, required) - This is the [payment data object](#paywithgooglepaymenttokenobject) generated from the Android device for the Google Payment API.
+## Google Pay Payment Token
++ payWithGooglePaymentToken (object, required) - This is the [payment data object](#paywithgooglepaymenttokenobject) generated from the Android device for Google Pay.
 
     + Properties
         + signature:`MEYCIQC3SyFpLO3yVxqYeVDeFJ8rHbkSSe4TyuATINrAMmzf9AIhALusXhNPJvWVoEUo5ZjSXIK8dx/GMswkdQiqp4/xCd/D` (string, required) - This is the signature of the payment data.
