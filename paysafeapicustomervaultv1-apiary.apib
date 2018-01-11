@@ -7,7 +7,8 @@ HOST: https://api.test.paysafe.com/customervault/
 
 | Version   | Date          | Details |
 |---        |---            |---      |
-| 1.0       | January 2018 | Changed "Google Payment API" to "Google Pay"|
+| 1.0       | January 2018  | Changed "Google Payment API" to "Google Pay"|
+|           |               | Updated endpoints for creating Direct Debit single-use tokens |
 | 1.0       | December 2017 | Added Direct Debit single-use tokens|
 | 1.0       | November 2016 | Document release|
 
@@ -141,7 +142,8 @@ The following request types are supported:
 |/applepaysingleusetokens                           |Create an Apple Pay Single-Use Token   |POST   |
 |/paywithgooglesingleusetokens                      |Create a Google Pay Single-Use Token |POST   |
 |/singleusetokens                                   |Create a Mobile Device Single-Use Token|POST   |
-|/singleusetokens                                   |Create an ACH/EFT Single-Use Token     |POST   |
+|/achsingleusetokens                                |Create an ACH Single-Use Token         |POST   |
+|/eftsingleusetokens                                |Create an EFT Single-Use Token         |POST   |
 |/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}/mandates |Create a BACS Mandate  |POST   |
 |/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}/mandates |Create a SEPA Mandate  |POST   |
 |/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}       |Look Up a Mandate                      |GET    |
@@ -2477,10 +2479,10 @@ You have to generate a new single-use token for each mobile device transaction y
 
 **Note:** For payment requests coming from mobile devices you need a specific API key to retrieve single-use tokens from the Customer Vault. This API key is different from the server-to-server API key that you use to process all other Paysafe API requests. See [Where to Find Your API Key](https://developer.paysafe.com/en/rest-api/reference-information/important-integration-concepts/using-your-api-key/#where-to-find-your-api-key) for more information.
 
-## Direct Debit Single-Use Tokens [/singleusetokens]
-<a name="ddsingleusetokens" title="Direct Debit Single-Use Tokens"></a>
+## ACH Single-Use Tokens [/achsingleusetokens]
+<a name="achsingleusetokens" title="ACH Single-Use Tokens"></a>
 
-### Create an ACH Single-Use Token [POST /v1/singleusetokens]
+### Create an ACH Single-Use Token [POST /v1/achsingleusetokens]
 <a name="achsingleusetokenrequest" title="ACH Single-Use Token Request"></a>
 
 This is how you submit an ACH single-use token creation request. In the response, you will find a *paymentToken* value to include with your Direct Debit Purchase or Standalone Credit request in the [Direct Debit](https://developer.paysafe.com/en/direct-debit/api/) API or when accepting Direct Debit payments using the [Paysafe Checkout](https://developer.paysafe.com/en/sdks/paysafe-checkout/overview/).
@@ -2508,10 +2510,10 @@ You have to generate a new single-use token for each ACH transaction you wish to
         + Include Billing Address for Direct Debit Single Use Token
         + Include ACH Bank Account for Payment Token
 
-## EFT Single-Use Tokens [/singleusetokens]
+## EFT Single-Use Tokens [/eftsingleusetokens]
 <a name="eftsingleusetokens" title="EFT Single-Use Tokens"></a>
 
-### Create an EFT Single-Use Token [POST /v1/singleusetokens]
+### Create an EFT Single-Use Token [POST /v1/eftsingleusetokens]
 <a name="eftsingleusetokenrequest" title="EFT Single-Use Token Request"></a>
 
 This is how you submit an EFT single-use token creation request. In the response, you will find a *paymentToken* value to include with your Direct Debit Purchase or Standalone Credit request in the [Direct Debit](https://developer.paysafe.com/en/direct-debit/api/) API or when accepting Direct Debit payments using the [Paysafe Checkout](https://developer.paysafe.com/en/sdks/paysafe-checkout/overview/).
