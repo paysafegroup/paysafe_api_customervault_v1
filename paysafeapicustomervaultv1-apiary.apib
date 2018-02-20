@@ -1010,7 +1010,7 @@ This is the payment data object generated from the Android device for Google Pay
 |---                |---                                |---            |
 |id                 |string <br/>`length<=36`           |This is the ID returned in the response.|
 |status             |enum                               |This is the status of the customer profile. Possible values are:<br/><ul><li>INITIAL</li><li>ACTIVE</li></ul><br/>By default the system automatically sets the profile status to an ACTIVE state. If you want to prevent the profile from being used for payments, you can set the status to an INITIAL state (e.g., in cases where you first want to validate the customer).|
-|merchantCustomerId |string <br/>`length<=100`          |This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX it is known as the Ref ID.|
+|merchantCustomerId |string <br/>`length<=100`          |This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX this is known as the Ref ID.|
 |locale             |enum                               |This indicates the language of the profile. Possible values are:<ul><li>en_US</li><li>fr_CA</li><li>en_GB</li></ul>
 |firstName          |string <br/>`length<=80`           |This is the customer’s first name. |
 |middleName         |string <br/>`length<=80`           |This is the customer’s middle name. |
@@ -3134,7 +3134,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
  
 
 ## Profile Base
-+ merchantCustomerId:`mycustomer1` (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX it is known as the Ref ID.
++ merchantCustomerId:`mycustomer1` (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX this is known as the Ref ID.
 + locale:`en_US` (enum, required) - This indicates the language of the profile.
     - en_US
     - fr_CA
@@ -3153,7 +3153,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
 + cellPhone:`777-555-8888` (string, optional) - This is the customer’s cell phone number.
 
 ## Profile Base ACH
-+ merchantCustomerId:`mycustomer1` (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX it is known as the Ref ID.
++ merchantCustomerId:`mycustomer1` (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX this is known as the Ref ID.
 + locale:`en_US` (enum, optional) - This indicates the language of the profile. Default is *en_US*.
     - en_US
     - fr_CA
@@ -3171,7 +3171,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
 + nationality:`American` (string, optional) - This is the customer’s nationality.
 
 ## Profile Base ACH Response
-+ merchantCustomerId:`mycustomer1` (string) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX it is known as the Ref ID.
++ merchantCustomerId:`mycustomer1` (string) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX this is known as the Ref ID.
 + locale:`en_US` (enum) - This indicates the language of the profile.
     - en_US
     - fr_CA
@@ -3189,7 +3189,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
 + nationality:`American` (string, optional) - This is the customer’s nationality.
 
 ## Profile Base ACH Token
-+ merchantCustomerId:`mycustomer1` (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX it is known as the Ref ID.
++ merchantCustomerId:`mycustomer1` (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX this is known as the Ref ID.
 + firstName:`John` (string, optional) - This is the customer's first name.
 + middleName:`James` (string, optional) - This is the customer's middle name.
 + lastName:`Smith` (string, optional) - This is the customer's last name.
@@ -3202,7 +3202,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
 + nationality:`American` (string, optional) - This is the customer’s nationality.
 
 ## Profile Base ACH Token Response
-+ merchantCustomerId:`mycustomer1` (string) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX it is known as the Ref ID.
++ merchantCustomerId:`mycustomer1` (string) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX this is known as the Ref ID.
 + locale:`en_US` (enum) - This indicates the language of the profile.
     - en_US
     - fr_CA
@@ -3219,7 +3219,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
 + nationality:`American` (string) - This is the customer’s nationality.
 
 ##  Profile Base EFT
-+ merchantCustomerId:`mycustomer1` (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX it is known as the Ref ID.
++ merchantCustomerId:`mycustomer1` (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX this is known as the Ref ID.
 + locale:`en_US` (enum, optional) - This indicates the language of the profile. Default is *en_US*.
     - en_US
     - fr_CA
@@ -3231,7 +3231,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
 + phone:`777-444-8888` (string, optional) - This is the customer's phone number.
 
 ##  Profile Base EFT Response
-+ merchantCustomerId:`mycustomer1` (string) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX it is known as the Ref ID.
++ merchantCustomerId:`mycustomer1` (string) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX this is known as the Ref ID.
 + locale:`en_US` (enum) - This indicates the language of the profile.
     - en_US
     - fr_CA
@@ -3243,7 +3243,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
 + phone:`777-444-8888` (string) - This is the customer's phone number.
 
 ##  Profile Base EFT Token
-+ merchantCustomerId:`mycustomer1` (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX it is known as the Ref ID.
++ merchantCustomerId:`mycustomer1` (string, required) - This is a customer ID that the merchant provides with the request for their own internal customer identification. This value must be unique for each customer belonging to a merchant. In NETBANX this is known as the Ref ID.
 + firstName:`John` (string, optional) - This is the customer's first name.
 + middleName:`James` (string, optional) - This is the customer's middle name.
 + lastName:`Smith` (string, optional) - This is the customer's last name.
