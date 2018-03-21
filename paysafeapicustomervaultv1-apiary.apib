@@ -1945,7 +1945,10 @@ This is how you delete an ACH bank account.
 ## Create a BACS Bank Account [POST /v1/profiles/{PROFILE_ID}/bacsbankaccounts]
 <a name="createbacsbankaccountrequest" title="Create a BACS Bank Account"></a>
 
-This is how you submit a BACS bank account creation request. The *paymentToken* returned in the response can be used for payment requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases).
+This is how you submit a BACS bank account creation request. 
+
+**Note:** The *paymentToken* returned in the response **can not** be used for requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases). 
+In the case of BACS bank accounts, you must use the *paymentToken* returned in the response to the [BACS mandate creation request](https://developer.paysafe.com/en/vault/api/#/reference/0/mandates/create-a-bacs-mandate) for the mandate associated with this BACS bank account.
 
 + Parameters
     + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding a BACS bank account. 
@@ -2153,6 +2156,9 @@ This is how you delete an EFT bank account.
 
 ## Create a SEPA Bank Account [POST /v1/profiles/{PROFILE_ID}/sepabankaccounts]
 <a name="createsepabankaccountrequest" title="Create a SEPA Bank Account"></a>
+
+**Note:** The *paymentToken* returned in the response **can not** be used for requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases). 
+In the case of SEPA bank accounts, you must use the *paymentToken* returned in the response to the [SEPA mandate creation request](https://developer.paysafe.com/en/vault/api/#/reference/0/mandates/create-a-sepa-mandate) for the mandate associated with this SEPA bank account.
 
 This is how you submit a SEPA bank account creation request. The *paymentToken* returned in the response can be used for payment requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases).
 
