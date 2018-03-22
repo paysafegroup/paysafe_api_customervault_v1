@@ -1947,7 +1947,7 @@ This is how you delete an ACH bank account.
 
 This is how you submit a BACS bank account creation request. 
 
-**Note:** The *paymentToken* returned in the response **can not** be used for requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases). 
+**Note:** The *paymentToken* returned in the response **cannot** be used for requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases). 
 In the case of BACS bank accounts, you must use the *paymentToken* returned in the response to the [BACS mandate creation request](https://developer.paysafe.com/en/vault/api/#/reference/0/mandates/create-a-bacs-mandate) for the mandate associated with this BACS bank account.
 
 + Parameters
@@ -2159,7 +2159,7 @@ This is how you delete an EFT bank account.
 
 This is how you submit a SEPA bank account creation request.
 
-**Note:** The *paymentToken* returned in the response **can not** be used for requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases). 
+**Note:** The *paymentToken* returned in the response **cannot** be used for requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases). 
 In the case of SEPA bank accounts, you must use the *paymentToken* returned in the response to the [SEPA mandate creation request](https://developer.paysafe.com/en/vault/api/#/reference/0/mandates/create-a-sepa-mandate) for the mandate associated with this SEPA bank account.
 
 + Parameters
@@ -2276,7 +2276,7 @@ By default, the BACS mandate is created with the status of PENDING.
     + Attributes
         + id:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
         + reference:`ABCDEF0987` (string, required) - This is the identifier of the mandate in the banking system.
-        + paymentToken:MUwqiUNjndxxiFs (string, required) - This is a token returned in the response to the mandate creation request.
+        + paymentToken:MUwqiUNjndxxiFs (string, required) - This is a token returned in the response to the mandate creation request. This is the *paymentToken* you must use for BACS requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/),
         + status:PENDING (enum, required) - This is the status of the mandate.
         + statusChangeDate:`2016-12-14T20:41:32Z` (string, required) - This is the date that the status was last changed.
         + statusReasonCode:`2` (string) - In the case of a REJECTED or DISPUTED status, the reason code received.
@@ -2310,7 +2310,7 @@ By default, the SEPA mandate is created with the status of ACTIVE.
     + Attributes
         + id:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
         + reference:`ABCDEF0987` (string, required) - This is the identifier of the mandate in the banking system.
-        + paymentToken:MUwqiUNjndxxiFs (string, required) - This is a token returned in the response to the mandate creation request.
+        + paymentToken:MUwqiUNjndxxiFs (string, required) - This is a token returned in the response to the mandate creation request. This is the *paymentToken* you must use for SEPA requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/)
         + status:ACTIVE (enum, required) - This is the status of the mandate.
         + statusChangeDate:`2016-12-14T20:41:32Z` (string, required) - This is the date that the status was last changed.
 
@@ -2869,7 +2869,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
 + lastDigits:`01` (string) - This is the last two digits of the bank account number.
 + sortCode:`086081` (string) - This is the 6-digit sort code that identifies the financial institution and branch of the customer’s bank.
 + billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string) - This is the address ID returned in response to the request to create an address, which will be associated with this bank account.
-+ paymentToken:`CNjEzMTM4NDg1` (string) - This is a token that represents the bank account and is returned in the response to the bank account creation request. It can be used in the place of bank account information in Direct Debit transactions.
++ paymentToken:`CNjEzMTM4NDg1` (string) - This is a token that represents the bank account and is returned in the response to the bank account creation request. It **cannot** be used in the place of bank account information in Direct Debit transactions. The *paymentToken* from the [BACS mandate creation request](#createbacsmandaterequest) must be used.
 + Include Mandates for Bank Response
 
 ## Billing Address
@@ -3383,7 +3383,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
 + lastDigits:01 (string) - This is the last two digits of the bank account number.
 + billingAddressId:`60022f38-fd17-4731-909c-923930d0d5d4` (string) - This is the address ID returned in response to the request to create an address, which will be associated with this bank account.
 + merchantRefNum:SEPA888 (string) - This is the merchant reference number created by the merchant and submitted as part of the request.
-+ paymentToken:D8c4jEzMTM4NDg1 (string) - This is a token that represents the bank account and is returned in the response to the bank account creation request. It can be used in the place of bank account information in Direct Debit transactions.
++ paymentToken:D8c4jEzMTM4NDg1 (string) - This is a token that represents the bank account and is returned in the response to the bank account creation request. It **cannot** be used in the place of bank account information in Direct Debit transactions. The *paymentToken* from the [SEPA mandate creation request](#createsepamandaterequest) must be used.
 + Include Mandates for Bank Response
 
 ## Single Use Token
