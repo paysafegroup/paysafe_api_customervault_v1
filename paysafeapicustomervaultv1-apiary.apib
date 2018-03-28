@@ -2254,7 +2254,7 @@ This is how you delete a SEPA bank account.
 
 This is how you submit a BACS mandate creation request. 
 
-**Note:** The *paymentToken* returned in the response is used for BACS requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases), and **not** the *paymentToken* returned in the response to the [BACS bank account creation request](https://developer.paysafe.com/en/vault/api/#/reference/0/bacs-bank-accounts/create-a-bacs-bank-account).
+**Note:** The *paymentToken* returned in the response here is used for BACS requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases), and **not** the *paymentToken* returned in the response to the [BACS bank account creation request](https://developer.paysafe.com/en/vault/api/#/reference/0/bacs-bank-accounts/create-a-bacs-bank-account).
 
 By default, the BACS mandate is created with the status of PENDING.
 
@@ -2288,7 +2288,7 @@ By default, the BACS mandate is created with the status of PENDING.
 
 This is how you submit a SEPA mandate creation request.
 
-**Note:** The *paymentToken* returned in the response is used for SEPA requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases), and **not** the *paymentToken* returned in the response to the [SEPA bank account creation request](https://developer.paysafe.com/en/vault/api/#/reference/0/sepa-bank-accounts/create-a-sepa-bank-account).
+**Note:** The *paymentToken* returned in the response here is used for SEPA requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases), and **not** the *paymentToken* returned in the response to the [SEPA bank account creation request](https://developer.paysafe.com/en/vault/api/#/reference/0/sepa-bank-accounts/create-a-sepa-bank-account).
 
 By default, the SEPA mandate is created with the status of ACTIVE.
 
@@ -2510,7 +2510,7 @@ You have to generate a new single-use token for each mobile device transaction y
             + cardExpiry (required) - This is the card expiry date.
                 + month:12 (string, required) - This is the expiry month.
                 + year:2020 (string, required) - This is the expiry year.
-            + billingAddress (object, optional) - This the card [billing address](#billingaddressobject).
+            + billingAddress (object, optional) - This the card [billing address](#billingaddressobject). **Note:** This object is optional, but when it is included, the *country* and *zip* fields are then required.
                 + street:100 Queen Street (string, optional) - This is the first line of the customer's street address.
                 + street2:201 (string, optional) - This is the second line of the customer's street address.
                 + city:Toronto (string, optional) - This is the city where the address is located.
@@ -2873,7 +2873,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
 + Include Mandates for Bank Response
 
 ## Billing Address
-+ billingAddress (object, optional) - This is the customer's [billing address](#billingaddressobject).
++ billingAddress (object, optional) - This is the customer's [billing address](#billingaddressobject). **Note:** This object is optional, but when it is included, the *street*, *city*, *country*, and *zip* fields are then required.
 
     + Properties
         + nickName:`Home` (string, optional) - This is an alias defined by the customer for this address (e.g., "home address").
