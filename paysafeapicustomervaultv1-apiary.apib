@@ -2886,7 +2886,7 @@ You have to generate a new single-use token for each EFT transaction you wish to
 
 
 ## Billing Address for Direct Debit Single Use Token
-+ billingAddress (object, required) - This is the customer's [billing address](#billingaddressobject).
++ billingAddress (object, required) - This is the customer's [billing address](#billingaddressobject). **Note:** This object is optional, but when it is included, the *street*, *city*, *country*, and *zip* fields are then required.
 
     + Properties
         + nickName:`Home` (string, optional) - This is an alias defined by the customer for this address (e.g., "home address").
