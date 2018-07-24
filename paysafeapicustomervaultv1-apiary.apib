@@ -7,10 +7,11 @@ HOST: https://api.test.paysafe.com/customervault/
 
 | Version   | Date          | Details |
 |---        |---            |---      |
-| 1.0       | February 2018 | Clarified NETBANX terminology     |
+| 1.0       | July 2018     | <ul><li>Updated Google Pay endpoints</li></ul>     |
+| 1.0       | February 2018 | <ul><li>Clarified NETBANX terminology</li></ul>     |
 | 1.0       | January 2018  | <ul><li>Changed "Google Payment API" to "Google Pay"</li><li>Updated endpoints for creating Direct Debit single-use tokens</li></ul>|
-| 1.0       | December 2017 | Added Direct Debit single-use tokens|
-| 1.0       | November 2016 | Document release|
+| 1.0       | December 2017 | <ul><li>Added Direct Debit single-use tokens</li></ul> |
+| 1.0       | November 2016 | <ul><li>Document release</li></ul> |
 
 # Overview
 
@@ -110,7 +111,7 @@ The following request types are supported:
 **Resource Patterns**
 
 |Endpoint URL                                       |Description                            |Action |
-https://app.apiary.io/paysafeapicustomervaultv213/editor|---                                                |---                                    |---    |
+|---                                                |---                                    |---    |
 |/profiles                                          |Create a Customer Profile              |POST   |
 |/profiles/{PROFILE_ID}                             |Look Up a Customer Profile             |GET    |
 |/profiles/{PROFILE_ID}                             |Update a Customer Profile              |PUT    |
@@ -2472,7 +2473,7 @@ You have to generate a new single-use token for each Google Pay transaction you 
         + Include Response Base
         + paymentToken:`GTCJskXfGXTYbsejEDnGQt3jWqo34U` (string, required) - This is the single-use payment token returned in the response to the single-use token creation request.
         + timeToLiveSeconds:899 (number, required) - This is the period of time the single-use token is valid before expiration, in seconds.
-        + googlePayPaymentToken - This is the Google Pay virtual card that will be used for the purchase request.
+        + googlePayPaymentToken - This is the [payment data object](#googlepaypaymenttokenobject) generated from the Android device for Google Pay.
             + ephemeralPublicKey:`BCTSvnX1fF6b64NPlKwJl1r1dAfF0vAWHoktOS4CwH1BocAjnBHfHvKyX2CSM7jf7Cv1b6YfrQMkY9+hgE0dzgY=` (string, required)
             + tag:`8EKZt7vGFjtvuukkWlc5U93h+PBxjB7YKJF/w32Wfk8=` (string, required)
             + authMethod:`3DS`
