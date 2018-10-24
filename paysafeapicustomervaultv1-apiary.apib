@@ -7,6 +7,7 @@ HOST: https://api.test.paysafe.com/customervault/
 
 | Version   | Date          | Details |
 |---        |---            |---      |
+| 1.0       | October 2018  | <ul><li>Added profile lookup using *merchantCustomerId*. </li></ul> |
 | 1.0       | July 2018     | <ul><li>Deprecated Google Pay endpoint /paywithgooglesingleusetokens. Now use /googlepaysingleusetokens.</li><li>Deprecated Google Pay token *payWithGooglePaymentToken*. Now use *googlePayPaymentToken*.</li></ul>     |
 | 1.0       | February 2018 | <ul><li>Clarified NETBANX terminology</li></ul>     |
 | 1.0       | January 2018  | <ul><li>Changed "Google Payment API" to "Google Pay"</li><li>Updated endpoints for creating Direct Debit single-use tokens</li></ul>|
@@ -56,7 +57,7 @@ In order to test your integration with Paysafe, use the following Test URL:
 
 For example:
 
-`https://api.test.paysafe.com/customervault/v1/profiles/{PROFILE_ID}`
+`https://api.test.paysafe.com/customervault/v1/profiles/{profile_id}`
 
 ## Production URL
 In order to process live requests with Paysafe, use the following Production URL:
@@ -65,7 +66,7 @@ In order to process live requests with Paysafe, use the following Production URL
 
 For example:
 
-`https://api.paysafe.com/customervault/v1/profiles/{PROFILE_ID}`
+`https://api.paysafe.com/customervault/v1/profiles/{profile_id}`
 
 <a name="globalinvalidcharacters" title="Global Invalid Characters"></a>
 # Global Invalid Characters
@@ -113,43 +114,43 @@ The following request types are supported:
 |Endpoint URL                                       |Description                            |Action |
 |---                                                |---                                    |---    |
 |/profiles                                          |Create a Customer Profile              |POST   |
-|/profiles/{PROFILE_ID}                             |Look Up a Customer Profile             |GET    |
-|/profiles/{PROFILE_ID}                             |Update a Customer Profile              |PUT    |
-|/profiles/{PROFILE_ID}                             |Delete a Customer Profile              |DELETE |
-|/profiles/{PROFILE_ID}/addresses                   |Create an Address                      |POST   |
-|/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}      |Look Up an Address                     |GET    |
-|/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}      |Update an Address                      |PUT    |
-|/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}      |Delete an Address                      |DELETE |
-|/profiles/{PROFILE_ID}/cards                       |Create a Card                          |POST   |
-|/profiles/{PROFILE_ID}/cards/{CARD_ID}             |Look Up a Card                         |GET    |
-|/profiles/{PROFILE_ID}/cards/{CARD_ID}             |Update a Card                          |PUT    |
-|/profiles/{PROFILE_ID}/cards/{CARD_ID}             |Delete a Card                          |DELETE |
-|/profiles/{PROFILE_ID}/achbankaccounts             |Create an ACH Bank Account             |POST   |
-|/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}   |Look Up an ACH Bank Account    |GET    |
-|/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}   |Update an ACH Bank Account     |PUT    |
-|/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}   |Delete an ACH Bank Account     |DELETE |
-|/profiles/{PROFILE_ID}/bacsbankaccounts            |Create a BACS Bank Account             |POST   |
-|/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}  |Look Up a BACS Bank Account    |GET    |
-|/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}  |Update a BACS Bank Account     |PUT    |
-|/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}  |Delete a BACS Bank Account     |DELETE |
-|/profiles/{PROFILE_ID}/eftbankaccounts             |Create an EFT Bank Account             |POST   |
-|/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}   |Look Up an EFT Bank Account    |GET    |
-|/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}   |Update an EFT Bank Account     |PUT    |
-|/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}   |Delete an EFT Bank Account     |DELETE |
-|/profiles/{PROFILE_ID}/sepabankaccounts            |Create a SEPA Bank Account             |POST   |
-|/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}  |Look Up a SEPA Bank Account    |GET    |
-|/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}  |Update a SEPA Bank Account     |PUT   |
-|/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}  |Delete a SEPA Bank Account     |DELETE |
+|/profiles/{profile_id}                             |Look Up a Customer Profile             |GET    |
+|/profiles/{profile_id}                             |Update a Customer Profile              |PUT    |
+|/profiles/{profile_id}                             |Delete a Customer Profile              |DELETE |
+|/profiles/{profile_id}/addresses                   |Create an Address                      |POST   |
+|/profiles/{profile_id}/addresses/{address_id}      |Look Up an Address                     |GET    |
+|/profiles/{profile_id}/addresses/{address_id}      |Update an Address                      |PUT    |
+|/profiles/{profile_id}/addresses/{address_id}      |Delete an Address                      |DELETE |
+|/profiles/{profile_id}/cards                       |Create a Card                          |POST   |
+|/profiles/{profile_id}/cards/{card_id}             |Look Up a Card                         |GET    |
+|/profiles/{profile_id}/cards/{card_id}             |Update a Card                          |PUT    |
+|/profiles/{profile_id}/cards/{card_id}             |Delete a Card                          |DELETE |
+|/profiles/{profile_id}/achbankaccounts             |Create an ACH Bank Account             |POST   |
+|/profiles/{profile_id}/achbankaccounts/{bank_account_id}   |Look Up an ACH Bank Account    |GET    |
+|/profiles/{profile_id}/achbankaccounts/{bank_account_id}   |Update an ACH Bank Account     |PUT    |
+|/profiles/{profile_id}/achbankaccounts/{bank_account_id}   |Delete an ACH Bank Account     |DELETE |
+|/profiles/{profile_id}/bacsbankaccounts            |Create a BACS Bank Account             |POST   |
+|/profiles/{profile_id}/bacsbankaccounts/{bank_account_id}  |Look Up a BACS Bank Account    |GET    |
+|/profiles/{profile_id}/bacsbankaccounts/{bank_account_id}  |Update a BACS Bank Account     |PUT    |
+|/profiles/{profile_id}/bacsbankaccounts/{bank_account_id}  |Delete a BACS Bank Account     |DELETE |
+|/profiles/{profile_id}/eftbankaccounts             |Create an EFT Bank Account             |POST   |
+|/profiles/{profile_id}/eftbankaccounts/{bank_account_id}   |Look Up an EFT Bank Account    |GET    |
+|/profiles/{profile_id}/eftbankaccounts/{bank_account_id}   |Update an EFT Bank Account     |PUT    |
+|/profiles/{profile_id}/eftbankaccounts/{bank_account_id}   |Delete an EFT Bank Account     |DELETE |
+|/profiles/{profile_id}/sepabankaccounts            |Create a SEPA Bank Account             |POST   |
+|/profiles/{profile_id}/sepabankaccounts/{bank_account_id}  |Look Up a SEPA Bank Account    |GET    |
+|/profiles/{profile_id}/sepabankaccounts/{bank_account_id}  |Update a SEPA Bank Account     |PUT   |
+|/profiles/{profile_id}/sepabankaccounts/{bank_account_id}  |Delete a SEPA Bank Account     |DELETE |
 |/applepaysingleusetokens                           |Create an Apple Pay Single-Use Token   |POST   |
 |/googlepaysingleusetokens                          |Create a Google Pay Single-Use Token |POST   |
 |/singleusetokens                                   |Create a Mobile Device Single-Use Token|POST   |
 |/achsingleusetokens                                |Create an ACH Single-Use Token         |POST   |
 |/eftsingleusetokens                                |Create an EFT Single-Use Token         |POST   |
-|/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}/mandates |Create a BACS Mandate  |POST   |
-|/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}/mandates |Create a SEPA Mandate  |POST   |
-|/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}       |Look Up a Mandate                      |GET    |
-|/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}       |Update a Mandate                       |PUT    |
-|/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}       |Delete a Mandate                       |DELETE |
+|/profiles/{profile_id}/bacsbankaccounts/{bank_account_id}/mandates |Create a BACS Mandate  |POST   |
+|/profiles/{profile_id}/sepabankaccounts/{bank_account_id}/mandates |Create a SEPA Mandate  |POST   |
+|/profiles/{profile_id}/mandates/{mandate_id}       |Look Up a Mandate                      |GET    |
+|/profiles/{profile_id}/mandates/{mandate_id}       |Update a Mandate                       |PUT    |
+|/profiles/{profile_id}/mandates/{mandate_id}       |Delete a Mandate                       |DELETE |
 
 # Getting Started
 
@@ -1477,14 +1478,14 @@ This is how you submit a profile creation request using an EFT single-use token.
         + Include Addresses Response Direct Debit Profile
         + Include EFT Bank Account for Token Response
 
-## Get Profile [GET /v1/profiles/{PROFILE_ID}]
+## Get Profile [GET /v1/profiles/{profile_id}]
 <a name="getprofilerequest" title="Look Up a Profile"></a>
 
 This is how you look up a profile using the ID returned in the response to the original request. 
     
 + Parameters
 
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response (in NETBANX this is called the Consumer ID). 
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response (in NETBANX this is called the Consumer ID). 
 
 + Request Get Profile (application/json)
     
@@ -1500,7 +1501,30 @@ This is how you look up a profile using the ID returned in the response to the o
         + Include Profile Base
         + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
 
-## Get Profile Including Subcomponents [GET /v1/profiles/{PROFILE_ID}?fields={fields}]
+## Get Profile Using Merchant Customer ID [GET /v1/profiles?merchantCustomerId={merchantCustomerId}]
+<a name="getprofilerequest" title="Look Up a Profile"></a>
+
+This is how you look up a profile using the Merchant Customer ID that was used in [the original request](#createprofilerequest). 
+    
++ Parameters
+
+    + merchantCustomerId:`mycustomer1` (string, required) - This is a customer ID that the merchant provided with the [profile creation request](#createprofilerequest) for their own internal customer identification.. 
+
++ Request Get Profile Using Merchant Customer ID (application/json)
+    
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+            
++ Response 200 (application/json)
+
+    + Attributes    
+        + Include Response Base
+        + Include Status Profile
+        + Include Profile Base
+        + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer and is returned in the response to the profile request.
+
+## Get Profile Including Subcomponents [GET /v1/profiles/{profile_id}?fields={fields}]
 <a name="getprofilerequestsubcomponents" title="Look Up a Profile Including Subcomponents"></a>
 
 You can look up a profile along with its associated sub-components using one or more comma-separated values from this list:
@@ -1513,7 +1537,7 @@ You can look up a profile along with its associated sub-components using one or 
     
 + Parameters
 
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response (in NETBANX this is called the Consumer ID).
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response (in NETBANX this is called the Consumer ID).
     + fields:`addresses,cards` (string, optional) - This is a comma-separated list of sub-components.
 
 + Request Get Profile (application/json)
@@ -1532,7 +1556,7 @@ You can look up a profile along with its associated sub-components using one or 
         + Include Addresses Response
         + Include Cards Response
     
-## Update a Profile [PUT /v1/profiles/{PROFILE_ID}]
+## Update a Profile [PUT /v1/profiles/{profile_id}]
 <a name="updateprofilerequest" title="Update a Profile"></a>
 
 This is how you update a profile.
@@ -1540,7 +1564,7 @@ This is how you update a profile.
 **Note:** You must provide all of the elements of the profile when you are updating it, including the elements that are not changing. Elements that are part of an existing profile but that are not included in the update request will be set to *null* in the resulting profile, with the exception of the *status* element.
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response (in NETBANX this is called the Consumer ID).
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response (in NETBANX this is called the Consumer ID).
 
 + Request Update a Profile (application/json)
     
@@ -1560,13 +1584,13 @@ This is how you update a profile.
         + Include Profile Base
         + paymentToken:Pzb8AstnaGug5Y4 (string, required) - This is a token that represents the customer.
 
-## Delete a Profile [DELETE /v1/profiles/{PROFILE_ID}]
+## Delete a Profile [DELETE /v1/profiles/{profile_id}]
 <a name="deleteprofilerequest" title="Delete a Profile"></a>
 
 This is how you delete a profile.
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response (in NETBANX this is called the Consumer ID).
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response (in NETBANX this is called the Consumer ID).
 
 + Request Delete a Profile (application/json)
 
@@ -1580,14 +1604,14 @@ This is how you delete a profile.
 # Addresses [/addresses]
 <a name="addressesrequest" title="Addresses Request"></a>
 
-## Create an Address [POST /v1/profiles/{PROFILE_ID}/addresses]
+## Create an Address [POST /v1/profiles/{profile_id}/addresses]
 <a name="createaddressrequest" title="Create an Address"></a>
 
 This is how you submit an address creation request.
 
 + Parameters
 
-    + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding an address.
+    + profile_id:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding an address.
 
 + Request Address Creation (application/json)
 
@@ -1606,14 +1630,14 @@ This is how you submit an address creation request.
         + Include Response Base
         + Include Address Response
 
-## Get Address [GET /v1/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+## Get Address [GET /v1/profiles/{profile_id}/addresses/{address_id}]
 <a name="getaddressrequest" title="Look Up an Address"></a>
 
 This is how you look up an address using the ID returned in the response to the original request.
     
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + ADDRESS_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the address ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + address_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the address ID returned in the response.
 
 + Request Get Address (application/json)
     
@@ -1627,7 +1651,7 @@ This is how you look up an address using the ID returned in the response to the 
         + Include Response Base
         + Include Address Response
 
-## Update an Address [PUT /v1/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+## Update an Address [PUT /v1/profiles/{profile_id}/addresses/{address_id}]
 <a name="updateaddressrequest" title="Update an Address"></a>
 
 This is how you update an address.
@@ -1636,8 +1660,8 @@ This is how you update an address.
 
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + ADDRESS_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the address ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + address_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the address ID returned in the response.
 
 + Request Update an Address (application/json)
     
@@ -1654,14 +1678,14 @@ This is how you update an address.
         + Include Response Base
         + Include Address Response
     
-## Delete an Address [DELETE /v1/profiles/{PROFILE_ID}/addresses/{ADDRESS_ID}]
+## Delete an Address [DELETE /v1/profiles/{profile_id}/addresses/{address_id}]
 <a name="deleteaddressrequest" title="Delete an Address"></a>
 
 This is how you delete an address. 
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + ADDRESS_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the address ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + address_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the address ID returned in the response.
 
 + Request Delete an Address (application/json)
 
@@ -1677,7 +1701,7 @@ This is how you delete an address.
 # Cards [/cards]
 <a name="cardsrequest" title="Cards Request"></a>
 
-## Create a Card [POST /v1/profiles/{PROFILE_ID}/cards]
+## Create a Card [POST /v1/profiles/{profile_id}/cards]
 <a name="createcardrequest" title="Create a Card"></a>
 
 This is how you submit a card creation request. The *paymentToken* returned in the response can be used for payment requests in the [Card Payments API](https://developer.paysafe.com/en/cards/api/#/reference/0/authorizations/authorization).
@@ -1686,7 +1710,7 @@ This is how you submit a card creation request. The *paymentToken* returned in t
 
 + Parameters
 
-    + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding a card.
+    + profile_id:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding a card.
 
 + Request Card Creation (application/json)
 
@@ -1704,14 +1728,14 @@ This is how you submit a card creation request. The *paymentToken* returned in t
         + Include Response Base
         + Include Card Response
         
-## Create a Card Using a Single-Use Token [POST /v1/profiles/{PROFILE_ID}/cards]
+## Create a Card Using a Single-Use Token [POST /v1/profiles/{profile_id}/cards]
 <a name="createcardrequesttoken" title="Create a Card Using a Single-Use Token"></a>
 
 This is how you submit a card creation request using a single-use token. The *paymentToken* returned in the response can be used for payment requests in the [Card Payments API](https://developer.paysafe.com/en/cards/api/#/reference/0/authorizations/authorization).
 
 + Parameters
 
-    + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding a card.
+    + profile_id:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding a card.
 
 + Request Card Creation Using a Single-Use Token (application/json)
 
@@ -1729,14 +1753,14 @@ This is how you submit a card creation request using a single-use token. The *pa
         + Include Response Base
         + Include Card Response 
 
-## Get Card [GET /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
+## Get Card [GET /v1/profiles/{profile_id}/cards/{card_id}]
 <a name="getcardrequest" title="Look Up a Card"></a>
 
 This is how you look up a card using the ID returned in the response to the original request.
     
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + CARD_ID:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the card ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + card_id:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the card ID returned in the response.
 
 + Request Get Card (application/json)
     
@@ -1750,7 +1774,7 @@ This is how you look up a card using the ID returned in the response to the orig
         + Include Response Base
         + Include Card Response
         
-## Update a Card [PUT /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
+## Update a Card [PUT /v1/profiles/{profile_id}/cards/{card_id}]
 <a name="updatecardrequest" title="Update a Card"></a>
 
 This is how you update a card.
@@ -1759,8 +1783,8 @@ This is how you update a card.
 
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + CARD_ID:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the card ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + card_id:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the card ID returned in the response.
 
 + Request Update a Card (application/json)
     
@@ -1777,7 +1801,7 @@ This is how you update a card.
         + Include Response Base
         + Include Card Response        
 
-## Update a Card Using a Single-Use Token [PUT /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
+## Update a Card Using a Single-Use Token [PUT /v1/profiles/{profile_id}/cards/{card_id}]
 <a name="updatecardrequesttoken" title="Update a Card Using a Single-Use Token"></a>
 
 This is how you update a card using a single-use token.
@@ -1785,8 +1809,8 @@ This is how you update a card using a single-use token.
 **Note:** The existing card and corresponding billing details will be updated based on the information stored for the single-use token. For example, if an existing card has billing details information but the single-use token does not, this operation will remove the existing billing details from the card.
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + CARD_ID:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the card ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + card_id:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the card ID returned in the response.
 
 + Request Update a Card (application/json)
     
@@ -1804,14 +1828,14 @@ This is how you update a card using a single-use token.
         + Include Response Base
         + Include Card Response                
 
-## Delete a Card [DELETE /v1/profiles/{PROFILE_ID}/cards/{CARD_ID}]
+## Delete a Card [DELETE /v1/profiles/{profile_id}/cards/{card_id}]
 <a name="deletecardrequest" title="Delete a Card"></a>
 
 This is how you delete a card. 
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + CARD_ID:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the card ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + card_id:`6dcc704e-106a-4fb3-98e2-f138ba5f16a1` (string, required) - This is the card ID returned in the response.
 
 + Request Delete a Card (application/json)
 
@@ -1826,14 +1850,14 @@ This is how you delete a card.
 # ACH Bank Accounts [/achbankaccounts]
 <a name="achbankaccountsrequest" title="ACH Bank Accounts Request"></a>
 
-## Create an ACH Bank Account [POST /v1/profiles/{PROFILE_ID}/achbankaccounts]
+## Create an ACH Bank Account [POST /v1/profiles/{profile_id}/achbankaccounts]
 <a name="createachbankaccountrequest" title="Create an ACH Bank Account"></a>
 
 This is how you submit an ACH bank account creation request. The *paymentToken* returned in the response can be used for payment requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases).
 
 + Parameters
 
-    + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding an ACH bank account. 
+    + profile_id:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding an ACH bank account. 
 
 + Request ACH Bank Account Creation (application/json)
 
@@ -1850,14 +1874,14 @@ This is how you submit an ACH bank account creation request. The *paymentToken* 
         + Include Response Base
         + Include ACH Bank Account Response
 
-## Create an ACH Bank Account Using a Single-Use Token [POST /v1/profiles/{PROFILE_ID}/achbankaccounts]
+## Create an ACH Bank Account Using a Single-Use Token [POST /v1/profiles/{profile_id}/achbankaccounts]
 <a name="createachbankaccountrequestsut" title="Create an ACH Bank Account Using a Single-Use Token"></a>
 
 This is how you submit an ACH bank account creation request using an ACH single-use token. The *paymentToken* returned in the response can be used for payment requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases).
 
 + Parameters
 
-    + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding an ACH bank account. 
+    + profile_id:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding an ACH bank account. 
 
 + Request ACH Bank Account Creation Using a Single-Use Token (application/json)
 
@@ -1874,14 +1898,14 @@ This is how you submit an ACH bank account creation request using an ACH single-
         + Include Response Base
         + Include ACH Bank Account Response Using Token
 
-## Get ACH Bank Account [GET /v1/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+## Get ACH Bank Account [GET /v1/profiles/{profile_id}/achbankaccounts/{bank_account_id}]
 <a name="getachbankaccountrequest" title="Look Up an ACH Bank Account"></a>
 
 This is how you look up an ACH bank account using the ID returned in the response to the original request.
     
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Get ACH Bank Account (application/json)
     
@@ -1895,7 +1919,7 @@ This is how you look up an ACH bank account using the ID returned in the respons
         + Include Response Base
         + Include ACH Bank Account Response
 
-## Update an ACH Bank Account [PUT /v1/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+## Update an ACH Bank Account [PUT /v1/profiles/{profile_id}/achbankaccounts/{bank_account_id}]
 <a name="updateachbankaccountrequest" title="Update an ACH Bank Account"></a>
 
 This is how you update an ACH bank account.
@@ -1903,8 +1927,8 @@ This is how you update an ACH bank account.
 **Note:** You must provide all of the elements of the bank account when you are updating it, including the elements that are not changing. Elements not included will be set to null in the resulting bank account, with the exception of the *accountNumber* element.
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Update an ACH Bank Account (application/json)
     
@@ -1921,14 +1945,14 @@ This is how you update an ACH bank account.
         + Include Response Base
         + Include ACH Bank Account Response
 
-## Delete an ACH Bank Account [DELETE /v1/profiles/{PROFILE_ID}/achbankaccounts/{BANK_ACCOUNT_ID}]
+## Delete an ACH Bank Account [DELETE /v1/profiles/{profile_id}/achbankaccounts/{bank_account_id}]
 <a name="deleteachbankaccountrequest" title="Delete an ACH Bank Account"></a>
 
 This is how you delete an ACH bank account. 
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Delete an ACH Bank Account (application/json)
 
@@ -1943,7 +1967,7 @@ This is how you delete an ACH bank account.
 # BACS Bank Accounts [/bacsbankaccounts]
 <a name="bacsbankaccountsrequest" title="BACS Bank Accounts Request"></a>
 
-## Create a BACS Bank Account [POST /v1/profiles/{PROFILE_ID}/bacsbankaccounts]
+## Create a BACS Bank Account [POST /v1/profiles/{profile_id}/bacsbankaccounts]
 <a name="createbacsbankaccountrequest" title="Create a BACS Bank Account"></a>
 
 This is how you submit a BACS bank account creation request. 
@@ -1952,7 +1976,7 @@ This is how you submit a BACS bank account creation request.
 In the case of BACS bank accounts, you must use the *paymentToken* returned in the response to the [BACS mandate creation request](https://developer.paysafe.com/en/vault/api/#/reference/0/mandates/create-a-bacs-mandate) for the mandate associated with this BACS bank account.
 
 + Parameters
-    + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding a BACS bank account. 
+    + profile_id:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding a BACS bank account. 
 
 + Request BACS Bank Account Creation (application/json)
 
@@ -1969,14 +1993,14 @@ In the case of BACS bank accounts, you must use the *paymentToken* returned in t
         + Include Response Base
         + Include BACS Bank Account Response
 
-## Get BACS Bank Account [GET /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+## Get BACS Bank Account [GET /v1/profiles/{profile_id}/bacsbankaccounts/{bank_account_id}]
 <a name="getbacsbankaccountrequest" title="Look Up a BACS Bank Account"></a>
 
 This is how you look up a BACS bank account using the ID returned in the response to the original request.
     
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Get BACS Bank Account (application/json)
     
@@ -1990,7 +2014,7 @@ This is how you look up a BACS bank account using the ID returned in the respons
         + Include Response Base
         + Include BACS Bank Account Response
 
-## Update a BACS Bank Account [PUT /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+## Update a BACS Bank Account [PUT /v1/profiles/{profile_id}/bacsbankaccounts/{bank_account_id}]
 <a name="updatebacsbankaccountrequest" title="Update a BACS Bank Account"></a>
 
 This is how you update a BACS bank account.
@@ -1998,8 +2022,8 @@ This is how you update a BACS bank account.
 **Note:** <ul><li>Any attributes that cannot be null that are not included in the request will be unchanged.</li><li>Any attributes that can be null that are not included in the request will be set to null.</li><li> The *sortCode* and *accountNumber* elements can be updated only if the bank account does not have any associated mandates.</li><li>Any mandate associated with this bank account cannot be updated with this request.</li></ul>
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Update a BACS Bank Account (application/json)
     
@@ -2016,14 +2040,14 @@ This is how you update a BACS bank account.
         + Include Response Base
         + Include BACS Bank Account Response
     
-## Delete a BACS Bank Account [DELETE /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}]
+## Delete a BACS Bank Account [DELETE /v1/profiles/{profile_id}/bacsbankaccounts/{bank_account_id}]
 <a name="deletebacsbankaccountrequest" title="Delete a BACS Bank Account"></a>
 
 This is how you delete a BACS bank account. 
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Delete a BACS Bank Account (application/json)
 
@@ -2038,14 +2062,14 @@ This is how you delete a BACS bank account.
 # EFT Bank Accounts [/eftbankaccounts]
 <a name="eftbankaccountsrequest" title="EFT Bank Accounts Request"></a>
 
-## Create an EFT Bank Account [POST /v1/profiles/{PROFILE_ID}/eftbankaccounts]
+## Create an EFT Bank Account [POST /v1/profiles/{profile_id}/eftbankaccounts]
 <a name="createeftbankaccountrequest" title="Create an EFT Bank Account"></a>
 
 This is how you submit an EFT bank account creation request. The *paymentToken* returned in the response can be used for payment requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases).
 
 + Parameters
 
-    + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding an EFT bank account. 
+    + profile_id:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding an EFT bank account. 
 
 + Request EFT Bank Account Creation (application/json)
 
@@ -2062,14 +2086,14 @@ This is how you submit an EFT bank account creation request. The *paymentToken* 
         + Include Response Base
         + Include EFT Bank Account Response
     
-## Create an EFT Bank Account Using a Single-Use Token [POST /v1/profiles/{PROFILE_ID}/eftbankaccounts]
+## Create an EFT Bank Account Using a Single-Use Token [POST /v1/profiles/{profile_id}/eftbankaccounts]
 <a name="createeftbankaccountrequestsut" title="Create an EFT Bank Account Using a Single-Use Token"></a>
 
 This is how you submit an EFT bank account creation request using an EFT single-use token. The *paymentToken* returned in the response can be used for payment requests in the [Direct Debit API](https://developer.paysafe.com/en/direct-debit/api/#/reference/0/purchases).
 
 + Parameters
 
-    + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding an EFT bank account. 
+    + profile_id:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding an EFT bank account. 
 
 + Request EFT Bank Account Creation Using a Single-Use Token (application/json)
 
@@ -2086,14 +2110,14 @@ This is how you submit an EFT bank account creation request using an EFT single-
         + Include Response Base
         + Include EFT Bank Account Response Using Token
 
-## Get EFT Bank Account [GET /v1/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+## Get EFT Bank Account [GET /v1/profiles/{profile_id}/eftbankaccounts/{bank_account_id}]
 <a name="geteftbankaccountrequest" title="Look Up an EFT Bank Account"></a>
 
 This is how you look up an EFT bank account using the ID returned in the response to the original request.
     
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Get EFT Bank Account (application/json)
     
@@ -2107,7 +2131,7 @@ This is how you look up an EFT bank account using the ID returned in the respons
         + Include Response Base
         + Include EFT Bank Account Response    
 
-## Update an EFT Bank Account [PUT /v1/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+## Update an EFT Bank Account [PUT /v1/profiles/{profile_id}/eftbankaccounts/{bank_account_id}]
 <a name="updateeftbankaccountrequest" title="Update an EFT Bank Account"></a>
 
 This is how you update an EFT bank account.
@@ -2115,8 +2139,8 @@ This is how you update an EFT bank account.
 **Note:** You must provide all of the elements of the bank account when you are updating it, including the elements that are not changing. Elements not included will be set to null in the resulting bank account, with the exception of the *accountNumber* element.
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Update an EFT Bank Account (application/json)
     
@@ -2133,14 +2157,14 @@ This is how you update an EFT bank account.
         + Include Response Base
         + Include EFT Bank Account Response
 
-## Delete an EFT Bank Account [DELETE /v1/profiles/{PROFILE_ID}/eftbankaccounts/{BANK_ACCOUNT_ID}]
+## Delete an EFT Bank Account [DELETE /v1/profiles/{profile_id}/eftbankaccounts/{bank_account_id}]
 <a name="deleteeftbankaccountrequest" title="Delete an EFT Bank Account"></a>
 
 This is how you delete an EFT bank account. 
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Delete an EFT Bank Account (application/json)
 
@@ -2155,7 +2179,7 @@ This is how you delete an EFT bank account.
 # SEPA Bank Accounts [/sepabankaccounts]
 <a name="sepabankaccountsrequest" title="SEPA Bank Accounts Request"></a>
 
-## Create a SEPA Bank Account [POST /v1/profiles/{PROFILE_ID}/sepabankaccounts]
+## Create a SEPA Bank Account [POST /v1/profiles/{profile_id}/sepabankaccounts]
 <a name="createsepabankaccountrequest" title="Create a SEPA Bank Account"></a>
 
 This is how you submit a SEPA bank account creation request.
@@ -2164,7 +2188,7 @@ This is how you submit a SEPA bank account creation request.
 In the case of SEPA bank accounts, you must use the *paymentToken* returned in the response to the [SEPA mandate creation request](https://developer.paysafe.com/en/vault/api/#/reference/0/mandates/create-a-sepa-mandate) for the mandate associated with this SEPA bank account.
 
 + Parameters
-    + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding a SEPA bank account. 
+    + profile_id:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which you are adding a SEPA bank account. 
 
 + Request SEPA Bank Account Creation (application/json)
 
@@ -2181,14 +2205,14 @@ In the case of SEPA bank accounts, you must use the *paymentToken* returned in t
         + Include Response Base
         + Include SEPA Bank Account Response
 
-## Get SEPA Bank Account [GET /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+## Get SEPA Bank Account [GET /v1/profiles/{profile_id}/sepabankaccounts/{bank_account_id}]
 <a name="getsepabankaccountrequest" title="Look Up a SEPA Bank Account"></a>
 
 This is how you look up a SEPA bank account using the ID returned in the response to the original request.
     
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Get SEPA Bank Account (application/json)
     
@@ -2202,7 +2226,7 @@ This is how you look up a SEPA bank account using the ID returned in the respons
         + Include Response Base
         + Include SEPA Bank Account Response
 
-## Update a SEPA Bank Account [PUT /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+## Update a SEPA Bank Account [PUT /v1/profiles/{profile_id}/sepabankaccounts/{bank_account_id}]
 <a name="updatesepabankaccountrequest" title="Update a SEPA Bank Account"></a>
 
 This is how you update a SEPA bank account.
@@ -2210,8 +2234,8 @@ This is how you update a SEPA bank account.
 **Note:** <ul><li>Any attributes that cannot be null that are not included in the request will be unchanged.</li><li>Any attributes that can be null that are not included in the request will be set to null.</li><li> The *iban* and *bic* elements can be updated only if the bank account does not have any associated mandates.</li><li>Any mandate associated with this bank account cannot be updated with this request.</li></ul>
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Update a SEPA Bank Account (application/json)
     
@@ -2228,14 +2252,14 @@ This is how you update a SEPA bank account.
         + Include Response Base
         + Include SEPA Bank Account Response
     
-## Delete a SEPA Bank Account [DELETE /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}]
+## Delete a SEPA Bank Account [DELETE /v1/profiles/{profile_id}/sepabankaccounts/{bank_account_id}]
 <a name="deletesepabankaccountrequest" title="Delete a SEPA Bank Account"></a>
 
 This is how you delete a SEPA bank account. 
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the bank account ID returned in the response.
 
 + Request Delete a SEPA Bank Account (application/json)
 
@@ -2250,7 +2274,7 @@ This is how you delete a SEPA bank account.
 # Mandates [/mandates]
 <a name="mandatesrequest" title="Mandates Request"></a>
 
-## Create a BACS Mandate [POST /v1/profiles/{PROFILE_ID}/bacsbankaccounts/{BANK_ACCOUNT_ID}/mandates]
+## Create a BACS Mandate [POST /v1/profiles/{profile_id}/bacsbankaccounts/{bank_account_id}/mandates]
 <a name="createbacsmandaterequest" title="Create a BACS Mandate"></a>
 
 This is how you submit a BACS mandate creation request. 
@@ -2260,8 +2284,8 @@ This is how you submit a BACS mandate creation request.
 By default, the BACS mandate is created with the status of PENDING.
 
 + Parameters
-    + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which the BACS bank account belongs.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the ID of the BACS bank account to which you are adding the mandate.
+    + profile_id:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which the BACS bank account belongs.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the ID of the BACS bank account to which you are adding the mandate.
 
 + Request BACS Mandate Creation (application/json)
 
@@ -2284,7 +2308,7 @@ By default, the BACS mandate is created with the status of PENDING.
         + statusReason:`Bank account closed` (string) - In the case of a REJECTED or DISPUTED status, a description of why the mandate was returned.
         + bankAccountId:`51120172` (string) - The bank account that this mandate belongs to.
     
-## Create a SEPA Mandate [POST /v1/profiles/{PROFILE_ID}/sepabankaccounts/{BANK_ACCOUNT_ID}/mandates]
+## Create a SEPA Mandate [POST /v1/profiles/{profile_id}/sepabankaccounts/{bank_account_id}/mandates]
 <a name="createsepamandaterequest" title="Create a SEPA Mandate"></a>
 
 This is how you submit a SEPA mandate creation request.
@@ -2294,8 +2318,8 @@ This is how you submit a SEPA mandate creation request.
 By default, the SEPA mandate is created with the status of ACTIVE.
 
 + Parameters
-    + PROFILE_ID:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which the SEPA bank account belongs.
-    + BANK_ACCOUNT_ID:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the ID of the SEPA bank account to which you are adding the mandate.
+    + profile_id:`a5f1889d-f1be-4bbf-941d-fd9b8d09d5b1` (string,required) - This is the ID of the profile to which the SEPA bank account belongs.
+    + bank_account_id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the ID of the SEPA bank account to which you are adding the mandate.
 
 + Request SEPA Mandate Creation (application/json)
 
@@ -2315,14 +2339,14 @@ By default, the SEPA mandate is created with the status of ACTIVE.
         + status:ACTIVE (enum, required) - This is the status of the mandate.
         + statusChangeDate:`2016-12-14T20:41:32Z` (string, required) - This is the date that the status was last changed.
 
-## Get Mandate [GET /v1/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
+## Get Mandate [GET /v1/profiles/{profile_id}/mandates/{mandate_id}]
 <a name="getmandaterequest" title="Look Up a Mandate"></a>
 
 This is how you look up a mandate using the ID returned in the response to the original request.
     
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + MANDATE_ID:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + mandate_id:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
 
 + Request Get Mandate (application/json)
     
@@ -2335,7 +2359,7 @@ This is how you look up a mandate using the ID returned in the response to the o
     + Attributes
         + Include Mandates Response
         
-## Update a Mandate [PUT /v1/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
+## Update a Mandate [PUT /v1/profiles/{profile_id}/mandates/{mandate_id}]
 <a name="updatemandaterequest" title="Update a Mandate"></a>
 
 This is how you update a mandate.
@@ -2343,8 +2367,8 @@ This is how you update a mandate.
 **Note:** Only the *status* element can be updated.  Any other elements provided will be ignored. </br> The only valid status for a mandate update is CANCELLED.
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + MANDATE_ID:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + mandate_id:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
 
 + Request Update a Mandate (application/json)
     
@@ -2360,14 +2384,14 @@ This is how you update a mandate.
     + Attributes    
         + Include Mandates Response
 
-## Delete a Mandate [DELETE /v1/profiles/{PROFILE_ID}/mandates/{MANDATE_ID}]
+## Delete a Mandate [DELETE /v1/profiles/{profile_id}/mandates/{mandate_id}]
 <a name="deletemandaterequest" title="Delete a Mandate"></a>
 
 This is how you delete a mandate. 
 
 + Parameters
-    + PROFILE_ID:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
-    + MANDATE_ID:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
+    + profile_id:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the profile ID returned in the response.
+    + mandate_id:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
 
 + Request Delete a Mandate (application/json)
 
