@@ -806,6 +806,7 @@ This is the payment data object generated from the iOS device for Apple Pay and 
 |lastDigits         |string<br/>`length<=4`         |This is the last digits of the card number.|
 |cardExpiry         |[cardexpiry](#cardexpiryobject)    |   |
 |cardType           |enum                           |This is the type of card associated with the profile. Possible values are:<ul><li>AM = American Express</li><li>DC = Diners Club</li><li>DI = Discover</li><li>MC = Mastercard</li><li>VI =Visa</li></ul><br/>This value is determined by the system and returned in the response.|
+|cardCategory       |enum                           |This denotes the card category. Possible values are:<ul><li>CREDIT = Credit card</li><li>DEBIT = Debit card</li><li>PREPAID = Prepaid card</li><li>UNKNOWN = BIN not found in database</li></ul>|
 |billingAddress     |[billingAddress](#billingaddressobject) |   |
 |billingAddressId   |string<br/>`length<=36`        |This is the ID returned in response to the creation of the address that will be associated with this card. **Note:** Although the *billingAddressID* parameter is optional, it is recommended that you include it when you create the card because Authorization or Purchase requests in the [Card Payments API](https://developer.paysafe.com/en/payments/cards/api/#/introduction/overview) that use the resulting payment token will fail AVS checks unless there is a billing address associated with it. If you do not include it when creating the card, you should then update the card with the *billingAddressId* at a later time before using it for transaction requests.|
 |defaultCardIndicator   |boolean                    |This indicates whether this is the default card for this profile, and is returned in the response. Possible values are:<ul><li>true</li><li>false</li></ul>|
@@ -1363,7 +1364,7 @@ You can use this request to convert a single-use payment token to a permanent to
         + Include Profile Base
         + paymentToken:P0zPDqggWESaktW (string, required) - This is a token that represents the customer and is returned in the response to the profile request. This token cannot be used to make a payment.
         + Include Addresses Response
-        + Include Cards for Token Response
+        + Include Cards Response
     
 ## Create a Profile Using an ACH Bank Account [POST /v1/profiles]
 <a name="createprofilerequestach" title="Create a Profile Using an ACH Bank Account"></a>
@@ -2975,6 +2976,11 @@ You have to generate a new single-use token for each EFT transaction you wish to
     - DI
     - MC
     - VI
++ cardCategory:`CARD` (enum) - This denotes the card category.
+    - CREDIT - Credit card
+    - DEBIT - Debit card 
+    - PREPAID - Prepaid card
+    - UNKNOWN - BIN not found in database 
 + paymentToken:`CNjEzMTM4NDg1` (string) - This is a token that represents the card and is returned in the response to the card creation request.
 + billingAddressId:`794b2b05-1a3b-4544-a59c-8612d0a4711e` (string) - This is the ID returned in response to the creation of an address that will be associated with the card.
 + defaultCardIndicator:`false` (boolean) - This indicates whether this is the default card for the profile.
@@ -3008,6 +3014,11 @@ You have to generate a new single-use token for each EFT transaction you wish to
             - DI
             - MC
             - VI
+        + cardCategory:`CREDIT` (enum) - This denotes the card category.
+            - CREDIT - Credit card
+            - DEBIT - Debit card 
+            - PREPAID - Prepaid card
+            - UNKNOWN - BIN not found in database 
         + nickName:`John Corporate Card` (string) - This is an alias defined by the customer for this card.
         + merchantRefNum:`MC123` (string) - This is the merchant’s own card identification, which can be included in the request if desired.
         + holderName:`John Smith` (string) - This is the name of the card holder.
