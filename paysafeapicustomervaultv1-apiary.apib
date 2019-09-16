@@ -1742,6 +1742,7 @@ This is how you submit a card creation request using a single-use token. The *pa
     + Attributes
         
         + Include Single Use Token
+        + Include Default Card Indicator
         
     + Headers
     
@@ -3058,6 +3059,9 @@ You have to generate a new single-use token for each EFT transaction you wish to
         + year:`1981` (number, required) - This is the birth year.
         + month:`10` (number, required) - This is the birth month.
         + day:`24` (number, required) - This is the birth day.
+
+## Default Card Indicator
++ defaultCardIndicator:`false` (boolean, optional) - Indicates the default card for the profile.
 
 ## EFT Bank Account
 + nickName:`John's Account` (string, optional) - This is an alias for this bank account.
