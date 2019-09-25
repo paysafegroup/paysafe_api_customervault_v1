@@ -2252,7 +2252,9 @@ This is how you update a SEPA bank account.
     + Attributes    
         + Include Response Base
         + Include SEPA Bank Account Response
-    
+  
+
+  
 ## Delete a SEPA Bank Account [DELETE /v1/profiles/{profile_id}/sepabankaccounts/{bank_account_id}]
 <a name="deletesepabankaccountrequest" title="Delete a SEPA Bank Account"></a>
 
@@ -2308,6 +2310,7 @@ By default, the BACS mandate is created with the status of PENDING.
         + statusReasonCode:`2` (string) - In the case of a REJECTED or DISPUTED status, the reason code received.
         + statusReason:`Bank account closed` (string) - In the case of a REJECTED or DISPUTED status, a description of why the mandate was returned.
         + bankAccountId:`51120172` (string) - The bank account that this mandate belongs to.
+
     
 ## Create a SEPA Mandate [POST /v1/profiles/{profile_id}/sepabankaccounts/{bank_account_id}/mandates]
 <a name="createsepamandaterequest" title="Create a SEPA Mandate"></a>
@@ -2513,17 +2516,17 @@ You have to generate a new single-use token for each Google Pay transaction you 
             + lastDigits:`3478`
             + cardType:`VI`
 
-## Mobile Device Single-Use Tokens [/singleusetokens]
+## Card Single-Use Tokens [/singleusetokens]
 <a name="singleusetokens" title="Single-Use Tokens"></a>
 
-### Create a Mobile Device Single-Use Token [POST /v1/singleusetokens]
+### Create a Card Single-Use Token [POST /v1/singleusetokens]
 <a name="singleusetokenrequest" title="Single-Use Token Request"></a>
 
-This is how you submit a mobile device single-use token creation request. In the response, you will find a *paymentToken* value to include with your Authorization or Purchase request in the [Card Payments](https://developer.paysafe.com/en/payments/cards/api/) API.
+This is how you submit a card single-use token creation request. In the response, you will find a *paymentToken* value to include with your Authorization or Purchase request in the [Card Payments](https://developer.paysafe.com/en/payments/cards/api/) API.
 
-You have to generate a new single-use token for each mobile device transaction you wish to process.
+You have to generate a new single-use token for each card transaction you wish to process.
 
-+ Request Mobile Device Single-Use Token Creation (application/json)
++ Request Card Single-Use Token Creation (application/json)
 
     + Headers
     
@@ -2567,6 +2570,32 @@ You have to generate a new single-use token for each mobile device transaction y
             + country:CA (string, required) - This is the country where the address is located.
             + state:ON (string, optional) - This is the state/province/region of the customer's address.
             + zip:M5H 2N2 (string, required) - This is the country of the customer's address.
+
+### Get a Card Single-Use Token [POST /v1/singleusetokens/search]
+<a name="getcardsingleusetokenrequest" title="Lookup a Card Single-Use Token"></a>
+
+This is how you look up a token using a card single-use token.
+
+**Note:** This endpoint should be called from your server as it requires server-to-server API key.
+
++ Request Get a Card Single-Use Token (application/json)
+
+    + Headers
+    
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+
+    + Attributes
+        + paymentToken:`SAec6TpEoNVQpbSM` (string, required) - This is the payment token that you want to lookup for.
+                
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + id:`a02e52c7-c991-4418-966a-b62989cb0eae` (string, required) - This is the ID of the card single-use token.
+        + paymentToken:`SAec6TpEoNVQpbSM` (string, required) - This is payment token returned in the response to the request.
+        + timeToLiveSeconds:899 (number, required) - This is the period of time the single-use token is valid before expiration, in seconds.
+        + isFromMultiUseToken:true (boolean, required) - This indicates whether the token was created from multi use token.
+        + Include Card Response for Card SingleUse Token Lookup
 
 
 # Group Direct Debit Single-Use Tokens
@@ -2634,6 +2663,39 @@ You have to generate a new single-use token for each EFT transaction you wish to
         + Include Profile for Direct Debit Single Use Token
         + Include Billing Address for Direct Debit Single Use Token
         + Include EFT Bank Account for Payment Token
+
+# Group Profile Single-Use Tokens
+
+**Note:** The endpoints described here should be always consumed in the context of server-to-server communication and they require server-to-server API key.
+
+## Create a Profile Single-Use Token [POST /v1/profiles/{profileId}/singleuseprofiles]
+<a name="profilesingleusetokenrequest" title="Profile Single-Use Token Request"></a>
+
+This is how you submit a profile single-use token creation request. In the response, you will find a paymentToken value to include with your invocation of the [setup function of Paysafe Checkout](https://developer.paysafe.com/en/sdks/paysafe-checkout/setup-function/).
+
++ Parameters
+    + profileId:`a7b218e7-290a-4434-aea2-a1f985fc26c0` (string, required) - This is the ID of the profile for which the profile single-use token will be created.
+    
+
++ Request Profile Single-Use Token Creation (application/json)
+
+    + Headers        
+
+            Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
+
+
++ Response 200 (application/json)
+
+    + Attributes
+        + id:`a02e52c7-c991-4418-966a-b62989cb0eae` (string, required) - This is the ID returned in the response.
+        + paymentToken:`SAec6TpEoNVQpbSM` (string, required) - This is the single-use payment token returned in the response to the request.
+        + timeToLiveSeconds:899 (number, required) - This is the period of time the single-use token is valid before expiration, in seconds.
+        + profile_id:`2e31b3e3-122b-4ffe-bb7e-9b2202fe85fb` (string, required) - This is the profile ID returned in the response based on which the profile single-use token is created.
+        + Include Status Profile
+        + Include Profile Base
+        + Include Addresses Response Profile SingleUse Token
+        + Include Card Response for SingleUse Token
+
 
 # Data Structures
 
@@ -2867,6 +2929,34 @@ You have to generate a new single-use token for each EFT transaction you wish to
         + defaultShippingAddressIndicator:`false` (boolean) - This indicates whether this address is the default shipping address.
         + status:`ACTIVE` (enum) - This is the status of the address.
 
+## Addresses Response Profile SingleUse Token
++ addresses (array) - This is the customer's address.
+
+    + (object)
+        + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string) - This is the address ID returned in the response.
+        + street:`100 Queen` (string) - This is the first line of the customer's street address.
+        + street2:`Unit 201` (string) - This is the second line of the customer's street address, if required.
+        + city:`Toronto` (string) - This is the city where the address is located.
+        + zip:`M5H 2N2` (string) - This is the zip, postal, or post code of the customer's address.
+        + country:`CA` (string) - This is the country where the address is located.
+        + state:`ON` (string) - This is the state/province/region in which the customer lives.
+        + defaultShippingAddressIndicator:`false` (boolean) - This indicates whether this address is the default shipping address.
+        + status:`ACTIVE` (enum) - This is the status of the address.
+
+## Billing Address Response
++ billingAddress (object) - This is the customer's address.
+
+    + Properties
+        + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string) - This is the address ID returned in the response.
+        + street:`100 Queen` (string) - This is the first line of the customer's street address.
+        + street2:`Unit 201` (string) - This is the second line of the customer's street address, if required.
+        + city:`Toronto` (string) - This is the city where the address is located.
+        + zip:`M5H 2N2` (string) - This is the zip, postal, or post code of the customer's address.
+        + country:`CA` (string) - This is the country where the address is located.
+        + state:`ON` (string) - This is the state/province/region in which the customer lives.
+        + defaultShippingAddressIndicator:`false` (boolean) - This indicates whether this address is the default shipping address.
+        + status:`ACTIVE` (enum) - This is the status of the address.
+
 ## BACS Bank Account
 + nickName:`Sally's Barclays Account` (string, optional) - This is an alias for this bank account.
 + accountHolderName:`Sally Barnes` (string, required) - This is the name of the customer or company that owns the bank account.
@@ -3051,6 +3141,51 @@ You have to generate a new single-use token for each EFT transaction you wish to
     + Properties
         + month:`12` (number, required)
         + year:`2020` (number, required)
+
+## Card Response for SingleUse Token
+
++ cards (array) - This is the customer's [card](#cardsobject) information.
+
+    + (object)
+        + timeToLiveSeconds:899 (number, required) - This is the period of time the card single-use token is valid before expiration, in seconds.
+        + status:`ACTIVE` (enum) - This is the status of the card.
+        + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string) - This is the ID of the card single-use token.
+        + cardBin:`411111` (string) - This is the card BIN (typically the first 6 digits).
+        + lastDigits:`1111` (string) - This is the last digits of the card number.
+        + Include cardExpiry
+        + holderName:`John Smith` (string) - This is the name of the card holder.
+        + cardType:`VI` (enum) - This is the card brand.
+            - AM
+            - DC
+            - DI
+            - MC
+            - VI
+        + paymentToken:`CNjEzMTM4NDg1` (string) - This is a token that represents the card and is returned in the response to the card creation request.
+        + defaultCardIndicator:`true` (boolean) - This indicates whether this is the default card for the profile, and is returned in the response.
+        + cardId: `6de81e89-9058-4bdb-9f63-8eaaf2a34d95` (string) - This is the ID of the card stored to the profile.
+
+## Card Response for Card SingleUse Token Lookup
+
++ card (object) - This is the customer's card information.
+
+    + Properties
+        + status:`ACTIVE` (enum) - This is the status of the card.
+        + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string) - This is the ID of the card single-use token.
+        + cardBin:`411111` (string) - This is the card BIN (typically the first 6 digits).
+        + lastDigits:`1111` (string) - This is the last digits of the card number.
+        + Include cardExpiry
+        + holderName:`John Smith` (string) - This is the name of the card holder.
+        + cardType:`VI` (enum) - This is the card brand.
+            - AM
+            - DC
+            - DI
+            - MC
+            - VI
+        + cardCategory: `CREDIT` (enum) - This denotes the card category.
+            - CREDIT - Credit card
+            - DEBIT - Debit card 
+            - PREPAID - Prepaid card
+            - UNKNOWN - BIN not found in database
 
 ## dateOfBirth
 + dateOfBirth (object, optional) - This is the [date of birth](#dateofbirthobject).
