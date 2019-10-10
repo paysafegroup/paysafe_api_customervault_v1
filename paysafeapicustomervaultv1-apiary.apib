@@ -2440,7 +2440,7 @@ You have to generate a new single-use token for each Apple Pay transaction you w
         + Include Apple Pay Payment Token Response
         + card - These are the details of the virtual card.
             + lastDigits:1234 (string, optional) - This is the last digits of the card number.
-            + holderName:Joe Smith (string, optional) - This is the name of the card holder.
+            + holderName:Joe Smith (string, required) - This is the name of the card holder.
         + transaction - These are the Apple Pay transaction details.
             + amount:1000 (string, optional) - This is the amount of the request, in minor units.
             + currencyCode:USD (string, optional) - This is the currency of the merchant account.
@@ -2534,7 +2534,7 @@ You have to generate a new single-use token for each card transaction you wish t
 
     + Attributes
         + card (object, required) - These are the [card](#cardsobject) details.
-            + holderName:John Smith (string, optional) - This is the name of the card holder.
+            + holderName:John Smith (string, required) - This is the name of the card holder.
             + cardNum:4111111111111111 (string, required) - This is the card number.
             + cardExpiry (required) - This is the card expiry date.
                 + month:12 (string, required) - This is the expiry month.
@@ -2558,7 +2558,7 @@ You have to generate a new single-use token for each card transaction you wish t
         + card - These are the [card](#cardsobject) details.
             + cardBin:411111 (string, required) - This is the card BIN (typically the first 6 digits).
             + lastDigits:1111 (string, required) - This is the last digits of the card number.
-            + holderName:John Smith (string, optional) - This is the name of the card holder.
+            + holderName:John Smith (string, required) - This is the name of the card holder.
             + cardType:VI (enum, required) - This is the type of card associated with the profile. 
             + cardExpiry (required) - This is the card expiry date.
                 + month:12 (string, required) - This is the expiry month.
@@ -3018,7 +3018,7 @@ This is how you submit a profile single-use token creation request. In the respo
 + Include cardExpiry
 + nickName:`John Corporate Card` (string, optional) - This is an alias defined by the customer for this card.
 + merchantRefNum:`MC123` (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
-+ holderName:`John Smith` (string, optional) - This is the name of the card holder.
++ holderName:`John Smith` (string, required) - This is the name of the card holder.
 + billingAddressId:`794b2b05-1a3b-4544-a59c-8612d0a4711e` (string, optional) - This is the ID returned in response to the creation of an address that will be associated with the card.
 + defaultCardIndicator:`false` (boolean, optional) - This indicates whether this is the default card for the profile.
 
@@ -3030,14 +3030,14 @@ This is how you submit a profile single-use token creation request. In the respo
         + Include cardExpiry
         + nickName:`John Corporate Card` (string, optional) - This is an alias defined by the customer for this card.
         + merchantRefNum:`MC123` (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
-        + holderName:`John Smith` (string, optional) - This is the name of the card holder.
+        + holderName:`John Smith` (string, required) - This is the name of the card holder.
         + Include Billing Address
 
 ## Card for Update
 + Include cardExpiry
 + nickName:`John Corporate Card` (string, optional) - This is an alias defined by the customer for this card.
 + merchantRefNum:`MC123` (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
-+ holderName:`John Smith` (string, optional) - This is the name of the card holder.
++ holderName:`John Smith` (string, required) - This is the name of the card holder.
 + billingAddressId:`794b2b05-1a3b-4544-a59c-8612d0a4711e` (string, required) - This is the ID returned in response to the creation of an address that will be associated with the card.
 + defaultCardIndicator:`false` (boolean, optional) - This indicates whether this is the default card for the profile.
 
@@ -3057,7 +3057,7 @@ This is how you submit a profile single-use token creation request. In the respo
 + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string, required) - This is the card ID returned in the response.
 + status:`ACTIVE` (enum) - This is the status of the card request. 
 + nickName:`John Corporate Card` (string) - This is an alias defined by the customer for this card.
-+ holderName:`John Smith` (string) - This is the name of the card holder.
++ holderName:`John Smith` (string, required) - This is the name of the card holder.
 + cardBin:`411111` (string) - This is the card BIN (typically the first 6 digits).
 + lastDigits:`1111` (string) - This is the last digits of the card number.
 + Include cardExpiry
@@ -3084,7 +3084,7 @@ This is how you submit a profile single-use token creation request. In the respo
         + Include cardExpiry
         + nickName:`John Corporate Card` (string, optional) - This is an alias defined by the customer for this card.
         + merchantRefNum:`MC123` (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
-        + holderName:`John Smith` (string, optional) - This is the name of the card holder.
+        + holderName:`John Smith` (string, required) - This is the name of the card holder.
         + Include Addresses
         + billingAddressId:`794b2b05-1a3b-4544-a59c-8612d0a4711e` (string, required) - This is the ID returned in response to the creation of an address that will be associated with the card.
         + defaultCardIndicator:`false` (boolean, optional) - This indicates whether this is the default card for the profile.
@@ -3112,7 +3112,7 @@ This is how you submit a profile single-use token creation request. In the respo
             - UNKNOWN - BIN not found in database 
         + nickName:`John Corporate Card` (string) - This is an alias defined by the customer for this card.
         + merchantRefNum:`MC123` (string) - This is the merchant’s own card identification, which can be included in the request if desired.
-        + holderName:`John Smith` (string) - This is the name of the card holder.
+        + holderName:`John Smith` (string, required) - This is the name of the card holder.
         + billingAddressId:`794b2b05-1a3b-4544-a59c-8612d0a4711e` (string) - This is the ID returned in response to the creation of an address that will be associated with the card.
         + defaultCardIndicator:`true` (boolean) - This indicates whether this is the default card for the profile.
         + paymentToken:`CNjEzMTM4NDg1` (string) - This is a token that represents the card and is returned in the response to the card creation request.
@@ -3126,7 +3126,7 @@ This is how you submit a profile single-use token creation request. In the respo
         + Include cardExpiry
         + nickName:`John Corporate Card` (string, optional) - This is an alias defined by the customer for this card.
         + merchantRefNum:`MC123` (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
-        + holderName:`John Smith` (string, optional) - This is the name of the card holder.
+        + holderName:`John Smith` (string, required) - This is the name of the card holder.
         + Include Addresses
 
 ## Cards for Token
@@ -3153,7 +3153,7 @@ This is how you submit a profile single-use token creation request. In the respo
         + cardBin:`411111` (string) - This is the card BIN (typically the first 6 digits).
         + lastDigits:`1111` (string) - This is the last digits of the card number.
         + Include cardExpiry
-        + holderName:`John Smith` (string) - This is the name of the card holder.
+        + holderName:`John Smith` (string, required) - This is the name of the card holder.
         + cardType:`VI` (enum) - This is the card brand.
             - AM
             - DC
@@ -3174,7 +3174,7 @@ This is how you submit a profile single-use token creation request. In the respo
         + cardBin:`411111` (string) - This is the card BIN (typically the first 6 digits).
         + lastDigits:`1111` (string) - This is the last digits of the card number.
         + Include cardExpiry
-        + holderName:`John Smith` (string) - This is the name of the card holder.
+        + holderName:`John Smith` (string, required) - This is the name of the card holder.
         + cardType:`VI` (enum) - This is the card brand.
             - AM
             - DC
