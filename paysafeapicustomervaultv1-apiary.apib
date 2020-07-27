@@ -1747,7 +1747,7 @@ This is how you submit a card creation request using a single-use token. The *pa
         
         + Include Single Use Token
         + Include Default Card Indicator
-        + accountId:`string` - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request. 1002370290.
+        + accountId:`1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request. 1002370290.
         
     + Headers
     
@@ -3020,7 +3020,7 @@ This is how you submit a profile single-use token creation request. In the respo
 
 ## Card
 + cardNum:`4111111111111111` (string, required) - This is the card number.
-+ accountId:`string` - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request. 1002370290
++ accountId:`1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request. 1002370290
 + Include cardExpiry
 + nickName:`John Corporate Card` (string, optional) - This is an alias defined by the customer for this card.
 + merchantRefNum:`MC123` (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
@@ -3033,7 +3033,7 @@ This is how you submit a profile single-use token creation request. In the respo
 
     + Properties
         + cardNum:`4111111111111111` (string, required) - This is the card number.
-        + accountId: `string` - This is a merchant account ID (FMA) that the merchant provides. It will be linked to the card from this request. For ex: 1002370290.
+        + accountId: `1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides. It will be linked to the card from this request. For ex: 1002370290.
         + Include cardExpiry
         + nickName:`John Corporate Card` (string, optional) - This is an alias defined by the customer for this card.
         + merchantRefNum:`MC123` (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
@@ -3087,7 +3087,7 @@ This is how you submit a profile single-use token creation request. In the respo
 + card (object, required) - This is the customer's [card](#cardsobject) information.
 
     + Properties
-        + accountId:`string` - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request. For ex: 1002370290.
+        + accountId:`1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request. For ex: 1002370290.
         + cardNum:`4111111111111111` (string, required) - This is the card number.
         + Include cardExpiry
         + nickName:`John Corporate Card` (string, optional) - This is an alias defined by the customer for this card.
