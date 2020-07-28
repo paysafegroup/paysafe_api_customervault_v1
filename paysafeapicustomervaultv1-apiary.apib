@@ -801,7 +801,7 @@ This is the payment data object generated from the iOS device for Apple Pay and 
 |Element            |Type                           |Description    |
 |---                |---                            |---            |
 |id                 |string<br/>`length<=36`        |This is the card ID returned by Paysafe that can be used later to look up or update a card on the profile.|
-|accountId          |string                         |This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request. For ex: 1002370290.|
+|accountId          |string                         |This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request.|
 |nickName           |string<br/>`length<=50`        |This is an alias defined by the customer for this card (e.g., "corporate card").|
 |merchantRefNum     |string<br/>`length<=255`       |This is the merchant’s own card identification, which can be included in the request if desired. This value is only stored by the Paysafe system and has no bearing on the request.|
 |holderName         |string<br/>`length<=160`       |This is the name of the card holder.|
@@ -1747,7 +1747,7 @@ This is how you submit a card creation request using a single-use token. The *pa
         
         + Include Single Use Token
         + Include Default Card Indicator
-        + accountId:`1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request. 1002370290.
+        + accountId:`1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request.
         
     + Headers
     
@@ -3020,7 +3020,7 @@ This is how you submit a profile single-use token creation request. In the respo
 
 ## Card
 + cardNum:`4111111111111111` (string, required) - This is the card number.
-+ accountId:`1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request. 1002370290
++ accountId:`1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request.
 + Include cardExpiry
 + nickName:`John Corporate Card` (string, optional) - This is an alias defined by the customer for this card.
 + merchantRefNum:`MC123` (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
@@ -3033,7 +3033,7 @@ This is how you submit a profile single-use token creation request. In the respo
 
     + Properties
         + cardNum:`4111111111111111` (string, required) - This is the card number.
-        + accountId: `1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides. It will be linked to the card from this request. For ex: 1002370290.
+        + accountId: `1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides. It will be linked to the card from this request.
         + Include cardExpiry
         + nickName:`John Corporate Card` (string, optional) - This is an alias defined by the customer for this card.
         + merchantRefNum:`MC123` (string, optional) - This is the merchant’s own card identification, which can be included in the request if desired.
@@ -3053,6 +3053,7 @@ This is how you submit a profile single-use token creation request. In the respo
 
     + Properties
         + singleUseToken:`abcdefg23d32d2` (string, required) - This is the single-use token returned in response to a single-use token creation request.
+        + accountId:`1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request.
 
 ## Cards for Token Response
 + cards (object, required) - This is the customer's [card](#cardsobject) information.
@@ -3087,7 +3088,7 @@ This is how you submit a profile single-use token creation request. In the respo
 + card (object, required) - This is the customer's [card](#cardsobject) information.
 
     + Properties
-        + accountId:`1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request. For ex: 1002370290.
+        + accountId:`1002370290` (string) - This is a merchant account ID (FMA) that the merchant provides and will be linked to the card from this request.
         + cardNum:`4111111111111111` (string, required) - This is the card number.
         + Include cardExpiry
         + nickName:`John Corporate Card` (string, optional) - This is an alias defined by the customer for this card.
