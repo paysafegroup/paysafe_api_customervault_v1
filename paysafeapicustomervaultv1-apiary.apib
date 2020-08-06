@@ -1278,7 +1278,7 @@ This is how you submit a profile creation request.
     
             Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
 
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
     + Attributes
         + Include Response Base
@@ -1627,7 +1627,7 @@ This is how you submit an address creation request.
     
             Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
 
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
     + Attributes
         
@@ -1726,7 +1726,7 @@ This is how you submit a card creation request. The *paymentToken* returned in t
     
             Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
 
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
     + Attributes
         + Include Response Base
@@ -1874,7 +1874,7 @@ This is how you submit an ACH bank account creation request. The *paymentToken* 
     
             Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
 
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
     + Attributes
         + Include Response Base
@@ -1993,7 +1993,7 @@ In the case of BACS bank accounts, you must use the *paymentToken* returned in t
     
             Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
 
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
     + Attributes
         + Include Response Base
@@ -2086,7 +2086,7 @@ This is how you submit an EFT bank account creation request. The *paymentToken* 
     
             Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
 
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
     + Attributes
         + Include Response Base
@@ -2205,7 +2205,7 @@ In the case of SEPA bank accounts, you must use the *paymentToken* returned in t
     
             Authorization: Basic YOUR-BASE64-ENCODED-API-KEY
 
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
     + Attributes
         + Include Response Base
@@ -2304,7 +2304,7 @@ By default, the BACS mandate is created with the status of PENDING.
     + Attributes
         + Include Mandate
 
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
     + Attributes
         + id:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
@@ -2339,7 +2339,7 @@ By default, the SEPA mandate is created with the status of ACTIVE.
     + Attributes
         + Include Mandate 
 
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
     + Attributes
         + id:`e250fdeb-dceb-4953-9268-8305d06b9292` (string, required) - This is the mandate ID returned in the response.
@@ -2554,7 +2554,7 @@ You have to generate a new single-use token for each card transaction you wish t
                 
             
     
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
     + Attributes
         + Include Response Base
