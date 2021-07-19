@@ -2441,7 +2441,11 @@ This is how you delete a mandate.
 
 # Group Single-Use Tokens
 
-**Note:** For payment requests coming from mobile devices you need a specific API key to retrieve single-use tokens from the Customer Vault. This API key is different from the server-to-server API key that you use to process all other Paysafe API requests. See [Where to Find Your API Key](https://developer.paysafe.com/en/rest-apis/reference-information/important-integration-concepts/using-your-api-key/#where-to-find-your-api-key) for more information.
+**Notes:** 
+<ul>
+<li> For payment requests coming from mobile devices you need a specific API key to retrieve single-use tokens from the Customer Vault. This API key is different from the server-to-server API key that you use to process all other Paysafe API requests. See [Where to Find Your API Key](https://developer.paysafe.com/en/rest-apis/reference-information/important-integration-concepts/using-your-api-key/#where-to-find-your-api-key) for more information.</li>
+<li> The single-use token is actually called token when created by the SDKs and  paymentToken when created by the Vault. Also called paymentToken when used with Card Payments API in an Auth; with Direct Debit API in a Purchase; and with APMs in a Payment.</li>
+</ul>
 
 ## Apple Pay Single-Use Tokens [/applepaysingleusetokens]
 <a name="applepaysingleusetokens" title="Apple Pay Single-Use Tokens"></a>
