@@ -845,6 +845,8 @@ This is the payment data object generated from the iOS device for Apple Pay and 
 |status             |enum                           |This is the status of the card. Possible values are:<ul><li>ACTIVE</li></ul> |
 |storedCredentialTokenStatus|enum                   |This is the status of the stored Credential Tokens.<br/><br/> Possible Values are: <ul><li>VERIFIED</li><li>UNVERIFIED</li></ul>|
 
+**Note:** After capturing a token, it is mandatory to perform one of the above transactions to validate the token.Vali
+
 ```apib
             {
               "nickName" : "John's corporate Visa",
