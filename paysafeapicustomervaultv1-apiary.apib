@@ -731,7 +731,7 @@ This is the payment data object generated from the iOS device for Apple Pay and 
 |merchantRefNum     |string<br/>`length<=255`       |This is the merchant’s own card identification, which can be included in the request if desired. This value is only stored by the Paysafe system and has no bearing on the request.|
 |holderName         |string<br/>`length<=160`       |This is the name of the card holder.|
 |cardNum            |string<br/>`length=8-20`       |This is the card number.|
-|cardBin            |string<br/>`length<=6`         |This is the card BIN (typically the first 6 digits).|
+|cardBin            |string<br/>`length<=6`         |These are the first 6 digits of the card Bank Identification Number (BIN), i.e. the first 6 digits of the card number.|
 |lastDigits         |string<br/>`length<=4`         |This is the last digits of the card number.|
 |cardExpiry         |[cardexpiry](#cardexpiryobject)    |   |
 |cardType           |enum                           |This is the type of card associated with the profile. Possible values are:<ul><li>AM = American Express</li><li>DC = Diners Club</li><li>DI = Discover</li><li>MC = Mastercard</li><li>VI =Visa</li></ul><br/>This value is determined by the system and returned in the response.|
@@ -2705,7 +2705,7 @@ You have to generate a new single-use token for each card transaction you wish t
         + paymentToken:`ABC4AFQQBC5UR5H` (string, required) - This is the single-use payment token returned in the response to the single-use token creation request.
         + timeToLiveSeconds:899 (number, required) - This is the period of time the single-use token is valid before expiration, in seconds.
         + card - These are the [card](#cardsobject) details.
-            + cardBin:411111 (string, required) - This is the card BIN (typically the first 6 digits).
+            + cardBin:411111 (string, required) - These are the first 6 digits of the card Bank Identification Number (BIN), i.e. the first 6 digits of the card number.
             + lastDigits:1111 (string, required) - This is the last digits of the card number.
             + holderName:John Smith (string, required) - This is the name of the card holder.
             + cardType:VI (enum, required) - This is the type of card associated with the profile. 
@@ -3210,7 +3210,7 @@ This is how you submit a profile single-use token creation request. In the respo
 + status:`ACTIVE` (enum) - This is the status of the card request. 
 + nickName:`John Corporate Card` (string) - This is an alias defined by the customer for this card.
 + holderName:`John Smith` (string, required) - This is the name of the card holder.
-+ cardBin:`411111` (string) - This is the card BIN (typically the first 6 digits).
++ cardBin:`411111` (string) - These are the first 6 digits of the card Bank Identification Number (BIN), i.e. the first 6 digits of the card number.
 + lastDigits:`1111` (string) - This is the last digits of the card number.
 + Include cardExpiry
 + cardType:`VI` (enum) - This is the card brand.
@@ -3249,7 +3249,7 @@ This is how you submit a profile single-use token creation request. In the respo
 
     + (object)
         + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string) - This is the card ID returned in the response that can be used later to look up or update a card on the profile.
-        + cardBin:`411111` (string) - This is the card BIN (typically the first 6 digits).
+        + cardBin:`411111` (string) - These are the first 6 digits of the card Bank Identification Number (BIN), i.e. the first 6 digits of the card number.
         + lastDigits:`1111` (string) - This is the last digits of the card number.
         + Include cardExpiry
         + cardType:`VI` (enum) - This is the card brand.
@@ -3303,7 +3303,7 @@ This is how you submit a profile single-use token creation request. In the respo
         + timeToLiveSeconds:899 (number, required) - This is the period of time the card single-use token is valid before expiration, in seconds.
         + status:`ACTIVE` (enum) - This is the status of the card.
         + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string) - This is the ID of the card single-use token.
-        + cardBin:`411111` (string) - This is the card BIN (typically the first 6 digits).
+        + cardBin:`411111` (string) - These are the first 6 digits of the card Bank Identification Number (BIN), i.e. the first 6 digits of the card number.
         + lastDigits:`1111` (string) - This is the last digits of the card number.
         + Include cardExpiry
         + holderName:`John Smith` (string, required) - This is the name of the card holder.
@@ -3324,7 +3324,7 @@ This is how you submit a profile single-use token creation request. In the respo
     + Properties
         + status:`ACTIVE` (enum) - This is the status of the card.
         + id:`6a275b7c-6f11-4ed1-ae77-21071724574a` (string) - This is the ID of the card single-use token.
-        + cardBin:`411111` (string) - This is the card BIN (typically the first 6 digits).
+        + cardBin:`411111` (string) - These are the first 6 digits of the card Bank Identification Number (BIN), i.e. the first 6 digits of the card number.
         + lastDigits:`1111` (string) - This is the last digits of the card number.
         + Include cardExpiry
         + holderName:`John Smith` (string, required) - This is the name of the card holder.
