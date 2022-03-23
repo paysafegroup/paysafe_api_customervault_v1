@@ -2555,42 +2555,42 @@ You have to generate a new single-use token for each Google Pay transaction you 
      + Body
     
     {
-    "id": "b09f9dbb-afb7-4555-aedc-c9998cf07442",
-    "paymentToken": "GE4Lo73CJ9uFliO",
-    "timeToLiveSeconds": 899,
-    "googlePayPaymentToken": {
-        "ephemeralPublicKey": "BAPING9pvMpDRhD3Ups4HX+ePz3FlfRq5VKgLpvQC4ScVjwNPINQaHsWne0NjgvQREa5xMJ4KdPXuNkUNQufVLc=",
-        "tag": "nDtdbdu/D3LZbP7kGTNXeECjMAF/T0aS/LdVmFt7Bs8=",
-        "paymentMethod": "CARD_ON_FILE",
-        "messageId": "AH2Ejtd6O8PI5WVCz5JKMWEa5OJ1JlhzrdmbYVbC2l1VT7qyUctVzDUvHV7nQemRcZ9L0oF2YNXks352frl_jqssR3FICBYIzn8kkmpZOCqx-etvSaKrnncWi9CEn7_GXyvC98ebac0-",
-        "messageExpiration": "1625832458302",
-        "paymentMethodData": {
-            "info": {
-                "cardNetwork": "MASTERCARD",
-                "cardDetails": "4597",
-                "billingAddress": {
-                    "phoneNumber": "+15143802700",
-                    "address3": "",
-                    "sortingCode": "",
-                    "address2": "",
-                    "countryCode": "CA",
-                    "address1": "3500 Boulevard de Maisonneuve Westmount Montreal C",
-                    "postalCode": "H3Z 3C1",
-                    "name": "John Doe",
-                    "locality": "Westmount",
-                    "administrativeArea": "QC"
+        "id": "b09f9dbb-afb7-4555-aedc-c9998cf07442",
+        "paymentToken": "GE4Lo73CJ9uFliO",
+        "timeToLiveSeconds": 899,
+        "googlePayPaymentToken": {
+            "ephemeralPublicKey": "BAPING9pvMpDRhD3Ups4HX+ePz3FlfRq5VKgLpvQC4ScVjwNPINQaHsWne0NjgvQREa5xMJ4KdPXuNkUNQufVLc=",
+            "tag": "nDtdbdu/D3LZbP7kGTNXeECjMAF/T0aS/LdVmFt7Bs8=",
+            "paymentMethod": "CARD_ON_FILE",
+            "messageId": "AH2Ejtd6O8PI5WVCz5JKMWEa5OJ1JlhzrdmbYVbC2l1VT7qyUctVzDUvHV7nQemRcZ9L0oF2YNXks352frl_jqssR3FICBYIzn8kkmpZOCqx-etvSaKrnncWi9CEn7_GXyvC98ebac0-",
+            "messageExpiration": "1625832458302",
+            "paymentMethodData": {
+                "info": {
+                    "cardNetwork": "MASTERCARD",
+                    "cardDetails": "4597",
+                    "billingAddress": {
+                        "phoneNumber": "+15143802700",
+                        "address3": "",
+                        "sortingCode": "",
+                        "address2": "",
+                        "countryCode": "CA",
+                        "address1": "3500 Boulevard de Maisonneuve Westmount Montreal C",
+                        "postalCode": "H3Z 3C1",
+                        "name": "John Doe",
+                        "locality": "Westmount",
+                        "administrativeArea": "QC"
+                    }
                 }
             }
+        },
+        "card": {
+            "status": "ACTIVE",
+            "cardBin": "411111",
+            "lastDigits": "1111",
+            "cardType": "VI",
+            "cardCategory": "CREDIT"
         }
-    },
-    "card": {
-        "status": "ACTIVE",
-        "cardBin": "411111",
-        "lastDigits": "1111",
-        "cardType": "VI",
-        "cardCategory": "CREDIT"
     }
-}
 
 + Request Google Pay Single-Use Token Creation for Tokenized Card - Android Pay (application/json)
 
